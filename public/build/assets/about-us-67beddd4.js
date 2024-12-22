@@ -1,0 +1,1 @@
+import{j as t,a as e}from"./app-667a852e.js";import{A as n}from"./app-layout-10a2fd48.js";function r(){return t.jsx(t.Fragment,{children:t.jsx(e,{title:"Tentang Kami"})})}r.layout=a=>t.jsx(n,{title:"Tentang Kami",children:a});export{r as default};

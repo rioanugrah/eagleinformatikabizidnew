@@ -19,6 +19,8 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
     //     return redirect()->route('login');
     // });
     Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
+    Route::get('tentang-kami', [FrontendController::class, 'about_us'])->name('frontend.tentang_kami');
+    Route::get('kontak-kami', [FrontendController::class, 'contact_us'])->name('frontend.kontak_kami');
 
     Route::middleware('auth')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['verified'])->name('dashboard');

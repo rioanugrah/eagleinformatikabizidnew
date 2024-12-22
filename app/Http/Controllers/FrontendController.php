@@ -10,4 +10,15 @@ class FrontendController extends Controller
     {
         return inertia('frontend/index');
     }
+
+    public function about_us()
+    {
+        return inertia('frontend/about-us');
+    }
+
+    public function contact_us()
+    {
+        return inertia('frontend/contact-us');
+    }
+
 }
