@@ -20,6 +20,7 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
     // });
     Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
     Route::get('tentang-kami', [FrontendController::class, 'about_us'])->name('frontend.tentang_kami');
+    Route::get('services', [FrontendController::class, 'services'])->name('frontend.services');
     Route::get('kontak-kami', [FrontendController::class, 'contact_us'])->name('frontend.kontak_kami');
 
     Route::middleware('auth')->group(function () {

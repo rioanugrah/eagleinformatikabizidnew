@@ -3,9 +3,9 @@ import { useState } from 'react';
 
 import { Radio, RadioGroup } from '@headlessui/react';
 import { CheckIcon, XMarkIcon, LifebuoyIcon, NewspaperIcon, PhoneIcon } from '@heroicons/react/20/solid';
+import { Head } from '@inertiajs/react';
 
 export default function Index() {
-
     const frequencies = [
         { value: 'monthly', label: 'Monthly' },
         { value: 'lifetime', label: 'Lifetime' },
@@ -17,7 +17,7 @@ export default function Index() {
             href: '#',
             featured: false,
             description: '-',
-            price: { monthly: '700.000', lifetime: '8.000.000' },
+            price: { monthly: '700.000', lifetime: '5.500.000' },
             mainFeatures: ['Domain /tahun (**.co.id/.com)', 'Hosting pertahun (15GB)'],
         },
         {
@@ -165,6 +165,7 @@ export default function Index() {
     }
     return (
         <>
+            <Head title='Eagle Media Informatika' />
             <div className='bg-indigo-100'>
                 <div className='mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:justify-between lg:px-8'>
                     <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
@@ -218,6 +219,65 @@ export default function Index() {
                                 </div> */}
                 </div>
             </div>
+
+            <div className='container mx-auto px-4'>
+                <div className='flex flex-wrap justify-between pb-16 pt-8'>
+                    <div className='hover-up-5 wow animate__ animate__fadeInUp animated flex w-1/2 py-4 lg:w-auto' data-wow-delay='.2s'>
+                        <div className='bg-blueGray-50 flex h-12 w-12 items-center justify-center rounded-xl text-blue-500 sm:h-20 sm:w-20'>
+                            <svg className='h-8 w-8' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z'></path>
+                            </svg>
+                        </div>
+                        <div className='ml-2 sm:ml-6 sm:py-2'>
+                            <span className='font-heading font-bold sm:text-2xl'>+ </span>
+                            <span className='font-heading count font-bold sm:text-2xl'>10</span>
+                            <p className='text-blueGray-400 text-xs sm:text-base'>Mitra Kami</p>
+                        </div>
+                    </div>
+                    <div className='hover-up-5 wow animate__ animate__fadeInUp animated flex w-1/2 py-4 lg:w-auto' data-wow-delay='.2s'>
+                        <div className='bg-blueGray-50 flex h-12 w-12 items-center justify-center rounded-xl text-blue-500 sm:h-20 sm:w-20'>
+                            <svg className='h-8 w-8' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z'></path>
+                            </svg>
+                        </div>
+                        <div className='ml-2 sm:ml-6 sm:py-2'>
+                            <span className='font-heading font-bold sm:text-2xl'>+ </span>
+                            <span className='font-heading count font-bold sm:text-2xl'>57</span>
+                            <span className='font-heading font-bold sm:text-2xl'> </span>
+                            <p className='text-blueGray-400 text-xs sm:text-base'>Project Selesai</p>
+                        </div>
+                    </div>
+                    <div className='hover-up-5 wow animate__ animate__fadeInUp animated flex w-1/2 py-4 lg:w-auto' data-wow-delay='.2s'>
+                        <div className='bg-blueGray-50 flex h-12 w-12 items-center justify-center rounded-xl text-blue-500 sm:h-20 sm:w-20'>
+                            <svg className='h-8 w-8' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                                <path
+                                    stroke-linecap='round'
+                                    stroke-linejoin='round'
+                                    stroke-width='2'
+                                    d='M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z'></path>
+                            </svg>
+                        </div>
+                        <div className='ml-2 sm:ml-6 sm:py-2'>
+                            <span className='font-heading font-bold sm:text-2xl'>+ </span>
+                            <span className='font-heading count font-bold sm:text-2xl'>10</span>
+                            <p className='text-blueGray-400 text-xs sm:text-base'>Klien</p>
+                        </div>
+                    </div>
+                    <div className='hover-up-5 wow animate__ animate__fadeInUp animated flex w-1/2 py-4 lg:w-auto' data-wow-delay='.2s'>
+                        <div class='bg-blueGray-50 flex h-12 w-12 items-center justify-center rounded-xl text-blue-500 sm:h-20 sm:w-20'>
+                            <svg class='h-8 w-8' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                                <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z'></path>
+                            </svg>
+                        </div>
+                        <div class='ml-2 sm:ml-6 sm:py-2'>
+                            <span class='font-heading font-bold sm:text-2xl'>+ </span>
+                            <span class='font-heading count font-bold sm:text-2xl'>320</span>
+                            <p class='text-blueGray-400 text-xs sm:text-base'>Pekerjaan Penelitian</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div className='isolate overflow-hidden'>
                 <div className='flow-root bg-gray-900 pb-16 pt-24 sm:pt-32 lg:pb-0'>
                     <div className='mx-auto max-w-7xl px-6 lg:px-8'>

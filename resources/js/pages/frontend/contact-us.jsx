@@ -40,6 +40,7 @@ export default function ContactUs() {
                                         <BuildingOffice2Icon aria-hidden='true' className='h-7 w-6 text-gray-400' />
                                     </dt>
                                     <dd>
+                                    Jl. Raya Tlogowaru No.3, Tlogowaru, Kec. Kedungkandang, Kota Malang, Jawa Timur 65133
                                         {/* 545 Mavis Island
                                         <br />
                                         Chicago, IL 99191 */}
