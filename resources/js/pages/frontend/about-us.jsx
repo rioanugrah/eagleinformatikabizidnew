@@ -53,8 +53,8 @@ export default function AboutUs()
                         </div>
                         <div className='ml-2 sm:ml-6 sm:py-2'>
                             <span className='font-heading font-bold sm:text-2xl'>+ </span>
-                            <span className='font-heading count font-bold sm:text-2xl'>150</span>
-                            <p className='text-blueGray-400 text-xs sm:text-base'>Annual Partner</p>
+                            <span className='font-heading count font-bold sm:text-2xl'>10</span>
+                            <p className='text-blueGray-400 text-xs sm:text-base'>Mitra Kami</p>
                         </div>
                     </div>
                     <div className='hover-up-5 wow animate__ animate__fadeInUp animated flex w-1/2 py-4 lg:w-auto' data-wow-delay='.2s'>
@@ -66,8 +66,8 @@ export default function AboutUs()
                         <div className='ml-2 sm:ml-6 sm:py-2'>
                             <span className='font-heading font-bold sm:text-2xl'>+ </span>
                             <span className='font-heading count font-bold sm:text-2xl'>57</span>
-                            <span className='font-heading font-bold sm:text-2xl'> k </span>
-                            <p className='text-blueGray-400 text-xs sm:text-base'>Completed Projects</p>
+                            <span className='font-heading font-bold sm:text-2xl'> </span>
+                            <p className='text-blueGray-400 text-xs sm:text-base'>Project Selesai</p>
                         </div>
                     </div>
                     <div className='hover-up-5 wow animate__ animate__fadeInUp animated flex w-1/2 py-4 lg:w-auto' data-wow-delay='.2s'>
@@ -82,8 +82,8 @@ export default function AboutUs()
                         </div>
                         <div className='ml-2 sm:ml-6 sm:py-2'>
                             <span className='font-heading font-bold sm:text-2xl'>+ </span>
-                            <span className='font-heading count font-bold sm:text-2xl'>500</span>
-                            <p className='text-blueGray-400 text-xs sm:text-base'>Happy Customers</p>
+                            <span className='font-heading count font-bold sm:text-2xl'>10</span>
+                            <p className='text-blueGray-400 text-xs sm:text-base'>Klien</p>
                         </div>
                     </div>
                     <div className='hover-up-5 wow animate__ animate__fadeInUp animated flex w-1/2 py-4 lg:w-auto' data-wow-delay='.2s'>
@@ -95,7 +95,7 @@ export default function AboutUs()
                         <div class='ml-2 sm:ml-6 sm:py-2'>
                             <span class='font-heading font-bold sm:text-2xl'>+ </span>
                             <span class='font-heading count font-bold sm:text-2xl'>320</span>
-                            <p class='text-blueGray-400 text-xs sm:text-base'>Research Work</p>
+                            <p class='text-blueGray-400 text-xs sm:text-base'>Pekerjaan Penelitian</p>
                         </div>
                     </div>
                 </div>

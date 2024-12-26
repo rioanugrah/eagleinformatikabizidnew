@@ -1,0 +1,1 @@
+import{j as e,a as r}from"./app-68816f60.js";import{A as i}from"./app-layout-d3ebdc66.js";import"./dialog-1d157e3a.js";function s(){return e.jsx(e.Fragment,{children:e.jsx(r,{title:"Services"})})}s.layout=t=>e.jsx(i,{title:"Services",children:t});export{s as default};
