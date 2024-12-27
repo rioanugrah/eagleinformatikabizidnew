@@ -119,9 +119,9 @@ export default function AppLayout({ title, children }) {
                         ))}
                     </div>
                     <div className='flex flex-1 items-center justify-end gap-x-6'>
-                        <a href='#' className='hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900'>
+                        <Link href={route('login')} className='hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900'>
                             Log in
-                        </a>
+                        </Link>
                         <a href='#' className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
                             Sign up
                         </a>
@@ -159,9 +159,9 @@ export default function AppLayout({ title, children }) {
                                     ))}
                                 </div>
                                 <div className='py-6'>
-                                    <a href='#' className='-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
+                                    <Link href={route('login')} className='-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
                                         Log in
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

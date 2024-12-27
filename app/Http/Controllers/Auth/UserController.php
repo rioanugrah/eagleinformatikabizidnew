@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $request->validate([
-            'field' => Rule::in(['updated_at', 'created_at', 'email_verified_at', 'name', 'username', 'posts_count']),
+            'field' => Rule::in(['updated_at', 'created_at', 'email_verified_at', 'name', 'username']),
             'direction' => Rule::in(['asc', 'desc']),
         ]);
 
@@ -22,7 +22,7 @@ class UserController extends Controller
 
         $users = UserResource::collection(
             User::query()
-                ->withCount('posts')
+                // ->withCount('posts')
                 ->when(
                     value: $request->search,
                     callback: fn ($query, $value) => $query->where('name', 'like', '%' . $value . '%')

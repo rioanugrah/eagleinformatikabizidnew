@@ -81,9 +81,6 @@ export default function Index(props) {
                             <TableHead onClick={() => handleSort('updated_at')}>
                                 <SortIndicator label='updated' column='updated_at' field={params?.field} direction={params?.direction} />
                             </TableHead>
-                            <TableHead onClick={() => handleSort('posts_count')}>
-                                <SortIndicator label='posts' column='posts_count' field={params?.field} direction={params?.direction} />
-                            </TableHead>
                             <TableHead />
                         </TableRow>
                     </TableHeader>
@@ -113,7 +110,6 @@ export default function Index(props) {
                                         <TableCell className={user.email_verified_at == 'Email not verified' ? 'font-medium text-destructive' : ''}>{user.email_verified_at}</TableCell>
                                         <TableCell>{user.created_at}</TableCell>
                                         <TableCell>{user.updated_at}</TableCell>
-                                        <TableCell>{user.posts_count}</TableCell>
                                         <TableCell>
                                             <div className='flex justify-end'>
                                                 <UserListOptions user={user} />

@@ -18,7 +18,11 @@ export default function Index() {
             featured: false,
             description: '-',
             price: { monthly: '700.000', lifetime: '5.500.000' },
-            mainFeatures: ['Domain /tahun (**.co.id/.com)', 'Hosting pertahun (15GB)'],
+            mainFeatures: [
+                'Domain /tahun (**.co.id/.com)',
+                'Hosting pertahun (15GB)',
+                'Persyaratan: (**) KTP, SIUP/TDP/AKTA/Surat Izin Usaha'
+            ],
         },
         {
             name: 'Profesional',
@@ -27,7 +31,7 @@ export default function Index() {
             featured: true,
             description: '-',
             price: { monthly: '1.200.000', lifetime: '14.000.000' },
-            mainFeatures: ['Domain /tahun (**.co.id/.com)', 'Hosting pertahun (45GB)'],
+            mainFeatures: ['Domain /tahun (**.co.id/.com)', 'Hosting pertahun (45GB)', 'Persyaratan: (**) KTP, SIUP/TDP/AKTA/Surat Izin Usaha'],
         },
         {
             name: 'Eksklusif',
@@ -36,7 +40,7 @@ export default function Index() {
             featured: false,
             description: '-',
             price: { monthly: '1.850.000', lifetime: '22.000.000' },
-            mainFeatures: ['Domain /tahun (**.co.id/.com)', 'Hosting per 2 tahun (45GB)'],
+            mainFeatures: ['Domain /tahun (**.co.id/.com)', 'Hosting per 2 tahun (45GB)', 'Persyaratan: (**) KTP, SIUP/TDP/AKTA/Surat Izin Usaha'],
         },
     ];
     const sections = [

@@ -19,12 +19,12 @@ export default function MenuAdministrator() {
                 <li>
                     <span className='text-sm'>Products</span>
                 </li>
-                <li>
+                {/* <li>
                     <Link href={route('websites.index')} className={classNames(route().current('websites*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
                         <Icon icon={'IconChartPie3'} />
                         Websites
                     </Link>
-                </li>
+                </li> */}
                 <Separator className='!my-4' />
                 <li>
                     <span className='text-sm'>Payment</span>
