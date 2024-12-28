@@ -1,6 +1,7 @@
 import { Button } from '@/components/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/card';
 import { Icon } from '@/components/icon';
+import AppLayout from '@/Layouts/administrator/app-layout';
 import AppNewLayout from '@/Layouts/user_layout/appnew-layout';
 import { Link, router, usePage } from '@inertiajs/react';
 import { useState } from 'react';
@@ -76,4 +77,4 @@ export default function Edit(data) {
     );
 }
 
-Edit.layout = (page) => <AppNewLayout title={'Create Permissions'} children={page} />;
+Edit.layout = (page) => <AppLayout title={'Edit Permissions'} children={page} />;

@@ -23,6 +23,7 @@ class UserController extends Controller
         $users = UserResource::collection(
             User::query()
                 // ->withCount('posts')
+                ->with('roles')
                 ->when(
                     value: $request->search,
                     callback: fn ($query, $value) => $query->where('name', 'like', '%' . $value . '%')

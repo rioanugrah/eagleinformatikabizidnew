@@ -24,6 +24,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-react": "^9.4.0",
         "@heroicons/react": "^2.2.0",
         "@radix-ui/react-alert-dialog": "^1.0.5",
         "@radix-ui/react-avatar": "^1.0.4",

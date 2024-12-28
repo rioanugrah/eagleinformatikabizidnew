@@ -75,6 +75,9 @@ export default function Index(props) {
                             <TableHead onClick={() => handleSort('email_verified_at')}>
                                 <SortIndicator label='verified' column='email_verified_at' field={params?.field} direction={params?.direction} />
                             </TableHead>
+                            <TableHead onClick={() => handleSort('roles')}>
+                                <SortIndicator label='roles' column='roles' field={params?.field} direction={params?.direction} />
+                            </TableHead>
                             <TableHead onClick={() => handleSort('created_at')}>
                                 <SortIndicator label='joined' column='created_at' field={params?.field} direction={params?.direction} />
                             </TableHead>
@@ -108,6 +111,17 @@ export default function Index(props) {
                                         </TableCell>
                                         <TableCell>{user.username}</TableCell>
                                         <TableCell className={user.email_verified_at == 'Email not verified' ? 'font-medium text-destructive' : ''}>{user.email_verified_at}</TableCell>
+                                        <TableCell>
+                                            {user.roles.map((role,index) => (
+                                                <>
+                                                {role.name == 'Administrator' ?
+                                                <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{role.name}</span>
+                                                :
+                                                <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{role.name}</span>
+                                                }
+                                                </>
+                                            ))}
+                                        </TableCell>
                                         <TableCell>{user.created_at}</TableCell>
                                         <TableCell>{user.updated_at}</TableCell>
                                         <TableCell>

@@ -6,6 +6,9 @@ import { Separator } from '@/components/separator';
 import { Dialog, Menu, Transition } from '@headlessui/react';
 import MenuAdministrator from './menuadministrator';
 
+import logo from '../../../../public/logo/logo_eagle_media_informatika.png';
+
+
 export default function AppLayout({ title, children }) {
     const [open, setOpen] = useState(false);
     const { auth } = usePage().props;
@@ -39,7 +42,7 @@ export default function AppLayout({ title, children }) {
                         </Transition>
                         <div className='flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4'>
                             <div className='flex h-16 shrink-0 items-center'>
-                                <img alt='Your Company' src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600' className='h-8 w-auto' />
+                                <img alt='Eagle Media Informatika' src={logo} className='h-8 w-auto' />
                             </div>
                             <nav className='flex flex-1 flex-col'>
                                 <ul role='list' className='flex flex-1 flex-col gap-y-7'>
@@ -53,7 +56,7 @@ export default function AppLayout({ title, children }) {
             <div className='hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col'>
                 <div className='flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4'>
                     <div className='flex h-16 shrink-0 items-center'>
-                        <img alt='Your Company' src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600' className='h-8 w-auto' />
+                        <img alt='Eagle Media Informatika' src={logo} className='h-12 w-auto' />
                     </div>
                     <nav className='flex flex-1 flex-col'>
                         <ul role='list' className='flex flex-1 flex-col gap-y-7'>

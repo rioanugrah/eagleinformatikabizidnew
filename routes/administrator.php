@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\WebsitesController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProductsController;
 
 Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
     Route::middleware('auth')->group(function () {
@@ -36,7 +38,7 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
                         Route::get('{id}/edit', 'edit')->middleware(['verified'])->name('roles.edit');
                         // Route::get('{id}/make_access', 'make_access')->name('roles.make_access');
                         // Route::post('{id}/make_access/store', 'store_make_access')->name('roles.store_make_access.store');
-                        // Route::post('{id}/update', 'update')->name('permissions.update');
+                        Route::post('{id}/update', 'update')->name('roles.update');
                         // Route::delete('{id}/delete', 'destroy')->name('permissions.destroy');
                     });
                 });
@@ -52,6 +54,27 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
                         Route::get('/', 'index')->middleware(['verified'])->name('websites.index');
                         Route::get('create', 'create')->middleware(['verified'])->name('websites.create');
                         Route::post('store', 'store')->middleware(['verified'])->name('websites.store');
+                    });
+                });
+
+                Route::controller(CategoriesController::class)->group(function () {
+                    Route::prefix('categories')->group(function(){
+                        Route::get('/', 'index')->middleware(['verified'])->name('categories.index');
+                        Route::get('create', 'create')->middleware(['verified'])->name('categories.create');
+                        Route::post('store', 'store')->middleware(['verified'])->name('categories.store');
+                        Route::get('{id}', 'edit')->middleware(['verified'])->name('categories.edit');
+                        Route::post('{id}/update', 'update')->middleware(['verified'])->name('categories.update');
+                        Route::delete('{id}/delete', 'destroy')->middleware(['verified'])->name('categories.destroy');
+                    });
+                });
+                Route::controller(ProductsController::class)->group(function () {
+                    Route::prefix('products')->group(function(){
+                        Route::get('/', 'index')->middleware(['verified'])->name('products.index');
+                        Route::get('create', 'create')->middleware(['verified'])->name('products.create');
+                        Route::post('store', 'store')->middleware(['verified'])->name('products.store');
+                        Route::get('{id}', 'edit')->middleware(['verified'])->name('products.edit');
+                        Route::post('{id}/update', 'update')->middleware(['verified'])->name('products.update');
+                        Route::delete('{id}/delete', 'destroy')->middleware(['verified'])->name('products.destroy');
                     });
                 });
 

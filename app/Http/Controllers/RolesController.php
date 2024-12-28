@@ -16,6 +16,10 @@ class RolesController extends Controller
         Role $role,
         Permission $permission
     ){
+        $this->middleware('permission:Roles List', ['only' => ['index']]);
+        $this->middleware('permission:Roles Create', ['only' => ['create','store']]);
+        $this->middleware('permission:Roles Edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:Roles Delete', ['only' => ['destroy']]);
         $this->role = $role;
         $this->permission = $permission;
     }
@@ -100,6 +104,23 @@ class RolesController extends Controller
         $data['custom_permission'] = $this->permission->select('name','id')->orderBy('id','asc')->get();
 
         return inertia('roles/edit',$data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'permission' => 'required',
+        ]);
+
+        $role = Role::find($id);
+        $role->name = $request->input('name');
+        $role->save();
+
+        $role->syncPermissions($request->input('permission'));
+
+        return redirect()->route('roles.index')
+                        ->with('success','Role updated successfully');
     }
 
     // public function make_access($id)

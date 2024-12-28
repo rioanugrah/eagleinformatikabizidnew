@@ -33,7 +33,7 @@ export default function Edit(data) {
         // console.log(role_guard_name);
         setLoading(true);
         router.post(
-            route('roles.store'),
+            route('roles.update',[data.role.id]),
             {
                 name: role_name,
                 permission: role_guard_name,
@@ -48,7 +48,7 @@ export default function Edit(data) {
         // alert('OK');
         // setLoading(false);
     };
-    console.log(role_guard_name);
+    // console.log(role_guard_name);
     return (
         <>
             <Card>
@@ -99,7 +99,7 @@ export default function Edit(data) {
                             <select multiple value={role_guard_name} onChange={handleChangeNormalSelect} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option>Choose Permission</option>
                                 {data.custom_permission.map((item, i) => (
-                                    <option value={item.name} selected={data.role.permissions[i].name === item.name ? true : false}>{item.name}</option>
+                                    <option value={item.name}>{item.name}</option>
                                 ))}
                             </select>
                             {/* <p>
