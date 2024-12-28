@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('product_price');
             $table->string('product_profit_price');
             $table->string('product_stock');
+            $table->string('product_periode');
             $table->string('status',100);
             $table->timestamps();
             $table->softDeletes();

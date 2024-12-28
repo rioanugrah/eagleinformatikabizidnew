@@ -22,6 +22,7 @@ class Products extends Model
         'product_name',
         'product_price',
         'product_profit_price',
+        'product_periode',
         'product_stock',
         'status',
     ];

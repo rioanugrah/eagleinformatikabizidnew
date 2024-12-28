@@ -12,6 +12,7 @@ export default function Create(props) {
     const [product_price, setProductPrice] = useState('');
     const [product_profit_price, setProductProfitPrice] = useState('');
     const [product_stock, setProductStock] = useState('');
+    const [product_periode, setProductPeriode] = useState('');
     const [product_status, setProductStatus] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -28,6 +29,7 @@ export default function Create(props) {
                 product_price: product_price,
                 product_profit_price: product_profit_price,
                 product_stock: product_stock,
+                product_periode: product_periode,
                 status: product_status,
             },
             {
@@ -57,17 +59,30 @@ export default function Create(props) {
                             <textarea value={product_description} onChange={(e) => setProductDescription(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                             {errors.product_description && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.product_description}</p>}
                         </div>
-                        <div className='mb-3'>
-                            <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Category Product</label>
-                            <select value={product_category} onChange={(e) => setProductCategory(e.target.value)} class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
-                                <option selected>-- Select Category --</option>
-                                {
-                                    props.categories.map((category,index) => (
-                                        <option value={category.id}>{category.name}</option>
-                                    ))
-                                }
-                            </select>
-                            {errors.categories_id && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.categories_id}</p>}
+                        <div className="grid gap-6 mb-6 md:grid-cols-2">
+                            <div>
+                                <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Category Product</label>
+                                <select value={product_category} onChange={(e) => setProductCategory(e.target.value)} class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
+                                    <option selected>-- Select Category --</option>
+                                    {
+                                        props.categories.map((category,index) => (
+                                            <option value={category.id}>{category.name}</option>
+                                        ))
+                                    }
+                                </select>
+                                {errors.categories_id && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.categories_id}</p>}
+                            </div>
+                            <div>
+                                <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Product Periode</label>
+                                <select value={product_periode} onChange={(e) => setProductPeriode(e.target.value)} class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
+                                    <option selected>-- Select Periode --</option>
+                                    <option value="Lifetime">Lifetime</option>
+                                    <option value="1">1 Tahun</option>
+                                    <option value="2">2 Tahun</option>
+                                    <option value="3">3 Tahun</option>
+                                </select>
+                                {errors.categories_id && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.categories_id}</p>}
+                            </div>
                         </div>
                         <div className="grid gap-6 mb-6 md:grid-cols-3">
                             <div>

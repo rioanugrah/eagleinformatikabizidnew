@@ -79,6 +79,9 @@ export default function Index(props) {
                             <TableHead onClick={() => handleSort('product_stock')}>
                                 <SortIndicator label='Product Stock' column='product_stock' field={params?.field} direction={params?.direction} />
                             </TableHead>
+                            <TableHead onClick={() => handleSort('product_periode')}>
+                                <SortIndicator label='Product Periode' column='product_periode' field={params?.field} direction={params?.direction} />
+                            </TableHead>
                             <TableHead onClick={() => handleSort('status')}>
                                 <SortIndicator label='status' column='status' field={params?.field} direction={params?.direction} />
                             </TableHead>
@@ -96,6 +99,7 @@ export default function Index(props) {
                                         <TableCell>{product.product_price}</TableCell>
                                         <TableCell>{product.product_profit_price}</TableCell>
                                         <TableCell>{product.product_stock}</TableCell>
+                                        <TableCell>{product.product_periode}</TableCell>
                                         <TableCell>{product.status == 'Aktif' ? <span class='me-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300'>{product.status}</span> : <span class='me-2 rounded bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300'>{product.status}</span>}</TableCell>
                                         <TableCell>
                                             <Link href={route('products.edit',[product.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-5 py-2.5 text-center text-sm font-medium text-gray-900 shadow-lg shadow-lime-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-lime-300 dark:shadow-lg dark:shadow-lime-800/80 dark:focus:ring-lime-800'>

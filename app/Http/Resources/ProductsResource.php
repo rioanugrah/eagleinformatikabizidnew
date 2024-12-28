@@ -17,6 +17,7 @@ class ProductsResource extends JsonResource
             'product_price' => 'Rp. '.number_format($this->product_price,0,',','.'),
             'product_profit_price' => 'Rp. '.number_format($this->product_profit_price,0,',','.'),
             'product_stock' => $this->product_stock,
+            'product_periode' => $this->product_periode == 'Lifetime' ? 'Lifetime' : $this->product_periode.' Tahun',
             'status' => $this->status,
         ];
     }
