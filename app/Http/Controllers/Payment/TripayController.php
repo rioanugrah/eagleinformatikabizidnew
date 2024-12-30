@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 // use App\Models\Transactions;
 use App\Models\Billings;
+use App\Models\Invoices;
 
 class TripayController extends Controller
 {
@@ -15,12 +16,14 @@ class TripayController extends Controller
     function __construct(
         // Transactions $transactions
         // MailController $send_mail
-        Billings $billings
+        Billings $billings,
+        Invoices $invoices
         )
     {
         // $this->transactions = $transactions;
         // $this->send_mail = $send_mail;
         $this->billings = $billings;
+        $this->invoices = $invoices;
 
         if (env('TRIPAY_IS_PRODUCTION') == false) {
             $this->tripay_api_key = env('TRIPAY_API_KEY_SANDBOX');
@@ -206,15 +209,16 @@ class TripayController extends Controller
                     'message' => 'No invoice found or already paid: ' . $invoiceId,
                 ]);
             }
+            // $invoices = $this->invoices->find('id')
             switch ($status) {
                 case 'PAID':
                     $billings->update([
                         // 'transaction_reference' => $data->reference,
                         'status' => 'PAID'
                     ]);
-                    // $billings->invoice->update([
-                    //     'status' => 'PAID'
-                    // ]);
+                    $billings->invoice->update([
+                        'status' => 'PAID'
+                    ]);
                     // $notifMail = $this->sendMail;
                     // $notifMail->sendMail(
                     //     $transaction->status,$transaction->transaction_code,$transaction->transaction_price,
@@ -229,9 +233,9 @@ class TripayController extends Controller
                         // 'transaction_reference' => $data->reference,
                         'status' => 'EXPIRED'
                     ]);
-                    // $billings->invoice->update([
-                    //     'status' => 'EXPIRED'
-                    // ]);
+                    $billings->invoice->update([
+                        'status' => 'EXPIRED'
+                    ]);
                     break;
 
                 case 'FAILED':
@@ -239,9 +243,9 @@ class TripayController extends Controller
                         // 'transaction_reference' => $data->reference,
                         'status' => 'FAILED'
                     ]);
-                    // $billings->invoice->update([
-                    //     'status' => 'FAILED'
-                    // ]);
+                    $billings->invoice->update([
+                        'status' => 'FAILED'
+                    ]);
                     break;
 
                 default:

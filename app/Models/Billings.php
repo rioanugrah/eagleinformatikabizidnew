@@ -35,6 +35,10 @@ class Billings extends Model
 
     public function invoice()
     {
-        return $this->belongsTo(\App\Models\Invoices::class, 'id', 'invoice_id');
+        return $this->belongsTo(\App\Models\Invoices::class, 'invoice_id', 'id');
     }
+    // public function invoice()
+    // {
+    //     return $this->belongsTo(\App\Models\Invoices::class, 'id', 'invoice_id');
+    // }
 }
