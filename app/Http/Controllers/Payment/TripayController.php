@@ -206,7 +206,7 @@ class TripayController extends Controller
                     'message' => 'No invoice found or already paid: ' . $invoiceId,
                 ]);
             }
-            switch ($billings) {
+            switch ($status) {
                 case 'PAID':
                     $billings->update([
                         // 'transaction_reference' => $data->reference,
