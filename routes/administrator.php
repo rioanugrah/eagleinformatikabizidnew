@@ -67,6 +67,7 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
                         Route::delete('{id}/delete', 'destroy')->middleware(['verified'])->name('categories.destroy');
                     });
                 });
+
                 Route::controller(ProductsController::class)->group(function () {
                     Route::prefix('products')->group(function(){
                         Route::get('/', 'index')->middleware(['verified'])->name('products.index');

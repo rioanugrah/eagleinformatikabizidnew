@@ -1,9 +1,11 @@
 import { Button } from '@/components/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/card';
+import { Dialog, DialogBackdrop, DialogPanel, Popover, Checkbox, PopoverButton, PopoverGroup, PopoverPanel, Radio, RadioGroup, Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import { Icon } from '@/components/icon';
 import AppLayout from '@/Layouts/administrator/app-layout';
 import { Link, router, usePage } from '@inertiajs/react';
 import { useState } from 'react';
+import { CheckIcon } from '@heroicons/react/20/solid';
 
 export default function Edit(data) {
     const { errors } = usePage().props;
@@ -11,6 +13,9 @@ export default function Edit(data) {
 
     const [role_name, setRoleName] = useState(data.role.name);
     const [role_guard_name, setRoleGuardName] = useState([]);
+
+    const [selectCheckbox, setSelectCheckbox] = useState(false);
+
     const [loading, setLoading] = useState(false);
 
     const handleChange = (event) => {
@@ -20,11 +25,9 @@ export default function Edit(data) {
         });
     };
 
-    const handleChangeNormalSelect = e => {
-        const updatedOptions = [...e.target.options]
-            .filter(option => option.selected)
-            .map(x => x.value);
-        console.log("updatedOptions", updatedOptions);
+    const handleChangeNormalSelect = (e) => {
+        const updatedOptions = [...e.target.options].filter((option) => option.selected).map((x) => x.value);
+        console.log('updatedOptions', updatedOptions);
         setRoleGuardName(updatedOptions);
     };
 
@@ -33,9 +36,10 @@ export default function Edit(data) {
         // console.log(role_guard_name);
         setLoading(true);
         router.post(
-            route('roles.update',[data.role.id]),
+            route('roles.update', [data.role.id]),
             {
                 name: role_name,
+                // permission: selectCheckbox,
                 permission: role_guard_name,
             },
             {
@@ -68,20 +72,20 @@ export default function Edit(data) {
                                 {data.custom_permission.map((item, i) => (
                                     <li className='w-full border-b border-gray-200 dark:border-gray-600 sm:border-b-0 sm:border-r'>
                                         <div className='flex items-center ps-3'> */}
-                                        {/* <input
+                            {/* <input
                                             id={parseInt(i+1)}
                                             type="checkbox"
                                             name='permission[]'
                                             checked={role_guard_name[item.id]}
                                             onChange={handleChange}
                                         /> */}
-                                        {/* {data.role.permissions[i].name}
+                            {/* {data.role.permissions[i].name}
                                         {item.name} */}
-                                        {/* <input id={parseInt(i+1)} type='checkbox' value={item.id} onChange={handleChange} checked={data.role.permissions[i].name === item.name ? true : false} className='h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700' />
+                            {/* <input id={parseInt(i+1)} type='checkbox' value={item.id} onChange={handleChange} checked={data.role.permissions[i].name === item.name ? true : false} className='h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700' />
                                             <label for={parseInt(i+1)} className='ms-2 w-full py-3 text-sm font-medium text-gray-900 dark:text-gray-300'>
                                                 {item.name}
                                             </label> */}
-                                        {/* <input
+                            {/* <input
                                             id={parseInt(i+1)}
                                             type="checkbox"
                                             name='permission[]'
@@ -92,16 +96,18 @@ export default function Edit(data) {
                                             <label for={parseInt(i+1)} className='ms-2 w-full py-3 text-sm font-medium text-gray-900 dark:text-gray-300'>
                                                 {item.name}
                                             </label> */}
-                                        {/* </div>
+                            {/* </div>
                                     </li>
                                 ))}
                             </ul> */}
+
                             <select multiple value={role_guard_name} onChange={handleChangeNormalSelect} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option>Choose Permission</option>
                                 {data.custom_permission.map((item, i) => (
                                     <option value={item.name}>{item.name}</option>
                                 ))}
                             </select>
+
                             {/* <p>
                                 Selected veggies:{" "}
                                 {Object.entries(role_guard_name).filter(([key, value]) => value)}{" "}

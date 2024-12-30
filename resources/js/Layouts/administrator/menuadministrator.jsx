@@ -10,9 +10,15 @@ export default function MenuAdministrator() {
         <li>
             <ul role='list' className='-mx-2 space-y-1'>
                 <li>
-                    <Link href={route('dashboard.admin')} className={classNames(route().current('dashboard.admin') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
+                    <Link href={route('dashboard')} className={classNames(route().current('dashboard') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
                         <Icon icon={'IconChartPie3'} />
                         Dashboard
+                    </Link>
+                </li>
+                <li>
+                    <Link href={route('order.index')} className={classNames(route().current('order*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
+                        <Icon icon={'IconChartPie3'} />
+                        Order
                     </Link>
                 </li>
                 <Separator className='!my-4' />
@@ -20,7 +26,7 @@ export default function MenuAdministrator() {
                     <span className='text-sm'>Categories</span>
                 </li>
                 <li>
-                    <Link href={route('categories.index')} className={classNames(route().current('categories.index*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
+                    <Link href={route('categories.index')} className={classNames(route().current('categories*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
                         <Icon icon={'IconChartPie3'} />
                         Category
                     </Link>
@@ -45,7 +51,7 @@ export default function MenuAdministrator() {
                     <span className='text-sm'>Payment</span>
                 </li>
                 <li>
-                    <Link href={'#'} className={classNames(route().current('billings*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
+                    <Link href={route('billing.index')} className={classNames(route().current('billing.index*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
                         <Icon icon={'IconChartPie3'} />
                         Billing
                     </Link>

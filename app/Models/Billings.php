@@ -18,12 +18,23 @@ class Billings extends Model
         'id',
         'user_id',
         'invoice_id',
-        'amount',
+        'billing_code',
+        'billing_references',
+        'billing_buyer',
+        'billing_link_payment',
+        'tax',
+        'admin_fee',
+        'sub_total',
         'status',
     ];
 
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
+    }
+
+    public function invoice()
+    {
+        return $this->belongsTo(\App\Models\Invoices::class, 'id', 'invoice_id');
     }
 }

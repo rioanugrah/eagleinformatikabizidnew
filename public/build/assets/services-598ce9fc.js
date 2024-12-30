@@ -1,0 +1,1 @@
+import{j as e,a as r}from"./app-32e4e76a.js";import{A as i}from"./app-layout-abba4b46.js";import"./logo_eagle_media_informatika-bdbe21b7.js";function s(){return e.jsx(e.Fragment,{children:e.jsx(r,{title:"Services"})})}s.layout=t=>e.jsx(i,{title:"Services",children:t});export{s as default};

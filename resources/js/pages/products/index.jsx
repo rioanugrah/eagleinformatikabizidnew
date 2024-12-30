@@ -4,16 +4,19 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Input } from '@/components/input';
 
 import { useFilter } from '@/hooks/useFilter';
-import AppLayout from '@/Layouts/administrator/app-layout';
-import { useState } from 'react';
+import AppLayout from '@/Layouts/appLayout';
+import { useState, useEffect, useRef } from 'react';
 import { SortIndicator } from '@/components/sort-indicator';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { Icon } from '@/components/icon';
 import { SimplePagination } from '@/components/simple-pagination';
 
 export default function Index(props) {
     const { data: products, meta, links } = props.products;
     const [params, setParams] = useState(props.state);
+
+    const {auth} = usePage().props;
+
     useFilter({
         route: route('products.index'),
         values: params,
@@ -30,17 +33,83 @@ export default function Index(props) {
         setParams({ ...params, field: newField, direction: newDirection });
     };
 
+    const handlerAddCart = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        alert('ok');
+
+        // router.post(
+        //     route('products.store'),
+        //     {
+        //         categories_id: product_category,
+        //         product_name: product_name,
+        //         product_description: product_description,
+        //         product_price: product_price,
+        //         product_profit_price: product_profit_price,
+        //         product_stock: product_stock,
+        //         product_periode: product_periode,
+        //         status: product_status,
+        //     },
+        //     {
+        //         onFinish: () => {
+        //             setLoading(false);
+        //             // alert('ok');
+        //         },
+        //     },
+        // );
+    };
+
+    // const refContainer = useRef();
+    // const [dimensions, setDimensions] = useState({
+    //     width: 0,
+    //     height: 0,
+    // });
+    // useEffect(() => {
+    //     if (refContainer.current) {
+    //         setDimensions({
+    //             width: refContainer.current.offsetWidth,
+    //             height: refContainer.current.offsetHeight,
+    //         });
+    //     }
+    // }, []);
+
+    // const cartLocalStorage = JSON.parse(localStorage.getItem('cartList') || '[]');
+
+    // const [cartList, setCartList] = useState(cartLocalStorage);
+
+    // useEffect(() => {
+    //     localStorage.setItem('cartList', JSON.stringify(cartList));
+
+    //     console.log(`Saved ${cartList.length} items to localstorage`);
+    // }, [cartList]);
+
+    // const addToCart = (item,index) => {
+    //     setCartList([...cartList, `Product ${index}`]);
+    // };
+
     return (
+        // <div ref={refContainer}>
+        //     {
+        //         dimensions.width > 1024 ?
+
+        //         :
+        //         <div>
+
+        //         </div>
+        //     }
+        // </div>
         <Card>
             <CardHeader>
                 <CardTitle>Products</CardTitle>
             </CardHeader>
             <CardContent>
+                {auth.user.access == true &&
                 <div className='mb-3 flex'>
                     <Link href={route('products.create')} className='mb-2 me-2 rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800'>
                         Create
                     </Link>
                 </div>
+                }
                 <div className='mb-3 flex items-center justify-between'>
                     <div>
                         <Select value={params?.limit} onValueChange={(e) => setParams({ ...params, limit: e })}>
@@ -102,12 +171,23 @@ export default function Index(props) {
                                         <TableCell>{product.product_periode}</TableCell>
                                         <TableCell>{product.status == 'Aktif' ? <span class='me-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300'>{product.status}</span> : <span class='me-2 rounded bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300'>{product.status}</span>}</TableCell>
                                         <TableCell>
-                                            <Link href={route('products.edit',[product.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-5 py-2.5 text-center text-sm font-medium text-gray-900 shadow-lg shadow-lime-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-lime-300 dark:shadow-lg dark:shadow-lime-800/80 dark:focus:ring-lime-800'>
-                                                <Icon icon={'IconLogin2'} /> Edit
+                                            {/* <Link as='button' onClick={()=>handlerAddCart} className='mb-2 me-2 inline-flex rounded-lg bg-gradient-to-r from-green-400 via-green-500 to-green-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-green-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-green-300 dark:shadow-lg dark:shadow-green-800/80 dark:focus:ring-green-800'>
+                                                <Icon icon={'IconShoppingCartPlus'} /> Add Cart
+                                            </Link> */}
+                                            <Link as='button' method='post' href={route('order.store', [product.id])} className='mb-2 me-2 inline-flex rounded-lg bg-gradient-to-r from-green-400 via-green-500 to-green-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-green-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-green-300 dark:shadow-lg dark:shadow-green-800/80 dark:focus:ring-green-800'>
+                                                <Icon icon={'IconShoppingCartPlus'} /> Add Cart
                                             </Link>
-                                            <Link as='button' method='delete' href={route('products.destroy',[product.id])} className='mb-2 mb-2 me-2 me-2 inline-flex rounded-lg bg-gradient-to-r from-red-400 via-red-500 to-red-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-red-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-red-300 dark:shadow-lg dark:shadow-red-800/80 dark:focus:ring-red-800'>
-                                                <Icon icon={'IconTrash'} /> Delete
-                                            </Link>
+                                            {
+                                                auth.user.access == true &&
+                                                <>
+                                                <Link href={route('products.edit', [product.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-5 py-2.5 text-center text-sm font-medium text-gray-900 shadow-lg shadow-lime-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-lime-300 dark:shadow-lg dark:shadow-lime-800/80 dark:focus:ring-lime-800'>
+                                                    <Icon icon={'IconLogin2'} /> Edit
+                                                </Link>
+                                                <Link as='button' method='delete' href={route('products.destroy', [product.id])} className='mb-2 mb-2 me-2 me-2 inline-flex rounded-lg bg-gradient-to-r from-red-400 via-red-500 to-red-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-red-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-red-300 dark:shadow-lg dark:shadow-red-800/80 dark:focus:ring-red-800'>
+                                                    <Icon icon={'IconTrash'} /> Delete
+                                                </Link>
+                                                </>
+                                            }
                                         </TableCell>
                                     </TableRow>
                                 ))}
@@ -129,4 +209,4 @@ export default function Index(props) {
     );
 }
 
-Index.layout = (page) => <AppLayout title={'Categories'} children={page} />;
+Index.layout = (page) => <AppLayout title={'Products'} children={page} />;

@@ -8,7 +8,7 @@ import { Button } from '@/components/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/dialog';
 import Container from '@/components/container';
-import AppLayout from '@/Layouts/administrator/app-layout';
+import AppLayout from '@/Layouts/appLayout';
 
 export default function Index() {
     const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);

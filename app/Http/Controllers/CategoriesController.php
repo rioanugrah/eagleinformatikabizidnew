@@ -16,6 +16,10 @@ class CategoriesController extends Controller
     function __construct(
         Categories $categories
     ){
+        $this->middleware('permission:Category List', ['only' => ['index']]);
+        $this->middleware('permission:Category Create', ['only' => ['create','store']]);
+        $this->middleware('permission:Category Edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:Category Delete', ['only' => ['destroy']]);
         $this->categories = $categories;
     }
 
@@ -41,7 +45,7 @@ class CategoriesController extends Controller
                             )
                             ->paginate($limit)
                             ->withQueryString()
-    );
+        );
 
         return inertia('categories/index',[
             'categories' => fn () => $categories,

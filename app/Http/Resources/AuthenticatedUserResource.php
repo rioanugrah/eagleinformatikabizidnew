@@ -16,7 +16,9 @@ class AuthenticatedUserResource extends JsonResource
             'acronym' => acronym($this->name),
             'email' => $this->email,
             'avatar' => $this->avatar(),
-            'access' => $this->hasRole(['Administrator','Users'])
+            'access' => $this->hasRole(['Administrator']),
+            'permissions' => $this->getAllPermissions()
+            // 'permissions' => $this->hasAnyPermission(['Product List'])
         ];
     }
 }

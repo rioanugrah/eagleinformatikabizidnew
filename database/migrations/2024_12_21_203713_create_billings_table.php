@@ -12,7 +12,13 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->integer('user_id');
             $table->uuid('invoice_id');
-            $table->string('amount');
+            $table->string('billing_code');
+            $table->string('billing_references');
+            $table->text('billing_buyer');
+            $table->text('billing_link_payment');
+            $table->string('tax');
+            $table->string('admin_fee');
+            $table->string('sub_total');
             $table->string('status',100);
             $table->timestamps();
             $table->softDeletes();

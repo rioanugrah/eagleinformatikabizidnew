@@ -3,10 +3,12 @@ import AuthLayout from '@/Layouts/auth-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card';
 import Container from '@/components/container';
 import { Link } from '@inertiajs/react';
+import AppLayout from '@/Layouts/appLayout';
 
 export default function Index({ auth }) {
     const projects = [
-        { name: 'Balance', initials: 'BA', href: '#', members: 'Rp. 10.000', bgColor: 'bg-blue-600' },
+        { name: 'Balance', initials: 'BA', href: '#', members: 'Rp. 0', bgColor: 'bg-blue-600' },
+        { name: 'Total Sales', initials: 'TS', href: '#', members: 'Rp. 0', bgColor: 'bg-green-600' },
         // { name: 'Component Design', initials: 'CD', href: '#', members: 12, bgColor: 'bg-purple-600' },
         // { name: 'Templates', initials: 'T', href: '#', members: 16, bgColor: 'bg-yellow-500' },
         // { name: 'React Components', initials: 'RC', href: '#', members: 8, bgColor: 'bg-green-500' },
@@ -44,7 +46,6 @@ export default function Index({ auth }) {
                             <div className='flex-shrink-0 pr-2'>
                                 <button type='button' className='inline-flex h-8 w-8 items-center justify-center rounded-full bg-transparent bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
                                     <span className='sr-only'>Open options</span>
-                                    {/* <EllipsisVerticalIcon aria-hidden='true' className='h-5 w-5' /> */}
                                 </button>
                             </div>
                         </div>
@@ -54,7 +55,7 @@ export default function Index({ auth }) {
         </>
     );
 }
-Index.layout = (page) => <AppNewLayout title={'Dashboard'} children={page} />;
+Index.layout = (page) => <AppLayout title={'Dashboard'} children={page} />;
 // Index.layout = (page) => <AuthLayout title={'Dashboard'} children={page} />;
 {
     /* <div className='px-2 pb-12 pt-28'>

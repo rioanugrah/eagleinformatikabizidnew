@@ -7,7 +7,7 @@ import { Label } from '@/components/label';
 import { Input } from '@/components/input';
 import { Button } from '@/components/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card';
-import AppLayout from '@/Layouts/administrator/app-layout';
+import AppLayout from '@/Layouts/appLayout';
 
 export default function Index({ mustVerifyEmail, status }) {
     const user = usePage().props.auth.user;

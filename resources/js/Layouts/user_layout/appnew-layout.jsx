@@ -3,9 +3,11 @@ import { Head, Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { Separator } from '@/components/separator';
 
-import { Dialog, Menu, Transition } from '@headlessui/react';
-import logo from '../../../../public/logo/logo_eagle_media_informatika.png';
+import { Dialog, DialogBackdrop, DialogPanel, Menu, MenuButton, MenuItem, MenuItems, TransitionChild } from '@headlessui/react';
+import { Bars3Icon, BellIcon, CalendarIcon, ChartPieIcon, Cog6ToothIcon, DocumentDuplicateIcon, FolderIcon, HomeIcon, UsersIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
+import logo from '../../../../public/logo/logo_eagle_media_informatika.png';
+import MenuUser from './menuUser';
 
 export default function AppNewLayout({ title, children }) {
     const [open, setOpen] = useState(false);
@@ -27,56 +29,31 @@ export default function AppNewLayout({ title, children }) {
         <>
             <Head title={title} />
             <Dialog open={open} onClose={setOpen} className='relative z-50 lg:hidden'>
-                <Dialog.Backdrop transition className='fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear data-[closed]:opacity-0' />
+                <DialogBackdrop transition className='fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear data-[closed]:opacity-0' />
                 <div className='fixed inset-0 flex'>
-                    <Dialog.Panel transition className='relative mr-16 flex w-full max-w-xs flex-1 transform transition duration-300 ease-in-out data-[closed]:-translate-x-full'>
-                        <Transition show={open}>
+                    <DialogPanel transition className='relative mr-16 flex w-full max-w-xs flex-1 transform transition duration-300 ease-in-out data-[closed]:-translate-x-full'>
+                        <TransitionChild>
                             <div className='absolute left-full top-0 flex w-16 justify-center pt-5 duration-300 ease-in-out data-[closed]:opacity-0'>
                                 <button type='button' onClick={() => setOpen(false)} className='-m-2.5 p-2.5'>
                                     <span className='sr-only'>Close sidebar</span>
-                                    <Icon icon={'IconX'} />
+                                    <XMarkIcon aria-hidden='true' className='h-6 w-6 text-white' />
                                 </button>
                             </div>
-                        </Transition>
+                        </TransitionChild>
                         <div className='flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4'>
                             <div className='flex h-16 shrink-0 items-center'>
-                                <img alt='Eagle Media Informatika' src={logo} className='h-8 w-auto' />
+                                <img alt='Eagle Media Informatika' src={logo} className='h-12 w-auto' />
                             </div>
                             <nav className='flex flex-1 flex-col'>
                                 <ul role='list' className='flex flex-1 flex-col gap-y-7'>
-                                    <li>
-                                        <ul role='list' className='-mx-2 space-y-1'>
-                                            <li>
-                                                <Link href='#' className={classNames(route().current('dashboard') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
-                                                    <Icon icon={'IconChartPie3'} />
-                                                    Dashboard
-                                                </Link>
-                                            </li>
-                                            <Separator className='!my-4' />
-                                            <li>
-                                                <Link href={route('profile.index')} className={classNames(route().current('profile*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
-                                                    <Icon icon={'IconSettings'} />
-                                                    Profile
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href={route('security.index')} className={classNames(route().current('security*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
-                                                    <Icon icon={'IconShieldLock'} />
-                                                    Security
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href={route('danger.index')} className={classNames(route().current('danger*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
-                                                    <Icon icon={'IconShieldLock'} />
-                                                    Danger zone
-                                                </Link>
-                                            </li>
-                                        </ul>
+                                    <MenuUser />
+                                    <li className='mt-auto'>
+                                        <Link className='group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600'>Settings</Link>
                                     </li>
                                 </ul>
                             </nav>
                         </div>
-                    </Dialog.Panel>
+                    </DialogPanel>
                 </div>
             </Dialog>
             <div className='hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col'>
@@ -151,10 +128,9 @@ export default function AppNewLayout({ title, children }) {
                                     </Menu.Button>
                                     <Menu.Items transition className='absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in'>
                                         <Menu.Item>
-                                            <Link
-                                                as='button' method='post' href={route('logout')}
-                                                className="block px-3 py-1 text-sm leading-6 text-gray-900 data-[focus]:bg-gray-50"
-                                            >Logout</Link>
+                                            <Link as='button' method='post' href={route('logout')} className='block px-3 py-1 text-sm leading-6 text-gray-900 data-[focus]:bg-gray-50'>
+                                                Logout
+                                            </Link>
                                         </Menu.Item>
                                     </Menu.Items>
                                 </Menu>
