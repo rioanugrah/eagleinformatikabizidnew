@@ -198,7 +198,7 @@ class TripayController extends Controller
             // $transaction = $this->transactions->where('transaction_code',$data->merchant_ref)
             //                                 // ->where('status','Unpaid')
             //                                 ->first();
-            $billings = $this->billings->where('billing_references',$data->merchant_ref)
+            $billings = $this->billings->where('billing_code',$data->merchant_ref)
                                         ->first();
             if (!$billings) {
                 return Response::json([
