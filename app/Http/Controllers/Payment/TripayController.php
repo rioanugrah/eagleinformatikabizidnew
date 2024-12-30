@@ -212,9 +212,9 @@ class TripayController extends Controller
                         // 'transaction_reference' => $data->reference,
                         'status' => 'PAID'
                     ]);
-                    $billings->invoice->update([
-                        'status' => 'PAID'
-                    ]);
+                    // $billings->invoice->update([
+                    //     'status' => 'PAID'
+                    // ]);
                     // $notifMail = $this->sendMail;
                     // $notifMail->sendMail(
                     //     $transaction->status,$transaction->transaction_code,$transaction->transaction_price,
@@ -229,9 +229,9 @@ class TripayController extends Controller
                         // 'transaction_reference' => $data->reference,
                         'status' => 'EXPIRED'
                     ]);
-                    $billings->invoice->update([
-                        'status' => 'EXPIRED'
-                    ]);
+                    // $billings->invoice->update([
+                    //     'status' => 'EXPIRED'
+                    // ]);
                     break;
 
                 case 'FAILED':
@@ -239,9 +239,9 @@ class TripayController extends Controller
                         // 'transaction_reference' => $data->reference,
                         'status' => 'FAILED'
                     ]);
-                    $billings->invoice->update([
-                        'status' => 'FAILED'
-                    ]);
+                    // $billings->invoice->update([
+                    //     'status' => 'FAILED'
+                    // ]);
                     break;
 
                 default:
