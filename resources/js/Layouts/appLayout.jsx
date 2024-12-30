@@ -1,19 +1,33 @@
 import { Icon } from '@/components/icon';
 import { Head, Link, usePage } from '@inertiajs/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Separator } from '@/components/separator';
 
-import { Dialog, DialogBackdrop, DialogPanel, Menu, MenuButton, MenuItem, MenuItems, TransitionChild } from '@headlessui/react';
+import { Dialog, DialogBackdrop, DialogPanel, Menu, MenuButton, MenuItem, MenuItems, Transition, TransitionChild } from '@headlessui/react';
 import { Bars3Icon, BellIcon, CalendarIcon, ChartPieIcon, Cog6ToothIcon, DocumentDuplicateIcon, FolderIcon, HomeIcon, UsersIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import MenuAdministrator from './administrator/menuadministrator';
 import MenuUser from './user_layout/menuUser';
 
+import { ToastContainer, toast } from 'react-toastify';
+
 import logo from '../../../public/logo/logo_eagle_media_informatika.png';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 export default function AppLayout({ title, children }) {
     const [open, setOpen] = useState(false);
-    const { auth } = usePage().props;
+    const [show, setShow] = useState(true);
+
+    const { auth, flash } = usePage().props;
+
+    useEffect(() => {
+        if (flash.message.success) {
+            toast.success(flash.message.success);
+        }
+        if (flash.message.error) {
+            toast.error(flash.message.error);
+        }
+    },[flash])
 
     return (
         <>
@@ -46,6 +60,7 @@ export default function AppLayout({ title, children }) {
                     </DialogPanel>
                 </div>
             </Dialog>
+
             <div className='hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col'>
                 <div className='flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4'>
                     <div className='flex h-16 shrink-0 items-center'>
@@ -100,8 +115,27 @@ export default function AppLayout({ title, children }) {
                         </div>
                     </div>
                 </div>
+
                 <main className='py-10'>
-                    <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>{children}</div>
+                    <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+                        {/* {flash.message && (
+                            <div id='alert-3' className='mb-4 flex items-center rounded-lg bg-green-50 p-4 text-green-800 dark:bg-gray-800 dark:text-green-400' role='alert'>
+                                <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
+                                    <path fill='currentColor' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z' />
+                                </svg>
+                                <span className='sr-only'>Success!</span>
+                                <div className='ms-3 text-sm font-medium'>{flash.message}</div>
+                                <button type='button' className='-mx-1.5 -my-1.5 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-green-50 p-1.5 text-green-500 hover:bg-green-200 focus:ring-2 focus:ring-green-400 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700' data-dismiss-target='#alert-3' aria-label='Close'>
+                                    <span className='sr-only'>Close</span>
+                                    <svg className='h-3 w-3' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 14 14'>
+                                        <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6' />
+                                    </svg>
+                                </button>
+                            </div>
+                        )} */}
+                        <ToastContainer />
+                        {children}
+                    </div>
                 </main>
             </div>
         </>

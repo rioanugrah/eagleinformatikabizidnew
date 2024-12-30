@@ -8,6 +8,8 @@ import { Label } from '@/components/label';
 import GuestLayout from '@/Layouts/guest-layout';
 import PrimaryLink from '@/components/primary-link';
 
+import logo from '../../../../public/logo/logo_eagle_media_informatika.png';
+
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
@@ -39,7 +41,7 @@ export default function Login({ status, canResetPassword }) {
             {status && <div className='mb-4 text-sm font-medium text-green-600'>{status}</div>}
             <div className='flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8'>
                 <div className='sm:mx-auto sm:w-full sm:max-w-md'>
-                    <img alt='Eagle Media Informatika' src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600' className='mx-auto h-10 w-auto' />
+                    <img alt='Eagle Media Informatika' src={logo} className='mx-auto h-20 w-auto' />
                     <h2 className='mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>Login Account</h2>
                 </div>
 

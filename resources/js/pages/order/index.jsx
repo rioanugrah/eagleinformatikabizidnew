@@ -31,6 +31,13 @@ export default function Index(props) {
         setParams({ ...params, field: newField, direction: newDirection });
     };
 
+    const format_currency = (number) => {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+        }).format(number);
+    };
+
     return (
         <Card>
             <CardHeader>
@@ -63,6 +70,9 @@ export default function Index(props) {
                             <TableHead onClick={() => handleSort('no_invoice')}>
                                 <SortIndicator label='No. Invoice' column='no_invoice' field={params?.field} direction={params?.direction} />
                             </TableHead>
+                            <TableHead onClick={() => handleSort('sub_amount')}>
+                                <SortIndicator label='Total' column='sub_amount' field={params?.field} direction={params?.direction} />
+                            </TableHead>
                             <TableHead onClick={() => handleSort('created_at')}>
                                 <SortIndicator label='Created At' column='created_at' field={params?.field} direction={params?.direction} />
                             </TableHead>
@@ -73,50 +83,47 @@ export default function Index(props) {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                    {invoices.length > 0 ? (
+                        {invoices.length > 0 ? (
                             <>
                                 {invoices.map((invoice, i) => (
                                     <TableRow key={i}>
                                         <TableCell className='w-0 py-7 text-center'>{meta.from + i}</TableCell>
                                         <TableCell>ORD/{invoice.no_invoice}</TableCell>
+                                        <TableCell>{format_currency(invoice.sub_amount)}</TableCell>
                                         <TableCell>{invoice.created_at}</TableCell>
                                         <TableCell>
-                                            {
-                                                invoice.status == 'PAID'
-                                                ?
+                                            {invoice.status == 'PAID' ? (
                                                 <span class='me-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300'>{invoice.status}</span>
-                                                : invoice.status == 'OPEN' ?
-                                                <span class='bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300'>{invoice.status}</span>
-                                                : invoice.status == 'UNPAID' ?
-                                                <span class='bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300'>{invoice.status}</span>
-                                                :
+                                            ) : invoice.status == 'OPEN' ? (
+                                                <span class='me-2 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300'>{invoice.status}</span>
+                                            ) : invoice.status == 'UNPAID' ? (
+                                                <span class='me-2 rounded bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300'>{invoice.status}</span>
+                                            ) : (
                                                 <span class='me-2 rounded bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300'>{invoice.status}</span>
-                                            }
+                                            )}
                                         </TableCell>
                                         <TableCell>
                                             {/* <Link as='button' onClick={addToCart} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-5 py-2.5 text-center text-sm font-medium text-gray-900 shadow-lg shadow-lime-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-lime-300 dark:shadow-lg dark:shadow-lime-800/80 dark:focus:ring-lime-800'>
                                                 <Icon icon={'IconLogin2'} /> Add Cart
                                             </Link> */}
-                                            {
-                                                invoice.status == 'OPEN' ?
-                                                <Link href={route('order.checkout',[invoice.id])} className='inline-flex items-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>
+                                            {invoice.status == 'OPEN' ? (
+                                                <Link href={route('order.checkout', [invoice.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800'>
                                                     <Icon icon={'IconShoppingCartUp'} /> Detail Cart
                                                 </Link>
-                                                :
-                                                invoice.status == 'UNPAID' ?
+                                            ) : invoice.status == 'UNPAID' ? (
                                                 <>
-                                                <Link href={route('invoices.detail',[invoice.id])} className='inline-flex items-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>
-                                                    <Icon icon={'IconFileInvoice'} /> Invoices
-                                                </Link>
-                                                {/* <Link href={route('order.checkout',[invoice.id])} className='inline-flex items-center text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>
+                                                    <Link href={route('invoices.detail', [invoice.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800'>
+                                                        <Icon icon={'IconFileInvoice'} /> Invoices
+                                                    </Link>
+                                                    {/* <Link href={route('order.checkout',[invoice.id])} className='inline-flex items-center text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>
                                                     <Icon icon={'IconCash'} /> Billing
                                                 </Link> */}
                                                 </>
-                                                :
-                                                <Link href={route('invoices.detail',[invoice.id])} className='inline-flex items-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>
+                                            ) : (
+                                                <Link href={route('invoices.detail', [invoice.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800'>
                                                     <Icon icon={'IconShoppingCartUp'} /> Detail Cart
                                                 </Link>
-                                            }
+                                            )}
                                             {/* <Link href={route('products.edit',[product.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-5 py-2.5 text-center text-sm font-medium text-gray-900 shadow-lg shadow-lime-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-lime-300 dark:shadow-lg dark:shadow-lime-800/80 dark:focus:ring-lime-800'>
                                                 <Icon icon={'IconLogin2'} /> Edit
                                             </Link>

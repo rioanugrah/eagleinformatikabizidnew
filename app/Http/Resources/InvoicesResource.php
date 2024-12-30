@@ -13,6 +13,7 @@ class InvoicesResource extends JsonResource
         return [
             'id' => $this->id,
             'no_invoice' => $this->no_invoice,
+            'sub_amount' => $this->sub_amount,
             'status' => $this->status,
             'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),

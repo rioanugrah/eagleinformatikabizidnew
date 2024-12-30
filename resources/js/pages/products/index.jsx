@@ -15,7 +15,7 @@ export default function Index(props) {
     const { data: products, meta, links } = props.products;
     const [params, setParams] = useState(props.state);
 
-    const {auth} = usePage().props;
+    const { auth } = usePage().props;
 
     useFilter({
         route: route('products.index'),
@@ -58,6 +58,8 @@ export default function Index(props) {
         //     },
         // );
     };
+
+    // console.log(props.flash.message.success);
 
     // const refContainer = useRef();
     // const [dimensions, setDimensions] = useState({
@@ -103,13 +105,14 @@ export default function Index(props) {
                 <CardTitle>Products</CardTitle>
             </CardHeader>
             <CardContent>
-                {auth.user.access == true &&
-                <div className='mb-3 flex'>
-                    <Link href={route('products.create')} className='mb-2 me-2 rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800'>
-                        Create
-                    </Link>
-                </div>
-                }
+                {auth.user.access == true && (
+                    <div className='mb-3 flex'>
+                        <Link href={route('products.create')} className='mb-2 me-2 rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800'>
+                            Create
+                        </Link>
+                    </div>
+                )}
+
                 <div className='mb-3 flex items-center justify-between'>
                     <div>
                         <Select value={params?.limit} onValueChange={(e) => setParams({ ...params, limit: e })}>
@@ -177,17 +180,16 @@ export default function Index(props) {
                                             <Link as='button' method='post' href={route('order.store', [product.id])} className='mb-2 me-2 inline-flex rounded-lg bg-gradient-to-r from-green-400 via-green-500 to-green-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-green-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-green-300 dark:shadow-lg dark:shadow-green-800/80 dark:focus:ring-green-800'>
                                                 <Icon icon={'IconShoppingCartPlus'} /> Add Cart
                                             </Link>
-                                            {
-                                                auth.user.access == true &&
+                                            {auth.user.access == true && (
                                                 <>
-                                                <Link href={route('products.edit', [product.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-5 py-2.5 text-center text-sm font-medium text-gray-900 shadow-lg shadow-lime-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-lime-300 dark:shadow-lg dark:shadow-lime-800/80 dark:focus:ring-lime-800'>
-                                                    <Icon icon={'IconLogin2'} /> Edit
-                                                </Link>
-                                                <Link as='button' method='delete' href={route('products.destroy', [product.id])} className='mb-2 mb-2 me-2 me-2 inline-flex rounded-lg bg-gradient-to-r from-red-400 via-red-500 to-red-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-red-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-red-300 dark:shadow-lg dark:shadow-red-800/80 dark:focus:ring-red-800'>
-                                                    <Icon icon={'IconTrash'} /> Delete
-                                                </Link>
+                                                    <Link href={route('products.edit', [product.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-5 py-2.5 text-center text-sm font-medium text-gray-900 shadow-lg shadow-lime-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-lime-300 dark:shadow-lg dark:shadow-lime-800/80 dark:focus:ring-lime-800'>
+                                                        <Icon icon={'IconLogin2'} /> Edit
+                                                    </Link>
+                                                    <Link as='button' method='delete' href={route('products.destroy', [product.id])} className='mb-2 mb-2 me-2 me-2 inline-flex rounded-lg bg-gradient-to-r from-red-400 via-red-500 to-red-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-red-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-red-300 dark:shadow-lg dark:shadow-red-800/80 dark:focus:ring-red-800'>
+                                                        <Icon icon={'IconTrash'} /> Delete
+                                                    </Link>
                                                 </>
-                                            }
+                                            )}
                                         </TableCell>
                                     </TableRow>
                                 ))}

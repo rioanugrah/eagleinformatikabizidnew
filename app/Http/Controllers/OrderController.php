@@ -112,7 +112,7 @@ class OrderController extends Controller
 
             DB::commit();
 
-            // return back()->with('success','Item is Add');
+            return back()->with(['success' => 'Item is Add, Please check a cart!']);
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()
@@ -125,7 +125,7 @@ class OrderController extends Controller
         $data['invoice'] = $this->invoices->with('invoice_details')->where('status','OPEN')->find($id);
 
         if (empty($data['invoice'])) {
-            return back()->with('errors','Data Tidak Ditemukan');
+            return back()->with(['error' => 'Data Tidak Ditemukan']);
         }
 
         $tripay = $this->tripay;
@@ -141,7 +141,7 @@ class OrderController extends Controller
         $invoices_detail = $this->invoices_detail->where('id',$invoice_id)->where('invoice_id',$id)->first();
         // dd($invoices_detail);
         if (empty($invoices_detail)) {
-            return back()->with('errors','Data Tidak Ditemukan');
+            return back()->with(['error' => 'Data Tidak Ditemukan']);
         }
 
         $product = $this->product->find(explode('|',$invoices_detail->item)[0]);
@@ -149,7 +149,8 @@ class OrderController extends Controller
         $product->update();
 
         $invoices_detail->delete();
-        return redirect()->route('order.checkout',[$id]);
+        // return back()->with(['success' => 'Item Berhasil Dihapus']);
+        return redirect()->route('order.checkout',[$id])->with(['success' => 'Item Berhasil Dihapus']);
         // dd($invoices_detail);
     }
 
@@ -214,7 +215,7 @@ class OrderController extends Controller
             $request->email,
             $request->phone,
             $input['billing_code'],
-            null
+            route('invoices.detail',['id' => $input['invoice_id']])
             //route invoices
         );
 

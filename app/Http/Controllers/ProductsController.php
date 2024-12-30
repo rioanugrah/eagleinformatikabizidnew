@@ -87,7 +87,7 @@ class ProductsController extends Controller
 
         $this->products->create($input);
 
-        return redirect()->route('products.index')->with('success', 'Products Berhasil Dibuat');
+        return redirect()->route('products.index')->with(['success' => 'Products Berhasil Dibuat']);
     }
 
     public function edit($id)
@@ -122,16 +122,16 @@ class ProductsController extends Controller
 
         $this->products->find($id)->update($input);
 
-        return redirect()->route('products.index')->with('success', 'Products Berhasil Diupdate');
+        return redirect()->route('products.index')->with(['success' => 'Products Berhasil Diupdate']);
     }
 
     public function destroy($id)
     {
         $product = $this->products->find($id);
         if (empty($product)) {
-            return back()->with('error','Data Tidak Ditemukan');
+            return back()->with(['error' => 'Data Tidak Ditemukan']);
         }
         $product->delete();
-        return back()->with('success','Data Berhasil Dihapus');
+        return back()->with(['error' => 'Data Berhasil Dihapus']);
     }
 }
