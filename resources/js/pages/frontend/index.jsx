@@ -14,7 +14,7 @@ export default function Index() {
         {
             name: 'Startup',
             id: 'tier-startup',
-            href: '#',
+            href: route('login'),
             featured: false,
             description: '-',
             price: { monthly: '700.000', lifetime: '5.500.000' },
@@ -27,7 +27,7 @@ export default function Index() {
         {
             name: 'Profesional',
             id: 'tier-profesional',
-            href: '#',
+            href: route('login'),
             featured: true,
             description: '-',
             price: { monthly: '1.200.000', lifetime: '14.000.000' },
@@ -36,7 +36,7 @@ export default function Index() {
         {
             name: 'Eksklusif',
             id: 'tier-eksklusif',
-            href: '#',
+            href: route('login'),
             featured: false,
             description: '-',
             price: { monthly: '1.850.000', lifetime: '22.000.000' },

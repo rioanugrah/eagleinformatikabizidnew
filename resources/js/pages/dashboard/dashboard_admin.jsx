@@ -7,7 +7,8 @@ import { Link } from '@inertiajs/react';
 
 export default function DashboardAdmin({ auth }) {
     const projects = [
-        { name: 'Balance', initials: 'BA', href: '#', members: 'Rp. 10.000', bgColor: 'bg-blue-600' },
+        { name: 'Balance', initials: 'BA', href: '#', members: 'Rp. 0', bgColor: 'bg-blue-600' },
+        { name: 'Total Sales', initials: 'TS', href: '#', members: 'Rp. 0', bgColor: 'bg-green-600' },
         // { name: 'Component Design', initials: 'CD', href: '#', members: 12, bgColor: 'bg-purple-600' },
         // { name: 'Templates', initials: 'T', href: '#', members: 16, bgColor: 'bg-yellow-500' },
         // { name: 'React Components', initials: 'RC', href: '#', members: 8, bgColor: 'bg-green-500' },

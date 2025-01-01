@@ -142,6 +142,9 @@ export default function Index(props) {
                             <TableHead onClick={() => handleSort('product_name')}>
                                 <SortIndicator label='Product Name' column='product_name' field={params?.field} direction={params?.direction} />
                             </TableHead>
+                            <TableHead onClick={() => handleSort('product_category')}>
+                                <SortIndicator label='Product Name' column='product_name' field={params?.field} direction={params?.direction} />
+                            </TableHead>
                             <TableHead onClick={() => handleSort('product_price')}>
                                 <SortIndicator label='Product Price' column='product_price' field={params?.field} direction={params?.direction} />
                             </TableHead>
@@ -168,6 +171,7 @@ export default function Index(props) {
                                         <TableCell className='w-0 py-7 text-center'>{meta.from + i}</TableCell>
                                         <TableCell>{product.product_code}</TableCell>
                                         <TableCell>{product.product_name}</TableCell>
+                                        <TableCell>{product.category_id}</TableCell>
                                         <TableCell>{product.product_price}</TableCell>
                                         <TableCell>{product.product_profit_price}</TableCell>
                                         <TableCell>{product.product_stock}</TableCell>

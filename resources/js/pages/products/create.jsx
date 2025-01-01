@@ -81,7 +81,7 @@ export default function Create(props) {
                                     <option value="2">2 Tahun</option>
                                     <option value="3">3 Tahun</option>
                                 </select>
-                                {errors.categories_id && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.categories_id}</p>}
+                                {errors.product_periode && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.product_periode}</p>}
                             </div>
                         </div>
                         <div className="grid gap-6 mb-6 md:grid-cols-3">
@@ -112,7 +112,7 @@ export default function Create(props) {
                         </div>
                     </CardContent>
                     <CardFooter>
-                        <Link href={route('categories.index')} className='mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700'>
+                        <Link href={route('products.index')} className='mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700'>
                             Back
                         </Link>
                         {loading ? (

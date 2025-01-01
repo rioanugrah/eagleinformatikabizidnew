@@ -122,7 +122,7 @@ class ProductsController extends Controller
 
         $this->products->find($id)->update($input);
 
-        return redirect()->route('products.index')->with(['success' => 'Products Berhasil Diupdate']);
+        return redirect()->route('products.index')->with(['success' => 'Products '.$input['product_name'].' Berhasil Diupdate']);
     }
 
     public function destroy($id)
@@ -132,6 +132,6 @@ class ProductsController extends Controller
             return back()->with(['error' => 'Data Tidak Ditemukan']);
         }
         $product->delete();
-        return back()->with(['error' => 'Data Berhasil Dihapus']);
+        return back()->with(['error' => $product->product_name.' Berhasil Dihapus']);
     }
 }
