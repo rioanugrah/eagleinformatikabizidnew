@@ -1,7 +1,7 @@
 import { Button } from '@/components/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/card';
 import { Icon } from '@/components/icon';
-import AppLayout from '@/Layouts/administrator/app-layout';
+import AppLayout from '@/Layouts/appLayout';
 import { Link, router, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 

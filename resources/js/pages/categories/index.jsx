@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Input } from '@/components/input';
 
 import { useFilter } from '@/hooks/useFilter';
-import AppLayout from '@/Layouts/administrator/app-layout';
+import AppLayout from '@/Layouts/appLayout';
 import { useState } from 'react';
 import { SortIndicator } from '@/components/sort-indicator';
 import { Link } from '@inertiajs/react';

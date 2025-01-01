@@ -1,4 +1,4 @@
-import AppLayout from '@/Layouts/administrator/app-layout';
+import AppLayout from '@/Layouts/appLayout';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/card';
 
 import { Link, router, usePage } from '@inertiajs/react';

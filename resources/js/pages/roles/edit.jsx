@@ -2,7 +2,7 @@ import { Button } from '@/components/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/card';
 import { Dialog, DialogBackdrop, DialogPanel, Popover, Checkbox, PopoverButton, PopoverGroup, PopoverPanel, Radio, RadioGroup, Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import { Icon } from '@/components/icon';
-import AppLayout from '@/Layouts/administrator/app-layout';
+import AppLayout from '@/Layouts/appLayout';
 import { Link, router, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { CheckIcon } from '@heroicons/react/20/solid';

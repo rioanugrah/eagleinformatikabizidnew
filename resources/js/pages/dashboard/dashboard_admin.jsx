@@ -1,4 +1,4 @@
-import AppLayout from '@/Layouts/administrator/app-layout';
+import AppLayout from '@/Layouts/appLayout';
 import AppNewLayout from '@/Layouts/user_layout/appnew-layout';
 import AuthLayout from '@/Layouts/auth-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card';

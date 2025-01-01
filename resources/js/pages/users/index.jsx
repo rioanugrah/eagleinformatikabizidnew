@@ -11,7 +11,7 @@ import { useFilter } from '@/hooks/useFilter';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/select';
 import { Input } from '@/components/input';
 import { SortIndicator } from '@/components/sort-indicator';
-import AppLayout from '@/Layouts/administrator/app-layout';
+import AppLayout from '@/Layouts/appLayout';
 
 export default function Index(props) {
     const { data: users, meta, links } = props.users;

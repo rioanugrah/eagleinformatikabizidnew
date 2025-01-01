@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useFilter } from "@/hooks/useFilter";
 import { Head, Link } from "@inertiajs/react";
 import { SortIndicator } from "@/components/sort-indicator";
-import AppLayout from "@/Layouts/administrator/app-layout";
+import AppLayout from '@/Layouts/appLayout';
 
 export default function Index(props)
 {

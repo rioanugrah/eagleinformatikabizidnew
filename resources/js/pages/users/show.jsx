@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import Container from '@/components/container';
 import { AvatarImage } from '@radix-ui/react-avatar';
 import { UserListOptions } from './partials/user-list-options';
-import AppLayout from '@/Layouts/administrator/app-layout';
+import AppLayout from '@/Layouts/appLayout';
 
 export default function Show({ user }) {
     return (

@@ -8,7 +8,7 @@ import { Head, Link } from '@inertiajs/react';
 import React, { useState } from 'react';
 import { SortIndicator } from '@/components/sort-indicator';
 import { SimplePagination } from '@/components/simple-pagination';
-import AppLayout from '@/Layouts/administrator/app-layout';
+import AppLayout from '@/Layouts/appLayout';;
 
 export default function Index(props) {
     const { data: permissions, meta, links } = props.permissions;
