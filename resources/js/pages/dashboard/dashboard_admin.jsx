@@ -5,18 +5,32 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import Container from '@/components/container';
 import { Link } from '@inertiajs/react';
 
-export default function DashboardAdmin({ auth }) {
+import { BarChart } from '@mui/x-charts/BarChart';
+import { useState } from 'react';
+
+export default function DashboardAdmin(props,{ auth }) {
+    const format_currency = (number) => {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+        }).format(number);
+    };
+
     const projects = [
-        { name: 'Balance', initials: 'BA', href: '#', members: 'Rp. 0', bgColor: 'bg-blue-600' },
-        { name: 'Total Sales', initials: 'TS', href: '#', members: 'Rp. 0', bgColor: 'bg-green-600' },
+        { name: 'Balance', initials: 'BA', href: '#', members: format_currency(0), bgColor: 'bg-blue-600' },
+        { name: 'Total Sales', initials: 'TS', href: '#', members: format_currency(props.total_sales), bgColor: 'bg-green-600' },
         // { name: 'Component Design', initials: 'CD', href: '#', members: 12, bgColor: 'bg-purple-600' },
         // { name: 'Templates', initials: 'T', href: '#', members: 16, bgColor: 'bg-yellow-500' },
         // { name: 'React Components', initials: 'RC', href: '#', members: 8, bgColor: 'bg-green-500' },
     ];
 
+    const [total_penjualan, setTotalPenjualan] = useState(props.total_penjualan);
+
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ');
     }
+
+    // console.log(total_penjualan);
 
     return (
         // <Container>
@@ -53,6 +67,28 @@ export default function DashboardAdmin({ auth }) {
                     </li>
                 ))}
             </ul>
+            <Card className='mt-8'>
+                <CardHeader className='font-bold'>
+                    Total Penjualan
+                </CardHeader>
+                <CardContent>
+                    <BarChart
+                        series={
+                            [
+                                { data: total_penjualan.map((item, i) => item.data) }
+                            ]
+                        }
+                        height={350}
+                        xAxis={[
+                            {
+                                data: total_penjualan.map((item, i) => item.date),
+                                scaleType: 'band',
+                            },
+                        ]}
+                        margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+                    />
+                </CardContent>
+            </Card>
         </>
     );
 }

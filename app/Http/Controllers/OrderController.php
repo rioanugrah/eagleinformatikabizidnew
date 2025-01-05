@@ -36,6 +36,8 @@ class OrderController extends Controller
         $this->invoices = $invoices;
         $this->invoices_detail = $invoices_detail;
         $this->billings = $billings;
+
+        $this->max_amount = 10000000;
     }
 
     public function index(Request $request)
@@ -205,6 +207,13 @@ class OrderController extends Controller
         $input['tax'] = $request->tax;
         $input['admin_fee'] = $request->admin_fee;
         $input['sub_total'] = $request->sub_total;
+
+        // $product = $this->product->
+        // dd(implode());
+
+        if ($input['sub_total'] >= $this->max_amount) {
+            return back()->with(['error' => 'Checkout Max Rp. '.number_format($this->nax_amount,0,',','.')]);
+        }
         // dd($items);
         $paymentDetail = $this->tripay->requestTransaction(
             $items,

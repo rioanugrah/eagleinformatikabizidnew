@@ -12,6 +12,7 @@ return new class extends Migration
             $table->uuid()->primary();
             $table->integer('user_id');
             $table->uuid('product_id');
+            $table->dateTime('expired');
             $table->string('status',100);
             $table->timestamps();
             $table->softDeletes();
