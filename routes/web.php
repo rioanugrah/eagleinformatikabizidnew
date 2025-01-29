@@ -133,4 +133,11 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
     });
 });
 
+Route::domain('payment.'.parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
+    Route::get('/', function(){
+        return 'OKE';
+    });
+    // Route::post('midtrans/webhook', [App\Http\Controllers\Payment\PaymentMidtransController::class, 'payment_callback'])->name('midtrans.callback');
+});
+
 require __DIR__ . '/auth.php';
