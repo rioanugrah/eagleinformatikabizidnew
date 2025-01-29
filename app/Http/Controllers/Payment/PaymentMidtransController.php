@@ -329,9 +329,9 @@ class PaymentMidtransController extends Controller
             $serverKey
         );
 
-        if($hashed != $request->signature_key){
-            return response()->json(['message' => 'Invalid signature key'], 403);
-        }
+        // if($hashed != $request->signature_key){
+        //     return response()->json(['message' => 'Invalid signature key'], 403);
+        // }
 
         // return response()->json(['message' => 'Webhook processed successfully']);
 
@@ -340,37 +340,20 @@ class PaymentMidtransController extends Controller
             $billing->update([
                 'status' => 'PAID'
             ]);
-            $billing->invoice->update([
-                'status' => 'PAID'
-            ]);
+            // $billing->invoice->update([
+            //     'status' => 'PAID'
+            // ]);
         }else{
             $billing = $this->billings->where('billing_code',$request->order_id)->first();
             $billing->update([
                 'status' => 'NOTPAID'
             ]);
-            $billing->invoice->update([
-                'status' => 'NOTPAID'
-            ]);
+            // $billing->invoice->update([
+            //     'status' => 'NOTPAID'
+            // ]);
         }
 
-        return response()->json(['success' => 'Callback received successfully']);
+        // return response()->json(['success' => 'Callback received successfully']);
 
-        // if ($hashed == $request->signature_key) {
-        //     $transactions = Transactions::where('transaction_code',$request->order_id)->first();
-        //     $transactions->update([
-        //         'status' => 'Paid'
-        //     ]);
-        //     VerifikasiTiket::where('transaction_id',$transactions->id)->update([
-        //         'status' => 'Paid'
-        //     ]);
-        // }else{
-        //     $transactions = Transactions::where('transaction_code',$request->order_id)->first();
-        //     $transactions->update([
-        //         'status' => 'Not Paid'
-        //     ]);
-        //     VerifikasiTiket::where('transaction_id',$transactions->id)->update([
-        //         'status' => 'Not Paid'
-        //     ]);
-        // }
     }
 }
