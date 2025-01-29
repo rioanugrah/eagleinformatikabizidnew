@@ -6,9 +6,13 @@ import Container from '@/components/container';
 import { Link } from '@inertiajs/react';
 
 import { BarChart } from '@mui/x-charts/BarChart';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Button } from '@/components/button';
+import axios from 'axios';
 
-export default function DashboardAdmin(props,{ auth }) {
+export default function DashboardAdmin(props, { auth }) {
+    const [loading, setLoading] = useState(false);
+
     const format_currency = (number) => {
         return new Intl.NumberFormat('id-ID', {
             style: 'currency',
@@ -29,6 +33,98 @@ export default function DashboardAdmin(props,{ auth }) {
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ');
     }
+
+    useEffect(() => {
+        if (import.meta.env.VITE_MIDTRANS_IS_PRODUCTION == true) {
+        } else {
+            const snapSrcUrl = import.meta.env.VITE_MIDTRANS_URL_SANDBOX;
+
+            const myMidtransClientKey = import.meta.env.VITE_MIDTRANS_CLIENT_KEY_SANDBOX; //change this according to your client-key
+
+            const script = document.createElement('script');
+            script.src = snapSrcUrl;
+            script.setAttribute('data-client-key', myMidtransClientKey);
+            script.async = true;
+
+            // console.log(snapSrcUrl);
+
+            document.body.appendChild(script);
+
+            return () => {
+                document.body.removeChild(script);
+            };
+        }
+    });
+
+    const onPressPay = async () => {
+        // const data = await fetch(`${window.location.hostname}/api/test-payment`, {
+        //   headers: {
+        //     'Authorization': 'Bearer '+token
+        //   }
+        // });
+        setLoading(true);
+        await axios.post(`api/test-payment`).then(function (response) {
+            console.log(response);
+            const snapToken = response.data;
+            window.snap.pay(snapToken, {
+                onSuccess: () => {
+                    console.log('success');
+                    setLoading(false);
+                },
+                onPending: (result) => {
+                    console.log('pending transaction', result);
+                    setLoading(false);
+                },
+                onError: (result) => {
+                    console.log('error transaction', result);
+                    setLoading(false);
+                },
+                onClose: () => {
+                    console.log('customer close the popup window without the finishing the payment');
+                    setLoading(false);
+                },
+            });
+        });
+        // console.log(data);
+        // const res = await data.json();
+        // const snapToken = res.token;
+        // const snapToken = '2b3cce85-e205-4c59-8d84-f0a29b5e3545';
+        // window.snap.pay(snapToken, {
+        //   onSuccess: () => {
+        //     console.log('success')
+        //   },
+        //   onPending: (result) => {
+        //     console.log('pending transaction', result)
+        //   },
+        //   onError: (result) => {
+        //     console.log('error transaction', result)
+        //   },
+        //   onClose: () => {
+        //     console.log('customer close the popup window without the finishing the payment')
+        //   },
+        // })
+
+        // router.post(route('frontend.test_payment'),{
+        //     onFinish: (response) => {
+        //         // console.log(response);
+        //         const snapToken = response;
+        //         window.snap.pay(snapToken, {
+        //           onSuccess: () => {
+        //             console.log('success')
+        //           },
+        //           onPending: (result) => {
+        //             console.log('pending transaction', result)
+        //           },
+        //           onError: (result) => {
+        //             console.log('error transaction', result)
+        //           },
+        //           onClose: () => {
+        //             console.log('customer close the popup window without the finishing the payment')
+        //           },
+        //         })
+        //     },
+        // });
+    };
 
     // console.log(total_penjualan);
 
@@ -68,16 +164,11 @@ export default function DashboardAdmin(props,{ auth }) {
                 ))}
             </ul>
             <Card className='mt-8'>
-                <CardHeader className='font-bold'>
-                    Total Penjualan
-                </CardHeader>
+                <CardHeader className='font-bold'>Total Penjualan</CardHeader>
                 <CardContent>
+                    <Button onClick={onPressPay}>{loading ? 'Loading...' : 'Pay Now'}</Button>
                     <BarChart
-                        series={
-                            [
-                                { data: total_penjualan.map((item, i) => item.data) }
-                            ]
-                        }
+                        series={[{ data: total_penjualan.map((item, i) => item.data) }]}
                         height={350}
                         xAxis={[
                             {

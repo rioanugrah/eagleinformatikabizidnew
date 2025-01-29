@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '2281fcac4b110b6fade1200c2a81d290819fc142',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'cfed33c193508b96c751078ad36db53953e46ca1',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -425,9 +425,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '2281fcac4b110b6fade1200c2a81d290819fc142',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'cfed33c193508b96c751078ad36db53953e46ca1',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -529,6 +529,15 @@
             'reference' => 'a6dfb1194a2946fcdc1f38219445234f65b35c96',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/mime-type-detection',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'midtrans/midtrans-php' => array(
+            'pretty_version' => '2.6.1',
+            'version' => '2.6.1.0',
+            'reference' => '737ddabeb0c4d40316c4db132f9ef5c8f7a1b3a6',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../midtrans/midtrans-php',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -874,8 +883,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '3.0.0',
-                1 => '1.0|2.0|3.0',
+                0 => '1.0|2.0|3.0',
+                1 => '3.0.0',
             ),
         ),
         'psr/simple-cache' => array(

@@ -34,11 +34,17 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['verified'])->name('dashboard');
 
         Route::controller(OrderController::class)->group(function () {
-            Route::get('order', 'index')->middleware(['verified'])->name('order.index');
-            Route::get('order/{id}/checkout', 'detail')->middleware(['verified'])->name('order.checkout');
-            Route::post('order/{id}/buy', 'store')->middleware(['verified'])->name('order.store');
-            Route::post('order/{id}/buy/checkout', 'checkout')->middleware(['verified'])->name('order.buy.checkout');
-            Route::post('order/{id}/{invoice_id}/remove', 'invoice_detail_remove')->middleware(['verified'])->name('order.invoice_detail_remove');
+            Route::prefix('order')->group(function(){
+                Route::get('/', 'index')->middleware(['verified'])->name('order.index');
+                Route::get('{id}/checkout', 'detail')->middleware(['verified'])->name('order.checkout');
+                Route::get('{id}/payment', 'payment')->middleware(['verified'])->name('order.payment');
+                Route::post('{id}/buy', 'store')->middleware(['verified'])->name('order.store');
+                Route::post('{id}/buy/checkout', 'checkout')->middleware(['verified'])->name('order.buy.checkout');
+                Route::post('{id}/{invoice_id}/remove', 'invoice_detail_remove')->middleware(['verified'])->name('order.invoice_detail_remove');
+            });
+
+            // Route::prefix('pa')->group(function(){
+            // });
         });
 
         Route::controller(InvoicesController::class)->group(function () {
@@ -125,6 +131,10 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
         });
 
     });
+});
+
+Route::domain('payment.'.parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
+    Route::post('midtrans/webhook', [App\Http\Controllers\Payment\PaymentMidtransController::class, 'payment_callback'])->name('midtrans.callback');
 });
 
 require __DIR__ . '/auth.php';

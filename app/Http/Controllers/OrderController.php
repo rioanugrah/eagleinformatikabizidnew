@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Payment\TripayController;
+use App\Http\Controllers\Payment\PaymentMidtransController;
 
 use App\Http\Resources\InvoicesResource;
 
@@ -20,6 +21,7 @@ use DB;
 class OrderController extends Controller
 {
     function __construct(
+        PaymentMidtransController $midtrans,
         TripayController $tripay,
         Products $product,
         Invoices $invoices,
@@ -31,6 +33,7 @@ class OrderController extends Controller
         $this->middleware('permission:Order Edit', ['only' => ['edit','update']]);
         $this->middleware('permission:Order Delete', ['only' => ['destroy']]);
 
+        $this->midtrans = $midtrans;
         $this->tripay = $tripay;
         $this->product = $product;
         $this->invoices = $invoices;
@@ -170,7 +173,7 @@ class OrderController extends Controller
             'state' => 'required',
             'postal_code' => 'required',
             'phone' => 'required',
-            'method' => 'required',
+            // 'method' => 'required',
         ],[
             'firstName.required' => 'First Name is required',
             'lastName.required' => 'Last Name is required',
@@ -182,7 +185,7 @@ class OrderController extends Controller
             'state' => 'State is required',
             'postal_code' => 'Postal Code is required',
             'phone' => 'Phone is required',
-            'method' => 'Payment Method is required',
+            // 'method' => 'Payment Method is required',
         ]);
 
         $input['id'] = Str::uuid()->toString();
@@ -198,49 +201,98 @@ class OrderController extends Controller
         ]);
         $items = [];
         foreach ($request->items as $key => $item) {
+            // $items[] = [
+            //     'name' => explode('|',$item['item'])[1],
+            //     'price' => $item['amount']+(0.11*$item['amount']),
+            //     'quantity' => $item['quantity'],
+            // ];
             $items[] = [
-                'name' => explode('|',$item['item'])[1],
+                'id' => Str::uuid()->toString(),
                 'price' => $item['amount']+(0.11*$item['amount']),
                 'quantity' => $item['quantity'],
+                'name' => explode('|',$item['item'])[1],
             ];
         }
         $input['tax'] = $request->tax;
-        $input['admin_fee'] = $request->admin_fee;
+        $input['admin_fee'] = 0;
         $input['sub_total'] = $request->sub_total;
 
-        // $product = $this->product->
-        // dd(implode());
+        // if ($input['sub_total'] >= $this->max_amount) {
+        //     return back()->with(['error' => 'Checkout Max Rp. '.number_format($this->nax_amount,0,',','.')]);
+        // }
 
-        if ($input['sub_total'] >= $this->max_amount) {
-            return back()->with(['error' => 'Checkout Max Rp. '.number_format($this->nax_amount,0,',','.')]);
-        }
         // dd($items);
-        $paymentDetail = $this->tripay->requestTransaction(
-            $items,
-            $request->method,
-            $request->sub_total,
+        // $paymentDetail = $this->tripay->requestTransaction(
+        //     $items,
+        //     $request->method,
+        //     $request->sub_total,
+        //     $request->firstName,
+        //     $request->lastName,
+        //     $request->email,
+        //     $request->phone,
+        //     $input['billing_code'],
+        //     route('invoices.detail',['id' => $input['invoice_id']])
+        //     //route invoices
+        // );
+
+        // $input['billing_references'] = json_decode($paymentDetail)->data->reference;
+        // $input['billing_link_payment'] = json_decode($paymentDetail)->data->checkout_url;
+        // $input['status'] = 'UNPAID';
+        // // $input['billing_references'] = json_decode($paymentDetail);
+        // // dd($input,$items);
+        // $this->billings->create($input);
+        // $this->invoices->find($id)->update([
+        //     'sub_amount' => $input['sub_total'],
+        //     'status' => 'UNPAID'
+        // ]);
+        // dd($this->invoices->with('invoice_details')->find($id));
+
+        // $invoice = $this->invoices->with('invoice_details')->find($id);
+        // $items
+
+        $paymentDetail = $this->midtrans->payment_checkout(
             $request->firstName,
             $request->lastName,
             $request->email,
             $request->phone,
-            $input['billing_code'],
-            route('invoices.detail',['id' => $input['invoice_id']])
-            //route invoices
+            auth()->user()->id,
+            $items,
+            $request->tax,
+            0,
+            $request->sub_total
         );
 
-        $input['billing_references'] = json_decode($paymentDetail)->data->reference;
-        $input['billing_link_payment'] = json_decode($paymentDetail)->data->checkout_url;
+        // dd($paymentDetail);
+
+        $input['billing_references'] = $paymentDetail;
+        $input['billing_link_payment'] = '-';
         $input['status'] = 'UNPAID';
-        // $input['billing_references'] = json_decode($paymentDetail);
-        // dd($input,$items);
+
         $this->billings->create($input);
         $this->invoices->find($id)->update([
             'sub_amount' => $input['sub_total'],
             'status' => 'UNPAID'
         ]);
+
+        // dd($paymentDetail);
+        // return $paymentDetail;
+
+        return redirect()->route('order.payment',['id' => $input['id']]);
+
         // return redirect(json_decode($paymentDetail)->data->checkout_url);
         // return redirect()->route('order.index');
         // return json_decode($paymentDetail)->data->checkout_url;
-        return inertia()->location(json_decode($paymentDetail)->data->checkout_url);
+        // return inertia()->location(json_decode($paymentDetail)->data->checkout_url);
+    }
+
+    public function payment($id)
+    {
+        $data['billing'] = $this->billings->with('invoice','invoice.invoice_details')->find($id);
+
+        if (empty($data['billing'])) {
+            return back()->with(['errors' => 'Payment Tidak Ditemukan']);
+        }
+
+        return inertia('payment/index',$data);
     }
 }

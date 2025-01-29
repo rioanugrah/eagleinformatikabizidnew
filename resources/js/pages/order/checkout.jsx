@@ -4,12 +4,13 @@ import { Dialog, DialogBackdrop, DialogPanel, Popover, PopoverButton, PopoverGro
 import { Bars3Icon, MagnifyingGlassIcon, QuestionMarkCircleIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { CheckCircleIcon, ChevronDownIcon, TrashIcon } from '@heroicons/react/20/solid';
 import CardItem from './cardItem';
-import { router } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
 
 export default function Checkout(props, { initialItems }) {
-    const paymentMethod = props.channels;
+    // const paymentMethod = props.channels;
+    const { errors, auth } = usePage().props;
 
-    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(paymentMethod[0]);
+    // const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(paymentMethod[0]);
     const [firstName, setFirstName] = useState('');
     const [lastName, setlastName] = useState('');
     const [email, setEmail] = useState('');
@@ -76,9 +77,9 @@ export default function Checkout(props, { initialItems }) {
                 state: state,
                 postal_code: postalCode,
                 phone: phone,
-                method: selectedPaymentMethod.code,
+                // method: selectedPaymentMethod.code,
                 tax: hitung_ppn,
-                admin_fee: selectedPaymentMethod.total_fee.flat,
+                // admin_fee: selectedPaymentMethod.total_fee.flat,
                 sub_total: sub_total,
                 status: 'UNPAID',
             },
@@ -109,6 +110,7 @@ export default function Checkout(props, { initialItems }) {
                                     <div className='mt-1'>
                                         <input id='first-name' type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} autoComplete='first-name' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                                     </div>
+                                    {errors.firstName && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.firstName}</p>}
                                 </div>
 
                                 <div>
@@ -118,6 +120,7 @@ export default function Checkout(props, { initialItems }) {
                                     <div className='mt-1'>
                                         <input id='last-name' type='text' value={lastName} onChange={(e) => setlastName(e.target.value)} autoComplete='last-name' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                                     </div>
+                                    {errors.lastName && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.lastName}</p>}
                                 </div>
 
                                 <div className='sm:col-span-2'>
@@ -127,6 +130,7 @@ export default function Checkout(props, { initialItems }) {
                                     <div className='mt-1'>
                                         <input id='email' type='email' value={email} onChange={(e) => setEmail(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                                     </div>
+                                    {errors.email && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.email}</p>}
                                 </div>
 
                                 <div className='sm:col-span-2'>
@@ -136,6 +140,7 @@ export default function Checkout(props, { initialItems }) {
                                     <div className='mt-1'>
                                         <input id='company' type='text' value={company} onChange={(e) => setCompany(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                                     </div>
+                                    {errors.company && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.company}</p>}
                                 </div>
 
                                 <div className='sm:col-span-2'>
@@ -145,6 +150,7 @@ export default function Checkout(props, { initialItems }) {
                                     <div className='mt-1'>
                                         <input id='address' value={address} onChange={(e) => setAddress(e.target.value)} type='text' autoComplete='street-address' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                                     </div>
+                                    {errors.address && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.address}</p>}
                                 </div>
 
                                 <div>
@@ -154,6 +160,7 @@ export default function Checkout(props, { initialItems }) {
                                     <div className='mt-1'>
                                         <input id='city' type='text' value={city} onChange={(e) => setCity(e.target.value)} autoComplete='address-level2' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                                     </div>
+                                    {errors.city && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.city}</p>}
                                 </div>
 
                                 <div>
@@ -167,6 +174,7 @@ export default function Checkout(props, { initialItems }) {
                                             <option>Indonesia</option>
                                         </select>
                                     </div>
+                                    {errors.country && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.country}</p>}
                                 </div>
 
                                 <div>
@@ -176,6 +184,7 @@ export default function Checkout(props, { initialItems }) {
                                     <div className='mt-1'>
                                         <input id='region' type='text' value={state} onChange={(e) => setState(e.target.value)} autoComplete='address-level1' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                                     </div>
+                                    {errors.state && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.state}</p>}
                                 </div>
 
                                 <div>
@@ -185,6 +194,7 @@ export default function Checkout(props, { initialItems }) {
                                     <div className='mt-1'>
                                         <input id='postal-code' type='text' value={postalCode} onChange={(e) => setPostalCode(e.target.value)} autoComplete='postal-code' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                                     </div>
+                                    {errors.postal_code && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.postal_code}</p>}
                                 </div>
 
                                 <div className='sm:col-span-2'>
@@ -194,10 +204,11 @@ export default function Checkout(props, { initialItems }) {
                                     <div className='mt-1'>
                                         <input id='phone' type='number' value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete='tel' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                                     </div>
+                                    {errors.phone && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.phone}</p>}
                                 </div>
                             </div>
                         </div>
-                        <div className='mt-10 border-t border-gray-200 pt-10'>
+                        {/* <div className='mt-10 border-t border-gray-200 pt-10'>
                             <h2 className='text-lg font-medium text-gray-900'>Payment Method</h2>
                             <fieldset className='mt-4'>
                                 <RadioGroup value={selectedPaymentMethod} onChange={setSelectedPaymentMethod} className='grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4'>
@@ -217,7 +228,7 @@ export default function Checkout(props, { initialItems }) {
                                     ))}
                                 </RadioGroup>
                             </fieldset>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className='mt-10 lg:mt-0'>
@@ -225,44 +236,6 @@ export default function Checkout(props, { initialItems }) {
                         <div className='mt-4 rounded-lg border border-gray-200 bg-white shadow-sm'>
                             <ul role='list' className='divide-y divide-gray-200'>
                                 {items.map((item) => (
-                                    // <li key={invoice_detail.id} className='flex px-4 py-6 sm:px-6'>
-                                    //     <div className='ml-6 flex flex-1 flex-col'>
-                                    //         <div className='flex'>
-                                    //             <div className='min-w-0 flex-1'>
-                                    //                 <h4 className='text-sm'>
-                                    //                     <a className='font-medium text-gray-700 hover:text-gray-800'>{invoice_detail.item.split('|')[1]}</a>
-                                    //                 </h4>
-                                    //                 {/* <p className='mt-1 text-sm text-gray-500'>{product.color}</p>
-                                    //                 <p className='mt-1 text-sm text-gray-500'>{product.size}</p> */}
-                                    //             </div>
-                                    //             <div className='ml-4 flow-root flex-shrink-0'>
-                                    //                 <button type='button' className='-m-2.5 flex items-center justify-center bg-white p-2.5 text-gray-400 hover:text-gray-500'>
-                                    //                     <span className='sr-only'>Remove</span>
-                                    //                     <TrashIcon aria-hidden='true' className='h-5 w-5' />
-                                    //                 </button>
-                                    //             </div>
-                                    //         </div>
-                                    //         <div className='flex flex-1 items-end justify-between pt-2'>
-                                    //             <p className='mt-1 text-sm font-medium text-gray-900'>{format_currency(invoice_detail.amount)}</p>
-
-                                    //             <div className='ml-4'>
-                                    //                 <label htmlFor='quantity' className='sr-only'>
-                                    //                     Quantity
-                                    //                 </label>
-                                    //                 <select key={invoice_detail.id} {...invoice_detail} id='quantity' onChange={(e) => selectQuantity(e.target.value)} className='rounded-md border border-gray-300 text-left text-base font-medium text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm'>
-                                    //                     <option value={1}>1</option>
-                                    //                     <option value={2}>2</option>
-                                    //                     <option value={3}>3</option>
-                                    //                     <option value={4}>4</option>
-                                    //                     <option value={5}>5</option>
-                                    //                     <option value={6}>6</option>
-                                    //                     <option value={7}>7</option>
-                                    //                     <option value={8}>8</option>
-                                    //                 </select>
-                                    //             </div>
-                                    //         </div>
-                                    //     </div>
-                                    // </li>
                                     <CardItem key={item.id} {...item} updateQty={updateQty} />
                                 ))}
                             </ul>
@@ -275,10 +248,10 @@ export default function Checkout(props, { initialItems }) {
                                     <dt className='text-sm'>Taxes {ppn}</dt>
                                     <dd className='text-sm font-medium text-gray-900'>{format_currency(hitung_ppn)}</dd>
                                 </div>
-                                <div className='flex items-center justify-between'>
+                                {/* <div className='flex items-center justify-between'>
                                     <dt className='text-sm'>Admin Fee</dt>
                                     <dd className='text-sm font-medium text-gray-900'>{format_currency(selectedPaymentMethod.total_fee.flat)}</dd>
-                                </div>
+                                </div> */}
                                 <div className='flex items-center justify-between border-t border-gray-200 pt-6'>
                                     <dt className='text-base font-medium'>Total</dt>
                                     <dd className='text-base font-medium text-gray-900'>{format_currency(sub_total)}</dd>

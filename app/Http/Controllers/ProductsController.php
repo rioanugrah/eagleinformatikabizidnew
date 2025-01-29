@@ -70,6 +70,7 @@ class ProductsController extends Controller
             'product_price' => 'required',
             'product_profit_price' => 'required',
             'product_stock' => 'required',
+            'product_stock' => 'required',
             'status' => 'required'
         ],[
             'product_name.required' => 'Name is required',

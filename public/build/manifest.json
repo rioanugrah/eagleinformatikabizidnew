@@ -1,200 +1,200 @@
 {
-  "_Combination-698d52be.js": {
-    "file": "assets/Combination-698d52be.js",
+  "_Combination-17ef7bc8.js": {
+    "file": "assets/Combination-17ef7bc8.js",
     "imports": [
       "resources/js/app.jsx",
-      "_index-074bec93.js",
-      "_IconCheck-bd80cdf9.js",
-      "_index-949d00e4.js",
-      "_floating-ui.react-dom-1aaa1cdb.js"
+      "_index-593ce885.js",
+      "_IconCheck-6cf26aab.js",
+      "_index-4013f90b.js",
+      "_floating-ui.react-dom-d42afd73.js"
     ]
   },
-  "_IconCheck-bd80cdf9.js": {
-    "file": "assets/IconCheck-bd80cdf9.js",
+  "_IconCheck-6cf26aab.js": {
+    "file": "assets/IconCheck-6cf26aab.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_XMarkIcon-0126569f.js": {
-    "file": "assets/XMarkIcon-0126569f.js",
+  "_XMarkIcon-44121970.js": {
+    "file": "assets/XMarkIcon-44121970.js",
     "imports": [
       "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js"
+      "_IconCheck-6cf26aab.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js"
     ]
   },
-  "_app-layout-406844f7.js": {
-    "file": "assets/app-layout-406844f7.js",
-    "imports": [
-      "resources/js/app.jsx",
-      "_icon-9aa90223.js",
-      "_XMarkIcon-0126569f.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_logo_eagle_media_informatika-285b6851.js",
-      "_dialog-6c08dc67.js"
-    ]
-  },
-  "_app-layout-5151b649.js": {
-    "file": "assets/app-layout-5151b649.js",
+  "_app-layout-4b7f8082.js": {
+    "file": "assets/app-layout-4b7f8082.js",
     "imports": [
       "resources/js/app.jsx",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_dialog-6c08dc67.js"
+      "_dialog-dc9c9fce.js"
     ]
   },
-  "_appLayout-496e7447.js": {
-    "file": "assets/appLayout-496e7447.js",
+  "_app-layout-61cc1fe1.js": {
+    "file": "assets/app-layout-61cc1fe1.js",
     "imports": [
       "resources/js/app.jsx",
-      "_icon-9aa90223.js",
-      "_XMarkIcon-0126569f.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_icon-aef33bfa.js",
+      "_XMarkIcon-44121970.js",
+      "_menuadministrator-22f7a153.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_dialog-6c08dc67.js"
+      "_dialog-dc9c9fce.js"
     ]
   },
-  "_button-20848f55.js": {
-    "file": "assets/button-20848f55.js",
+  "_appLayout-a5c6949e.js": {
+    "file": "assets/appLayout-a5c6949e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js"
+      "_icon-aef33bfa.js",
+      "_XMarkIcon-44121970.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
+      "_logo_eagle_media_informatika-285b6851.js",
+      "_dialog-dc9c9fce.js"
     ]
   },
-  "_card-9b5db02f.js": {
-    "file": "assets/card-9b5db02f.js",
+  "_button-97be9050.js": {
+    "file": "assets/button-97be9050.js",
     "imports": [
       "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js"
+      "_IconCheck-6cf26aab.js"
     ]
   },
-  "_checkbox-ebd1caff.js": {
-    "file": "assets/checkbox-ebd1caff.js",
+  "_card-56513625.js": {
+    "file": "assets/card-56513625.js",
     "imports": [
       "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js",
-      "_index-074bec93.js",
-      "_index-2f9b48a2.js",
-      "_index-e15d49d8.js",
-      "_index-949d00e4.js"
+      "_IconCheck-6cf26aab.js"
     ]
   },
-  "_command-54bdc14a.js": {
-    "file": "assets/command-54bdc14a.js",
+  "_checkbox-5b933d7a.js": {
+    "file": "assets/checkbox-5b933d7a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js",
-      "_index-074bec93.js",
-      "_index-949d00e4.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_Combination-698d52be.js",
-      "_index-d56507d3.js"
+      "_IconCheck-6cf26aab.js",
+      "_index-593ce885.js",
+      "_index-f09d93d9.js",
+      "_index-25a7753e.js",
+      "_index-4013f90b.js"
     ]
   },
-  "_dialog-6c08dc67.js": {
-    "file": "assets/dialog-6c08dc67.js",
+  "_command-163565f7.js": {
+    "file": "assets/command-163565f7.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_IconCheck-6cf26aab.js",
+      "_index-593ce885.js",
+      "_index-4013f90b.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_Combination-17ef7bc8.js",
+      "_index-6787ff80.js"
+    ]
+  },
+  "_dialog-dc9c9fce.js": {
+    "file": "assets/dialog-dc9c9fce.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_floating-ui.react-dom-1aaa1cdb.js": {
-    "file": "assets/floating-ui.react-dom-1aaa1cdb.js",
+  "_floating-ui.react-dom-d42afd73.js": {
+    "file": "assets/floating-ui.react-dom-d42afd73.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_guest-layout-e55a90fd.js": {
-    "file": "assets/guest-layout-e55a90fd.js",
+  "_guest-layout-611f5b6c.js": {
+    "file": "assets/guest-layout-611f5b6c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_card-9b5db02f.js",
-      "_theme-toggle-049738b1.js"
+      "_card-56513625.js",
+      "_theme-toggle-2a81b450.js"
     ]
   },
-  "_icon-9aa90223.js": {
-    "file": "assets/icon-9aa90223.js",
+  "_icon-aef33bfa.js": {
+    "file": "assets/icon-aef33bfa.js",
     "imports": [
       "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js"
+      "_IconCheck-6cf26aab.js"
     ]
   },
-  "_index-074bec93.js": {
-    "file": "assets/index-074bec93.js",
+  "_index-25a7753e.js": {
+    "file": "assets/index-25a7753e.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_IconCheck-6cf26aab.js",
+      "_index-593ce885.js"
+    ]
+  },
+  "_index-4013f90b.js": {
+    "file": "assets/index-4013f90b.js",
+    "imports": [
+      "_IconCheck-6cf26aab.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "_index-593ce885.js": {
+    "file": "assets/index-593ce885.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_index-2f9b48a2.js": {
-    "file": "assets/index-2f9b48a2.js",
+  "_index-6787ff80.js": {
+    "file": "assets/index-6787ff80.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_IconCheck-6cf26aab.js",
+      "_index-593ce885.js",
+      "_index-4013f90b.js",
+      "_Combination-17ef7bc8.js",
+      "_index-25a7753e.js",
+      "_icon-aef33bfa.js"
+    ]
+  },
+  "_index-da9f07e9.js": {
+    "file": "assets/index-da9f07e9.js",
+    "imports": [
+      "_IconCheck-6cf26aab.js",
+      "resources/js/app.jsx",
+      "_index-4013f90b.js"
+    ]
+  },
+  "_index-f09d93d9.js": {
+    "file": "assets/index-f09d93d9.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_index-48297604.js": {
-    "file": "assets/index-48297604.js",
-    "imports": [
-      "_IconCheck-bd80cdf9.js",
-      "resources/js/app.jsx",
-      "_index-949d00e4.js"
-    ]
-  },
-  "_index-949d00e4.js": {
-    "file": "assets/index-949d00e4.js",
-    "imports": [
-      "_IconCheck-bd80cdf9.js",
-      "resources/js/app.jsx"
-    ]
-  },
-  "_index-d56507d3.js": {
-    "file": "assets/index-d56507d3.js",
+  "_input-1f8e6f3f.js": {
+    "file": "assets/input-1f8e6f3f.js",
     "imports": [
       "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js",
-      "_index-074bec93.js",
-      "_index-949d00e4.js",
-      "_Combination-698d52be.js",
-      "_index-e15d49d8.js",
-      "_icon-9aa90223.js"
+      "_IconCheck-6cf26aab.js"
     ]
   },
-  "_index-e15d49d8.js": {
-    "file": "assets/index-e15d49d8.js",
-    "imports": [
-      "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js",
-      "_index-074bec93.js"
-    ]
-  },
-  "_input-12b1902d.js": {
-    "file": "assets/input-12b1902d.js",
-    "imports": [
-      "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js"
-    ]
-  },
-  "_input-error-f9491367.js": {
-    "file": "assets/input-error-f9491367.js",
+  "_input-error-dd09db86.js": {
+    "file": "assets/input-error-dd09db86.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_label-115fc9f3.js": {
-    "file": "assets/label-115fc9f3.js",
+  "_label-0d1b40ec.js": {
+    "file": "assets/label-0d1b40ec.js",
     "imports": [
       "resources/js/app.jsx",
-      "_dialog-6c08dc67.js"
+      "_dialog-dc9c9fce.js"
     ]
   },
-  "_label-a9a95fb2.js": {
-    "file": "assets/label-a9a95fb2.js",
+  "_label-126fce77.js": {
+    "file": "assets/label-126fce77.js",
     "imports": [
       "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js",
-      "_index-949d00e4.js",
-      "_button-20848f55.js"
+      "_IconCheck-6cf26aab.js",
+      "_index-4013f90b.js",
+      "_button-97be9050.js"
     ]
   },
   "_logo_eagle_media_informatika-285b6851.js": {
@@ -203,85 +203,77 @@
     ],
     "file": "assets/logo_eagle_media_informatika-285b6851.js"
   },
-  "_menuUser-a990cc49.js": {
-    "file": "assets/menuUser-a990cc49.js",
+  "_menuUser-9beba1b0.js": {
+    "file": "assets/menuUser-9beba1b0.js",
     "imports": [
       "resources/js/app.jsx",
-      "_icon-9aa90223.js",
-      "_XMarkIcon-0126569f.js"
+      "_icon-aef33bfa.js",
+      "_XMarkIcon-44121970.js"
     ]
   },
-  "_menuadministrator-e67d6ec0.js": {
-    "file": "assets/menuadministrator-e67d6ec0.js",
+  "_menuadministrator-22f7a153.js": {
+    "file": "assets/menuadministrator-22f7a153.js",
     "imports": [
       "resources/js/app.jsx",
-      "_icon-9aa90223.js",
-      "_XMarkIcon-0126569f.js"
+      "_icon-aef33bfa.js",
+      "_XMarkIcon-44121970.js"
     ]
   },
-  "_primary-link-ac3c94ae.js": {
-    "file": "assets/primary-link-ac3c94ae.js",
+  "_primary-link-e543f2ad.js": {
+    "file": "assets/primary-link-e543f2ad.js",
     "imports": [
       "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js"
+      "_IconCheck-6cf26aab.js"
     ]
   },
-  "_radio-group-54ad47c9.js": {
-    "file": "assets/radio-group-54ad47c9.js",
-    "imports": [
-      "_label-115fc9f3.js",
-      "resources/js/app.jsx",
-      "_dialog-6c08dc67.js"
-    ]
-  },
-  "_react-icons.esm-a3f213c7.js": {
-    "file": "assets/react-icons.esm-a3f213c7.js",
+  "_react-icons.esm-0ad181dd.js": {
+    "file": "assets/react-icons.esm-0ad181dd.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_sheet-c20734bb.js": {
-    "file": "assets/sheet-c20734bb.js",
+  "_sheet-b4052007.js": {
+    "file": "assets/sheet-b4052007.js",
     "imports": [
       "resources/js/app.jsx",
-      "_react-icons.esm-a3f213c7.js",
-      "_IconCheck-bd80cdf9.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-e15d49d8.js",
-      "_index-949d00e4.js",
-      "_index-48297604.js",
-      "_button-20848f55.js",
-      "_index-d56507d3.js"
+      "_react-icons.esm-0ad181dd.js",
+      "_IconCheck-6cf26aab.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-25a7753e.js",
+      "_index-4013f90b.js",
+      "_index-da9f07e9.js",
+      "_button-97be9050.js",
+      "_index-6787ff80.js"
     ]
   },
-  "_simple-pagination-d51e8fd3.js": {
-    "file": "assets/simple-pagination-d51e8fd3.js",
+  "_simple-pagination-e1f71d56.js": {
+    "file": "assets/simple-pagination-e1f71d56.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js"
+      "_button-97be9050.js"
     ]
   },
-  "_sort-indicator-ed67c021.js": {
-    "file": "assets/sort-indicator-ed67c021.js",
+  "_sort-indicator-be203ba8.js": {
+    "file": "assets/sort-indicator-be203ba8.js",
     "imports": [
       "resources/js/app.jsx",
-      "_IconCheck-bd80cdf9.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-949d00e4.js",
-      "_index-2f9b48a2.js",
-      "_index-48297604.js",
-      "_icon-9aa90223.js"
+      "_IconCheck-6cf26aab.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-4013f90b.js",
+      "_index-f09d93d9.js",
+      "_index-da9f07e9.js",
+      "_icon-aef33bfa.js"
     ]
   },
-  "_theme-toggle-049738b1.js": {
-    "file": "assets/theme-toggle-049738b1.js",
+  "_theme-toggle-2a81b450.js": {
+    "file": "assets/theme-toggle-2a81b450.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js",
-      "_icon-9aa90223.js"
+      "_button-97be9050.js",
+      "_icon-aef33bfa.js"
     ]
   },
   "public/logo/logo_eagle_media_informatika.png": {
@@ -289,12 +281,12 @@
     "src": "public/logo/logo_eagle_media_informatika.png"
   },
   "resources/js/app.css": {
-    "file": "assets/app-22681b53.css",
+    "file": "assets/app-2640f353.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.jsx": {
     "css": [
-      "assets/app-22681b53.css"
+      "assets/app-2640f353.css"
     ],
     "dynamicImports": [
       "resources/js/pages/auth/confirm-password.jsx",
@@ -320,6 +312,7 @@
       "resources/js/pages/order/cardItem.jsx",
       "resources/js/pages/order/checkout.jsx",
       "resources/js/pages/order/index.jsx",
+      "resources/js/pages/payment/index.jsx",
       "resources/js/pages/permissions/create.jsx",
       "resources/js/pages/permissions/edit.jsx",
       "resources/js/pages/permissions/index.jsx",
@@ -338,414 +331,413 @@
       "resources/js/pages/websites/create.jsx",
       "resources/js/pages/websites/index.jsx"
     ],
-    "file": "assets/app-be20bef8.js",
+    "file": "assets/app-58889517.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   },
   "resources/js/pages/auth/confirm-password.jsx": {
-    "file": "assets/confirm-password-f6f9f691.js",
+    "file": "assets/confirm-password-cee1a643.js",
     "imports": [
       "resources/js/app.jsx",
-      "_input-error-f9491367.js",
-      "_guest-layout-e55a90fd.js",
-      "_label-a9a95fb2.js",
-      "_input-12b1902d.js",
-      "_button-20848f55.js",
-      "_card-9b5db02f.js",
-      "_IconCheck-bd80cdf9.js",
-      "_theme-toggle-049738b1.js",
-      "_icon-9aa90223.js",
-      "_index-949d00e4.js"
+      "_input-error-dd09db86.js",
+      "_guest-layout-611f5b6c.js",
+      "_label-126fce77.js",
+      "_input-1f8e6f3f.js",
+      "_button-97be9050.js",
+      "_card-56513625.js",
+      "_IconCheck-6cf26aab.js",
+      "_theme-toggle-2a81b450.js",
+      "_icon-aef33bfa.js",
+      "_index-4013f90b.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/auth/confirm-password.jsx"
   },
   "resources/js/pages/auth/forgot-password.jsx": {
-    "file": "assets/forgot-password-65426b46.js",
+    "file": "assets/forgot-password-9fa76fa7.js",
     "imports": [
       "resources/js/app.jsx",
-      "_guest-layout-e55a90fd.js",
-      "_button-20848f55.js",
-      "_input-12b1902d.js",
-      "_input-error-f9491367.js",
-      "_card-9b5db02f.js",
-      "_IconCheck-bd80cdf9.js",
-      "_theme-toggle-049738b1.js",
-      "_icon-9aa90223.js"
+      "_guest-layout-611f5b6c.js",
+      "_button-97be9050.js",
+      "_input-1f8e6f3f.js",
+      "_input-error-dd09db86.js",
+      "_card-56513625.js",
+      "_IconCheck-6cf26aab.js",
+      "_theme-toggle-2a81b450.js",
+      "_icon-aef33bfa.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/auth/forgot-password.jsx"
   },
   "resources/js/pages/auth/login copy.jsx": {
-    "file": "assets/login copy-b1b5d265.js",
+    "file": "assets/login copy-c4752d64.js",
     "imports": [
       "resources/js/app.jsx",
-      "_input-error-f9491367.js",
-      "_input-12b1902d.js",
-      "_checkbox-ebd1caff.js",
-      "_button-20848f55.js",
-      "_label-a9a95fb2.js",
-      "_guest-layout-e55a90fd.js",
-      "_primary-link-ac3c94ae.js",
-      "_IconCheck-bd80cdf9.js",
-      "_index-074bec93.js",
-      "_index-2f9b48a2.js",
-      "_index-e15d49d8.js",
-      "_index-949d00e4.js",
-      "_card-9b5db02f.js",
-      "_theme-toggle-049738b1.js",
-      "_icon-9aa90223.js"
+      "_input-error-dd09db86.js",
+      "_input-1f8e6f3f.js",
+      "_checkbox-5b933d7a.js",
+      "_button-97be9050.js",
+      "_label-126fce77.js",
+      "_guest-layout-611f5b6c.js",
+      "_primary-link-e543f2ad.js",
+      "_IconCheck-6cf26aab.js",
+      "_index-593ce885.js",
+      "_index-f09d93d9.js",
+      "_index-25a7753e.js",
+      "_index-4013f90b.js",
+      "_card-56513625.js",
+      "_theme-toggle-2a81b450.js",
+      "_icon-aef33bfa.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/auth/login copy.jsx"
   },
   "resources/js/pages/auth/login.jsx": {
-    "file": "assets/login-61822589.js",
+    "file": "assets/login-7cb7dc6a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_input-error-f9491367.js",
-      "_input-12b1902d.js",
-      "_checkbox-ebd1caff.js",
-      "_button-20848f55.js",
-      "_label-a9a95fb2.js",
-      "_card-9b5db02f.js",
+      "_input-error-dd09db86.js",
+      "_input-1f8e6f3f.js",
+      "_checkbox-5b933d7a.js",
+      "_button-97be9050.js",
+      "_label-126fce77.js",
+      "_card-56513625.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_IconCheck-bd80cdf9.js",
-      "_index-074bec93.js",
-      "_index-2f9b48a2.js",
-      "_index-e15d49d8.js",
-      "_index-949d00e4.js"
+      "_IconCheck-6cf26aab.js",
+      "_index-593ce885.js",
+      "_index-f09d93d9.js",
+      "_index-25a7753e.js",
+      "_index-4013f90b.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/auth/login.jsx"
   },
   "resources/js/pages/auth/register.jsx": {
-    "file": "assets/register-c553c86c.js",
+    "file": "assets/register-24029af2.js",
     "imports": [
       "resources/js/app.jsx",
-      "_input-error-f9491367.js",
-      "_label-a9a95fb2.js",
-      "_input-12b1902d.js",
-      "_button-20848f55.js",
-      "_guest-layout-e55a90fd.js",
-      "_primary-link-ac3c94ae.js",
-      "_IconCheck-bd80cdf9.js",
-      "_index-949d00e4.js",
-      "_card-9b5db02f.js",
-      "_theme-toggle-049738b1.js",
-      "_icon-9aa90223.js"
+      "_input-error-dd09db86.js",
+      "_label-126fce77.js",
+      "_input-1f8e6f3f.js",
+      "_button-97be9050.js",
+      "_guest-layout-611f5b6c.js",
+      "_primary-link-e543f2ad.js",
+      "_IconCheck-6cf26aab.js",
+      "_index-4013f90b.js",
+      "_card-56513625.js",
+      "_theme-toggle-2a81b450.js",
+      "_icon-aef33bfa.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/auth/register.jsx"
   },
   "resources/js/pages/auth/reset-password.jsx": {
-    "file": "assets/reset-password-1b79a93d.js",
+    "file": "assets/reset-password-111dc6ed.js",
     "imports": [
       "resources/js/app.jsx",
-      "_input-error-f9491367.js",
-      "_label-a9a95fb2.js",
-      "_input-12b1902d.js",
-      "_button-20848f55.js",
-      "_guest-layout-e55a90fd.js",
-      "_IconCheck-bd80cdf9.js",
-      "_index-949d00e4.js",
-      "_card-9b5db02f.js",
-      "_theme-toggle-049738b1.js",
-      "_icon-9aa90223.js"
+      "_input-error-dd09db86.js",
+      "_label-126fce77.js",
+      "_input-1f8e6f3f.js",
+      "_button-97be9050.js",
+      "_guest-layout-611f5b6c.js",
+      "_IconCheck-6cf26aab.js",
+      "_index-4013f90b.js",
+      "_card-56513625.js",
+      "_theme-toggle-2a81b450.js",
+      "_icon-aef33bfa.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/auth/reset-password.jsx"
   },
   "resources/js/pages/auth/verify-email.jsx": {
-    "file": "assets/verify-email-900fa91b.js",
+    "file": "assets/verify-email-edf346e8.js",
     "imports": [
       "resources/js/app.jsx",
-      "_guest-layout-e55a90fd.js",
-      "_button-20848f55.js",
-      "_card-9b5db02f.js",
-      "_IconCheck-bd80cdf9.js",
-      "_theme-toggle-049738b1.js",
-      "_icon-9aa90223.js"
+      "_guest-layout-611f5b6c.js",
+      "_button-97be9050.js",
+      "_card-56513625.js",
+      "_IconCheck-6cf26aab.js",
+      "_theme-toggle-2a81b450.js",
+      "_icon-aef33bfa.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/auth/verify-email.jsx"
   },
   "resources/js/pages/billings/index.jsx": {
-    "file": "assets/index-9e8a2dfe.js",
+    "file": "assets/index-2efb0b2b.js",
     "imports": [
       "resources/js/app.jsx",
-      "_card-9b5db02f.js",
-      "_sort-indicator-ed67c021.js",
-      "_input-12b1902d.js",
-      "_appLayout-496e7447.js",
-      "_icon-9aa90223.js",
-      "_simple-pagination-d51e8fd3.js",
-      "_IconCheck-bd80cdf9.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-949d00e4.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-2f9b48a2.js",
-      "_index-48297604.js",
-      "_XMarkIcon-0126569f.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_card-56513625.js",
+      "_sort-indicator-be203ba8.js",
+      "_input-1f8e6f3f.js",
+      "_appLayout-a5c6949e.js",
+      "_icon-aef33bfa.js",
+      "_simple-pagination-e1f71d56.js",
+      "_IconCheck-6cf26aab.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-4013f90b.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-f09d93d9.js",
+      "_index-da9f07e9.js",
+      "_XMarkIcon-44121970.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_button-20848f55.js"
+      "_button-97be9050.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/billings/index.jsx"
   },
   "resources/js/pages/categories/create.jsx": {
-    "file": "assets/create-c7d35bf6.js",
+    "file": "assets/create-72f5537b.js",
     "imports": [
       "resources/js/app.jsx",
-      "_appLayout-496e7447.js",
-      "_card-9b5db02f.js",
-      "_icon-9aa90223.js",
-      "_IconCheck-bd80cdf9.js",
-      "_XMarkIcon-0126569f.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_appLayout-a5c6949e.js",
+      "_card-56513625.js",
+      "_icon-aef33bfa.js",
+      "_IconCheck-6cf26aab.js",
+      "_XMarkIcon-44121970.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/categories/create.jsx"
   },
   "resources/js/pages/categories/edit.jsx": {
-    "file": "assets/edit-a8f3fd32.js",
+    "file": "assets/edit-492020e3.js",
     "imports": [
       "resources/js/app.jsx",
-      "_appLayout-496e7447.js",
-      "_card-9b5db02f.js",
-      "_icon-9aa90223.js",
-      "_IconCheck-bd80cdf9.js",
-      "_XMarkIcon-0126569f.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_appLayout-a5c6949e.js",
+      "_card-56513625.js",
+      "_icon-aef33bfa.js",
+      "_IconCheck-6cf26aab.js",
+      "_XMarkIcon-44121970.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/categories/edit.jsx"
   },
   "resources/js/pages/categories/index.jsx": {
-    "file": "assets/index-f9f824c0.js",
+    "file": "assets/index-2a636dd9.js",
     "imports": [
       "resources/js/app.jsx",
-      "_card-9b5db02f.js",
-      "_sort-indicator-ed67c021.js",
-      "_input-12b1902d.js",
-      "_appLayout-496e7447.js",
-      "_icon-9aa90223.js",
-      "_simple-pagination-d51e8fd3.js",
-      "_IconCheck-bd80cdf9.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-949d00e4.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-2f9b48a2.js",
-      "_index-48297604.js",
-      "_XMarkIcon-0126569f.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_card-56513625.js",
+      "_sort-indicator-be203ba8.js",
+      "_input-1f8e6f3f.js",
+      "_appLayout-a5c6949e.js",
+      "_icon-aef33bfa.js",
+      "_simple-pagination-e1f71d56.js",
+      "_IconCheck-6cf26aab.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-4013f90b.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-f09d93d9.js",
+      "_index-da9f07e9.js",
+      "_XMarkIcon-44121970.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_button-20848f55.js"
+      "_button-97be9050.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/categories/index.jsx"
   },
   "resources/js/pages/danger/index.jsx": {
-    "file": "assets/index-6c557f0f.js",
+    "file": "assets/index-89e06224.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js",
-      "_sheet-c20734bb.js",
-      "_index-d56507d3.js",
-      "_command-54bdc14a.js",
-      "_XMarkIcon-0126569f.js",
-      "_input-error-f9491367.js",
-      "_label-a9a95fb2.js",
-      "_input-12b1902d.js",
-      "_card-9b5db02f.js",
-      "_appLayout-496e7447.js",
-      "_IconCheck-bd80cdf9.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-949d00e4.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-e15d49d8.js",
-      "_index-48297604.js",
-      "_icon-9aa90223.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_button-97be9050.js",
+      "_sheet-b4052007.js",
+      "_index-6787ff80.js",
+      "_command-163565f7.js",
+      "_XMarkIcon-44121970.js",
+      "_input-error-dd09db86.js",
+      "_label-126fce77.js",
+      "_input-1f8e6f3f.js",
+      "_card-56513625.js",
+      "_appLayout-a5c6949e.js",
+      "_IconCheck-6cf26aab.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-4013f90b.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-25a7753e.js",
+      "_index-da9f07e9.js",
+      "_icon-aef33bfa.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/danger/index.jsx"
   },
   "resources/js/pages/dashboard/dashboard_admin.jsx": {
-    "file": "assets/dashboard_admin-5f2d900a.js",
+    "file": "assets/dashboard_admin-67712035.js",
     "imports": [
       "resources/js/app.jsx",
-      "_appLayout-496e7447.js",
-      "_XMarkIcon-0126569f.js",
-      "_button-20848f55.js",
-      "_sheet-c20734bb.js",
-      "_index-d56507d3.js",
-      "_command-54bdc14a.js",
-      "_card-9b5db02f.js",
-      "_IconCheck-bd80cdf9.js",
-      "_icon-9aa90223.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_appLayout-a5c6949e.js",
+      "_XMarkIcon-44121970.js",
+      "_button-97be9050.js",
+      "_sheet-b4052007.js",
+      "_index-6787ff80.js",
+      "_command-163565f7.js",
+      "_card-56513625.js",
+      "_IconCheck-6cf26aab.js",
+      "_icon-aef33bfa.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_dialog-6c08dc67.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-e15d49d8.js",
-      "_index-48297604.js"
+      "_dialog-dc9c9fce.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-25a7753e.js",
+      "_index-da9f07e9.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/dashboard/dashboard_admin.jsx"
   },
   "resources/js/pages/dashboard/index.jsx": {
-    "file": "assets/index-1fe24de9.js",
+    "file": "assets/index-c6017219.js",
     "imports": [
       "resources/js/app.jsx",
-      "_XMarkIcon-0126569f.js",
-      "_button-20848f55.js",
-      "_sheet-c20734bb.js",
-      "_index-d56507d3.js",
-      "_command-54bdc14a.js",
-      "_card-9b5db02f.js",
-      "_appLayout-496e7447.js",
-      "_IconCheck-bd80cdf9.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-e15d49d8.js",
-      "_index-48297604.js",
-      "_icon-9aa90223.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_XMarkIcon-44121970.js",
+      "_button-97be9050.js",
+      "_sheet-b4052007.js",
+      "_index-6787ff80.js",
+      "_command-163565f7.js",
+      "_card-56513625.js",
+      "_appLayout-a5c6949e.js",
+      "_IconCheck-6cf26aab.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-25a7753e.js",
+      "_index-da9f07e9.js",
+      "_icon-aef33bfa.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/dashboard/index.jsx"
   },
   "resources/js/pages/frontend/about-us.jsx": {
-    "file": "assets/about-us-6e9bc2d8.js",
+    "file": "assets/about-us-c8fab4e8.js",
     "imports": [
       "resources/js/app.jsx",
-      "_app-layout-5151b649.js",
+      "_app-layout-4b7f8082.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_dialog-6c08dc67.js"
+      "_dialog-dc9c9fce.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/frontend/about-us.jsx"
   },
   "resources/js/pages/frontend/contact-us.jsx": {
-    "file": "assets/contact-us-7dde4263.js",
+    "file": "assets/contact-us-1003f158.js",
     "imports": [
       "resources/js/app.jsx",
-      "_app-layout-5151b649.js",
+      "_app-layout-4b7f8082.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_dialog-6c08dc67.js"
+      "_dialog-dc9c9fce.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/frontend/contact-us.jsx"
   },
   "resources/js/pages/frontend/index.jsx": {
-    "file": "assets/index-f2ee4ad8.js",
+    "file": "assets/index-4129a7e3.js",
     "imports": [
       "resources/js/app.jsx",
-      "_app-layout-5151b649.js",
-      "_radio-group-54ad47c9.js",
-      "_logo_eagle_media_informatika-285b6851.js",
-      "_dialog-6c08dc67.js",
-      "_label-115fc9f3.js"
+      "_app-layout-4b7f8082.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/frontend/index.jsx"
   },
   "resources/js/pages/frontend/services.jsx": {
-    "file": "assets/services-71284945.js",
+    "file": "assets/services-48dfb019.js",
     "imports": [
       "resources/js/app.jsx",
-      "_app-layout-5151b649.js",
+      "_app-layout-4b7f8082.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_dialog-6c08dc67.js"
+      "_dialog-dc9c9fce.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/frontend/services.jsx"
   },
   "resources/js/pages/home/index.jsx": {
-    "file": "assets/index-8f36c5e2.js",
+    "file": "assets/index-e7704b30.js",
     "imports": [
       "resources/js/app.jsx",
-      "_theme-toggle-049738b1.js",
-      "_index-d56507d3.js",
-      "_command-54bdc14a.js",
-      "_IconCheck-bd80cdf9.js",
-      "_icon-9aa90223.js",
-      "_primary-link-ac3c94ae.js",
-      "_button-20848f55.js",
-      "_index-074bec93.js",
-      "_index-949d00e4.js",
-      "_Combination-698d52be.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-e15d49d8.js",
-      "_react-icons.esm-a3f213c7.js"
+      "_theme-toggle-2a81b450.js",
+      "_index-6787ff80.js",
+      "_command-163565f7.js",
+      "_IconCheck-6cf26aab.js",
+      "_icon-aef33bfa.js",
+      "_primary-link-e543f2ad.js",
+      "_button-97be9050.js",
+      "_index-593ce885.js",
+      "_index-4013f90b.js",
+      "_Combination-17ef7bc8.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-25a7753e.js",
+      "_react-icons.esm-0ad181dd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/home/index.jsx"
   },
   "resources/js/pages/invoices/index.jsx": {
-    "file": "assets/index-46af7b18.js",
+    "file": "assets/index-0710f7d3.js",
     "imports": [
       "resources/js/app.jsx",
-      "_appLayout-496e7447.js",
-      "_icon-9aa90223.js",
-      "_IconCheck-bd80cdf9.js",
-      "_XMarkIcon-0126569f.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_appLayout-a5c6949e.js",
+      "_icon-aef33bfa.js",
+      "_IconCheck-6cf26aab.js",
+      "_XMarkIcon-44121970.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/invoices/index.jsx"
   },
   "resources/js/pages/order/cardItem.jsx": {
-    "file": "assets/cardItem-d1b593f5.js",
+    "file": "assets/cardItem-ee3f67ea.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -753,467 +745,485 @@
     "src": "resources/js/pages/order/cardItem.jsx"
   },
   "resources/js/pages/order/checkout.jsx": {
-    "file": "assets/checkout-fbf7a634.js",
+    "file": "assets/checkout-99675ff9.js",
     "imports": [
       "resources/js/app.jsx",
-      "_appLayout-496e7447.js",
+      "_appLayout-a5c6949e.js",
       "resources/js/pages/order/cardItem.jsx",
-      "_radio-group-54ad47c9.js",
-      "_icon-9aa90223.js",
-      "_IconCheck-bd80cdf9.js",
-      "_XMarkIcon-0126569f.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_icon-aef33bfa.js",
+      "_IconCheck-6cf26aab.js",
+      "_XMarkIcon-44121970.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/order/checkout.jsx"
   },
   "resources/js/pages/order/index.jsx": {
-    "file": "assets/index-fdafd38a.js",
+    "file": "assets/index-f0fc3d93.js",
     "imports": [
       "resources/js/app.jsx",
-      "_card-9b5db02f.js",
-      "_sort-indicator-ed67c021.js",
-      "_input-12b1902d.js",
-      "_appLayout-496e7447.js",
-      "_icon-9aa90223.js",
-      "_button-20848f55.js",
-      "_IconCheck-bd80cdf9.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-949d00e4.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-2f9b48a2.js",
-      "_index-48297604.js",
-      "_XMarkIcon-0126569f.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_card-56513625.js",
+      "_sort-indicator-be203ba8.js",
+      "_input-1f8e6f3f.js",
+      "_appLayout-a5c6949e.js",
+      "_icon-aef33bfa.js",
+      "_button-97be9050.js",
+      "_IconCheck-6cf26aab.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-4013f90b.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-f09d93d9.js",
+      "_index-da9f07e9.js",
+      "_XMarkIcon-44121970.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/order/index.jsx"
   },
-  "resources/js/pages/permissions/create.jsx": {
-    "file": "assets/create-6b0a1ba6.js",
+  "resources/js/pages/payment/index.jsx": {
+    "file": "assets/index-5ae31af1.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js",
-      "_card-9b5db02f.js",
-      "_appLayout-496e7447.js",
-      "_XMarkIcon-0126569f.js",
-      "_IconCheck-bd80cdf9.js",
-      "_icon-9aa90223.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_appLayout-a5c6949e.js",
+      "_icon-aef33bfa.js",
+      "_IconCheck-6cf26aab.js",
+      "_XMarkIcon-44121970.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
+      "_logo_eagle_media_informatika-285b6851.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/payment/index.jsx"
+  },
+  "resources/js/pages/permissions/create.jsx": {
+    "file": "assets/create-9aaf56de.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_button-97be9050.js",
+      "_card-56513625.js",
+      "_appLayout-a5c6949e.js",
+      "_XMarkIcon-44121970.js",
+      "_IconCheck-6cf26aab.js",
+      "_icon-aef33bfa.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_dialog-6c08dc67.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_floating-ui.react-dom-1aaa1cdb.js"
+      "_dialog-dc9c9fce.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_floating-ui.react-dom-d42afd73.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/permissions/create.jsx"
   },
   "resources/js/pages/permissions/edit.jsx": {
-    "file": "assets/edit-fc43464a.js",
+    "file": "assets/edit-f4bc4031.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js",
-      "_card-9b5db02f.js",
-      "_appLayout-496e7447.js",
-      "_XMarkIcon-0126569f.js",
-      "_IconCheck-bd80cdf9.js",
-      "_icon-9aa90223.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_button-97be9050.js",
+      "_card-56513625.js",
+      "_appLayout-a5c6949e.js",
+      "_XMarkIcon-44121970.js",
+      "_IconCheck-6cf26aab.js",
+      "_icon-aef33bfa.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_dialog-6c08dc67.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_floating-ui.react-dom-1aaa1cdb.js"
+      "_dialog-dc9c9fce.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_floating-ui.react-dom-d42afd73.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/permissions/edit.jsx"
   },
   "resources/js/pages/permissions/index.jsx": {
-    "file": "assets/index-991550ea.js",
+    "file": "assets/index-f0c97168.js",
     "imports": [
       "resources/js/app.jsx",
-      "_card-9b5db02f.js",
-      "_sort-indicator-ed67c021.js",
-      "_input-12b1902d.js",
-      "_simple-pagination-d51e8fd3.js",
-      "_appLayout-496e7447.js",
-      "_IconCheck-bd80cdf9.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-949d00e4.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-2f9b48a2.js",
-      "_index-48297604.js",
-      "_icon-9aa90223.js",
-      "_button-20848f55.js",
-      "_XMarkIcon-0126569f.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_card-56513625.js",
+      "_sort-indicator-be203ba8.js",
+      "_input-1f8e6f3f.js",
+      "_simple-pagination-e1f71d56.js",
+      "_appLayout-a5c6949e.js",
+      "_IconCheck-6cf26aab.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-4013f90b.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-f09d93d9.js",
+      "_index-da9f07e9.js",
+      "_icon-aef33bfa.js",
+      "_button-97be9050.js",
+      "_XMarkIcon-44121970.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/permissions/index.jsx"
   },
   "resources/js/pages/products/create.jsx": {
-    "file": "assets/create-49645cdd.js",
+    "file": "assets/create-376c7cfe.js",
     "imports": [
       "resources/js/app.jsx",
-      "_app-layout-406844f7.js",
-      "_card-9b5db02f.js",
-      "_icon-9aa90223.js",
-      "_IconCheck-bd80cdf9.js",
-      "_XMarkIcon-0126569f.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_menuadministrator-e67d6ec0.js",
+      "_app-layout-61cc1fe1.js",
+      "_card-56513625.js",
+      "_icon-aef33bfa.js",
+      "_IconCheck-6cf26aab.js",
+      "_XMarkIcon-44121970.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_menuadministrator-22f7a153.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/products/create.jsx"
   },
   "resources/js/pages/products/edit.jsx": {
-    "file": "assets/edit-b9ef7ed2.js",
+    "file": "assets/edit-f863617e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_app-layout-406844f7.js",
-      "_card-9b5db02f.js",
-      "_icon-9aa90223.js",
-      "_IconCheck-bd80cdf9.js",
-      "_XMarkIcon-0126569f.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_menuadministrator-e67d6ec0.js",
+      "_app-layout-61cc1fe1.js",
+      "_card-56513625.js",
+      "_icon-aef33bfa.js",
+      "_IconCheck-6cf26aab.js",
+      "_XMarkIcon-44121970.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_menuadministrator-22f7a153.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/products/edit.jsx"
   },
   "resources/js/pages/products/index.jsx": {
-    "file": "assets/index-1e97bd71.js",
+    "file": "assets/index-2cfd083c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_card-9b5db02f.js",
-      "_sort-indicator-ed67c021.js",
-      "_input-12b1902d.js",
-      "_appLayout-496e7447.js",
-      "_icon-9aa90223.js",
-      "_simple-pagination-d51e8fd3.js",
-      "_IconCheck-bd80cdf9.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-949d00e4.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-2f9b48a2.js",
-      "_index-48297604.js",
-      "_XMarkIcon-0126569f.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_card-56513625.js",
+      "_sort-indicator-be203ba8.js",
+      "_input-1f8e6f3f.js",
+      "_appLayout-a5c6949e.js",
+      "_icon-aef33bfa.js",
+      "_simple-pagination-e1f71d56.js",
+      "_IconCheck-6cf26aab.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-4013f90b.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-f09d93d9.js",
+      "_index-da9f07e9.js",
+      "_XMarkIcon-44121970.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_button-20848f55.js"
+      "_button-97be9050.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/products/index.jsx"
   },
   "resources/js/pages/profile/index.jsx": {
-    "file": "assets/index-c312f273.js",
+    "file": "assets/index-1b26488f.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js",
-      "_sheet-c20734bb.js",
-      "_index-d56507d3.js",
-      "_command-54bdc14a.js",
-      "_XMarkIcon-0126569f.js",
-      "_input-error-f9491367.js",
-      "_label-a9a95fb2.js",
-      "_input-12b1902d.js",
-      "_card-9b5db02f.js",
-      "_appLayout-496e7447.js",
-      "_dialog-6c08dc67.js",
-      "_IconCheck-bd80cdf9.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-949d00e4.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-e15d49d8.js",
-      "_index-48297604.js",
-      "_icon-9aa90223.js",
-      "_label-115fc9f3.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_button-97be9050.js",
+      "_sheet-b4052007.js",
+      "_index-6787ff80.js",
+      "_command-163565f7.js",
+      "_XMarkIcon-44121970.js",
+      "_input-error-dd09db86.js",
+      "_label-126fce77.js",
+      "_input-1f8e6f3f.js",
+      "_card-56513625.js",
+      "_appLayout-a5c6949e.js",
+      "_dialog-dc9c9fce.js",
+      "_IconCheck-6cf26aab.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-4013f90b.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-25a7753e.js",
+      "_index-da9f07e9.js",
+      "_icon-aef33bfa.js",
+      "_label-0d1b40ec.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/profile/index.jsx"
   },
   "resources/js/pages/roles/create.jsx": {
-    "file": "assets/create-fd4f8c0c.js",
+    "file": "assets/create-f3105727.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js",
-      "_card-9b5db02f.js",
-      "_appLayout-496e7447.js",
-      "_IconCheck-bd80cdf9.js",
-      "_icon-9aa90223.js",
-      "_XMarkIcon-0126569f.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_button-97be9050.js",
+      "_card-56513625.js",
+      "_appLayout-a5c6949e.js",
+      "_IconCheck-6cf26aab.js",
+      "_icon-aef33bfa.js",
+      "_XMarkIcon-44121970.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/roles/create.jsx"
   },
   "resources/js/pages/roles/edit.jsx": {
-    "file": "assets/edit-f66aad14.js",
+    "file": "assets/edit-389e0829.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js",
-      "_card-9b5db02f.js",
-      "_appLayout-496e7447.js",
-      "_IconCheck-bd80cdf9.js",
-      "_icon-9aa90223.js",
-      "_XMarkIcon-0126569f.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_button-97be9050.js",
+      "_card-56513625.js",
+      "_appLayout-a5c6949e.js",
+      "_IconCheck-6cf26aab.js",
+      "_icon-aef33bfa.js",
+      "_XMarkIcon-44121970.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/roles/edit.jsx"
   },
   "resources/js/pages/roles/index.jsx": {
-    "file": "assets/index-40d58d7b.js",
+    "file": "assets/index-0866cf73.js",
     "imports": [
       "resources/js/app.jsx",
-      "_card-9b5db02f.js",
-      "_sort-indicator-ed67c021.js",
-      "_input-12b1902d.js",
-      "_appLayout-496e7447.js",
-      "_IconCheck-bd80cdf9.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-949d00e4.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-2f9b48a2.js",
-      "_index-48297604.js",
-      "_icon-9aa90223.js",
-      "_XMarkIcon-0126569f.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_card-56513625.js",
+      "_sort-indicator-be203ba8.js",
+      "_input-1f8e6f3f.js",
+      "_appLayout-a5c6949e.js",
+      "_IconCheck-6cf26aab.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-4013f90b.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-f09d93d9.js",
+      "_index-da9f07e9.js",
+      "_icon-aef33bfa.js",
+      "_XMarkIcon-44121970.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/roles/index.jsx"
   },
   "resources/js/pages/roles/make_access.jsx": {
-    "file": "assets/make_access-2f4280aa.js",
+    "file": "assets/make_access-cae1046d.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js",
-      "_card-9b5db02f.js",
-      "_label-a9a95fb2.js",
-      "_icon-9aa90223.js",
-      "_XMarkIcon-0126569f.js",
+      "_button-97be9050.js",
+      "_card-56513625.js",
+      "_label-126fce77.js",
+      "_icon-aef33bfa.js",
+      "_XMarkIcon-44121970.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_menuUser-a990cc49.js",
-      "_dialog-6c08dc67.js",
-      "_IconCheck-bd80cdf9.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_floating-ui.react-dom-1aaa1cdb.js"
+      "_menuUser-9beba1b0.js",
+      "_dialog-dc9c9fce.js",
+      "_IconCheck-6cf26aab.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_floating-ui.react-dom-d42afd73.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/roles/make_access.jsx"
   },
   "resources/js/pages/security/index.jsx": {
-    "file": "assets/index-e6915900.js",
+    "file": "assets/index-8762fade.js",
     "imports": [
       "resources/js/app.jsx",
-      "_input-error-f9491367.js",
-      "_input-12b1902d.js",
-      "_label-a9a95fb2.js",
-      "_button-20848f55.js",
-      "_card-9b5db02f.js",
-      "_sheet-c20734bb.js",
-      "_index-d56507d3.js",
-      "_command-54bdc14a.js",
-      "_XMarkIcon-0126569f.js",
-      "_appLayout-496e7447.js",
-      "_dialog-6c08dc67.js",
-      "_IconCheck-bd80cdf9.js",
-      "_index-949d00e4.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-e15d49d8.js",
-      "_index-48297604.js",
-      "_icon-9aa90223.js",
-      "_label-115fc9f3.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_input-error-dd09db86.js",
+      "_input-1f8e6f3f.js",
+      "_label-126fce77.js",
+      "_button-97be9050.js",
+      "_card-56513625.js",
+      "_sheet-b4052007.js",
+      "_index-6787ff80.js",
+      "_command-163565f7.js",
+      "_XMarkIcon-44121970.js",
+      "_appLayout-a5c6949e.js",
+      "_dialog-dc9c9fce.js",
+      "_IconCheck-6cf26aab.js",
+      "_index-4013f90b.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-25a7753e.js",
+      "_index-da9f07e9.js",
+      "_icon-aef33bfa.js",
+      "_label-0d1b40ec.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/security/index.jsx"
   },
   "resources/js/pages/users/index.jsx": {
-    "file": "assets/index-8706bd7a.js",
+    "file": "assets/index-aea8b389.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js",
-      "_sheet-c20734bb.js",
-      "_index-d56507d3.js",
-      "_command-54bdc14a.js",
-      "_XMarkIcon-0126569f.js",
-      "_card-9b5db02f.js",
-      "_sort-indicator-ed67c021.js",
+      "_button-97be9050.js",
+      "_sheet-b4052007.js",
+      "_index-6787ff80.js",
+      "_command-163565f7.js",
+      "_XMarkIcon-44121970.js",
+      "_card-56513625.js",
+      "_sort-indicator-be203ba8.js",
       "resources/js/pages/users/partials/user-list-options.jsx",
-      "_simple-pagination-d51e8fd3.js",
-      "_input-12b1902d.js",
-      "_appLayout-496e7447.js",
-      "_IconCheck-bd80cdf9.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-949d00e4.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-e15d49d8.js",
-      "_index-48297604.js",
-      "_icon-9aa90223.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_index-2f9b48a2.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_simple-pagination-e1f71d56.js",
+      "_input-1f8e6f3f.js",
+      "_appLayout-a5c6949e.js",
+      "_IconCheck-6cf26aab.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-4013f90b.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-25a7753e.js",
+      "_index-da9f07e9.js",
+      "_icon-aef33bfa.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_index-f09d93d9.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/users/index.jsx"
   },
   "resources/js/pages/users/partials/user-list-options.jsx": {
-    "file": "assets/user-list-options-17aefff9.js",
+    "file": "assets/user-list-options-1722947c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js",
-      "_index-d56507d3.js",
-      "_IconCheck-bd80cdf9.js",
-      "_index-074bec93.js",
-      "_icon-9aa90223.js",
-      "_index-949d00e4.js",
-      "_Combination-698d52be.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-e15d49d8.js"
+      "_button-97be9050.js",
+      "_index-6787ff80.js",
+      "_IconCheck-6cf26aab.js",
+      "_index-593ce885.js",
+      "_icon-aef33bfa.js",
+      "_index-4013f90b.js",
+      "_Combination-17ef7bc8.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-25a7753e.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/users/partials/user-list-options.jsx"
   },
   "resources/js/pages/users/show.jsx": {
-    "file": "assets/show-ed5ffc4d.js",
+    "file": "assets/show-5aea4c64.js",
     "imports": [
       "resources/js/app.jsx",
-      "_button-20848f55.js",
-      "_sheet-c20734bb.js",
-      "_index-d56507d3.js",
-      "_command-54bdc14a.js",
-      "_XMarkIcon-0126569f.js",
-      "_card-9b5db02f.js",
+      "_button-97be9050.js",
+      "_sheet-b4052007.js",
+      "_index-6787ff80.js",
+      "_command-163565f7.js",
+      "_XMarkIcon-44121970.js",
+      "_card-56513625.js",
       "resources/js/pages/users/partials/user-list-options.jsx",
-      "_appLayout-496e7447.js",
-      "_IconCheck-bd80cdf9.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-949d00e4.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_index-e15d49d8.js",
-      "_index-48297604.js",
-      "_icon-9aa90223.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_menuadministrator-e67d6ec0.js",
-      "_menuUser-a990cc49.js",
+      "_appLayout-a5c6949e.js",
+      "_IconCheck-6cf26aab.js",
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-4013f90b.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_index-25a7753e.js",
+      "_index-da9f07e9.js",
+      "_icon-aef33bfa.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_menuadministrator-22f7a153.js",
+      "_menuUser-9beba1b0.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/users/show.jsx"
   },
   "resources/js/pages/websites/create.jsx": {
-    "file": "assets/create-f99e813a.js",
+    "file": "assets/create-8ce9d9e9.js",
     "imports": [
       "resources/js/app.jsx",
-      "_app-layout-406844f7.js",
-      "_card-9b5db02f.js",
-      "_icon-9aa90223.js",
-      "_IconCheck-bd80cdf9.js",
-      "_XMarkIcon-0126569f.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_menuadministrator-e67d6ec0.js",
+      "_app-layout-61cc1fe1.js",
+      "_card-56513625.js",
+      "_icon-aef33bfa.js",
+      "_IconCheck-6cf26aab.js",
+      "_XMarkIcon-44121970.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_menuadministrator-22f7a153.js",
       "_logo_eagle_media_informatika-285b6851.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/websites/create.jsx"
   },
   "resources/js/pages/websites/index.jsx": {
-    "file": "assets/index-5fd6648d.js",
+    "file": "assets/index-0984ae8a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_app-layout-406844f7.js",
-      "_card-9b5db02f.js",
-      "_sort-indicator-ed67c021.js",
-      "_input-12b1902d.js",
-      "_icon-9aa90223.js",
-      "_XMarkIcon-0126569f.js",
-      "_IconCheck-bd80cdf9.js",
-      "_index-949d00e4.js",
-      "_label-115fc9f3.js",
-      "_dialog-6c08dc67.js",
-      "_floating-ui.react-dom-1aaa1cdb.js",
-      "_menuadministrator-e67d6ec0.js",
+      "_app-layout-61cc1fe1.js",
+      "_card-56513625.js",
+      "_sort-indicator-be203ba8.js",
+      "_input-1f8e6f3f.js",
+      "_icon-aef33bfa.js",
+      "_XMarkIcon-44121970.js",
+      "_IconCheck-6cf26aab.js",
+      "_index-4013f90b.js",
+      "_label-0d1b40ec.js",
+      "_dialog-dc9c9fce.js",
+      "_floating-ui.react-dom-d42afd73.js",
+      "_menuadministrator-22f7a153.js",
       "_logo_eagle_media_informatika-285b6851.js",
-      "_react-icons.esm-a3f213c7.js",
-      "_index-074bec93.js",
-      "_Combination-698d52be.js",
-      "_index-2f9b48a2.js",
-      "_index-48297604.js"
+      "_react-icons.esm-0ad181dd.js",
+      "_index-593ce885.js",
+      "_Combination-17ef7bc8.js",
+      "_index-f09d93d9.js",
+      "_index-da9f07e9.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/pages/websites/index.jsx"

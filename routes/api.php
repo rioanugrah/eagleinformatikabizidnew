@@ -18,5 +18,7 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
     Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         return $request->user();
     });
+    Route::post('midtrans/payment', [App\Http\Controllers\Payment\PaymentMidtransController::class, 'test']);
+
     Route::post('callback', [App\Http\Controllers\Payment\TripayController::class, 'handle']);
 });
