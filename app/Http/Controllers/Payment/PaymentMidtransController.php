@@ -334,7 +334,7 @@ class PaymentMidtransController extends Controller
         //     return response()->json(['message' => 'Invalid signature key'], 403);
         // }
 
-        return response()->json(['message' => 'Webhook processed successfully']);
+        // return response()->json(['message' => 'Webhook processed successfully']);
 
         if ($hashed == $request->signature_key) {
             $billing = $this->billings->where('billing_code',$request->order_id)->first();
