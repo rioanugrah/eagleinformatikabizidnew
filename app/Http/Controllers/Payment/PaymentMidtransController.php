@@ -341,17 +341,17 @@ class PaymentMidtransController extends Controller
             $billing->update([
                 'status' => 'PAID'
             ]);
-            // $billing->invoice->update([
-            //     'status' => 'PAID'
-            // ]);
+            $billing->invoice->update([
+                'status' => 'PAID'
+            ]);
         }else{
             $billing = $this->billings->where('billing_code',$request->order_id)->first();
             $billing->update([
                 'status' => 'NOTPAID'
             ]);
-            // $billing->invoice->update([
-            //     'status' => 'NOTPAID'
-            // ]);
+            $billing->invoice->update([
+                'status' => 'NOTPAID'
+            ]);
         }
 
         // return response()->json(['success' => 'Callback received successfully']);

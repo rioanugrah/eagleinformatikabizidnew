@@ -44,27 +44,27 @@ export default function Index(props) {
     const onPressPay = async () => {
         setLoading(true);
         window.snap.pay(props.billing.billing_references, {
-            onSuccess: () => {
+            onSuccess: (result) => {
                 console.log('success');
-                // alert('Payment Success');
+                alert('Payment Success');
                 router.get(route('dashboard'));
                 setLoading(false);
             },
             onPending: (result) => {
                 console.log('pending transaction', result);
-                // alert('Payment Pending');
+                alert('Payment Pending');
                 router.get(route('dashboard'));
                 setLoading(false);
             },
             onError: (result) => {
                 console.log('error transaction', result);
-                // alert('Payment Error');
+                alert('Payment Error');
                 router.get(route('dashboard'));
                 setLoading(false);
             },
             onClose: () => {
                 console.log('customer close the popup window without the finishing the payment');
-                // alert('customer close the popup window without the finishing the payment');
+                alert('customer close the popup window without the finishing the payment');
                 router.get(route('dashboard'));
                 setLoading(false);
             },
