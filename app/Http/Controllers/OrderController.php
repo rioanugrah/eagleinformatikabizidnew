@@ -255,6 +255,7 @@ class OrderController extends Controller
             $request->lastName,
             $request->email,
             $request->phone,
+            $input['billing_code'],
             auth()->user()->id,
             $items,
             $request->tax,
