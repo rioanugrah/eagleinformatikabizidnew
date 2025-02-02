@@ -166,7 +166,7 @@ export default function DashboardAdmin(props, { auth }) {
             <Card className='mt-8'>
                 <CardHeader className='font-bold'>Total Penjualan</CardHeader>
                 <CardContent>
-                    <Button onClick={onPressPay}>{loading ? 'Loading...' : 'Pay Now'}</Button>
+                    {/* <Button onClick={onPressPay}>{loading ? 'Loading...' : 'Pay Now'}</Button> */}
                     <BarChart
                         series={[{ data: total_penjualan.map((item, i) => item.data) }]}
                         height={350}

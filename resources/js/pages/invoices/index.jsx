@@ -78,7 +78,7 @@ export default function Index(props) {
             },
             onClose: () => {
                 console.log('customer close the popup window without the finishing the payment');
-                alert('customer close the popup window without the finishing the payment');
+                // alert('customer close the popup window without the finishing the payment');
                 router.get(route('dashboard'));
                 setLoading(false);
             },
