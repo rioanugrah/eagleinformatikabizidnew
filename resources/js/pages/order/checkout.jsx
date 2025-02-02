@@ -5,6 +5,8 @@ import { Bars3Icon, MagnifyingGlassIcon, QuestionMarkCircleIcon, ShoppingBagIcon
 import { CheckCircleIcon, ChevronDownIcon, TrashIcon } from '@heroicons/react/20/solid';
 import CardItem from './cardItem';
 import { router, usePage } from '@inertiajs/react';
+import Swal from 'sweetalert2';
+
 
 export default function Checkout(props, { initialItems }) {
     // const paymentMethod = props.channels;
@@ -49,9 +51,9 @@ export default function Checkout(props, { initialItems }) {
         setItems(newItems);
         // console.log(id+" "+newQty);
     };
-    const ppn = '11%';
+    const ppn = `(${props.ppn.ppn_name})`;
     const total = items.reduce((total, item) => total + item.quantity * item.amount, 0);
-    const hitung_ppn = 0.11 * total;
+    const hitung_ppn = props.ppn.ppn_nominal * total;
     // const hitung_ppn = ((0.11 * 0.1)*(total+selectedPaymentMethod.total_fee.flat));
     // const sub_total = total;
     const sub_total = total + hitung_ppn;
@@ -61,37 +63,58 @@ export default function Checkout(props, { initialItems }) {
         e.preventDefault();
         setLoading(true);
 
-        router.post(
-            route('order.buy.checkout',props.invoice.id),
-            {
-                invoice_id: props.invoice.id,
-                items: items,
-                // amount: sub_total,
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                company: company,
-                address: address,
-                city: city,
-                country: country,
-                state: state,
-                postal_code: postalCode,
-                phone: phone,
-                // method: selectedPaymentMethod.code,
-                tax: hitung_ppn,
-                // admin_fee: selectedPaymentMethod.total_fee.flat,
-                sub_total: sub_total,
-                status: 'UNPAID',
-            },
-            {
-                onFinish: (response) => {
-                    setLoading(false);
-                    // window.open(response);
-                    console.log(response);
-                    // alert('ok');
-                },
-            },
-        );
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Confirm!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+            //   Swal.fire({
+            //     title: "Deleted!",
+            //     text: "Your file has been deleted.",
+            //     icon: "success"
+            //   });
+
+                router.post(
+                    route('order.buy.checkout',props.invoice.id),
+                    {
+                        invoice_id: props.invoice.id,
+                        items: items,
+                        // amount: sub_total,
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        company: company,
+                        address: address,
+                        city: city,
+                        country: country,
+                        state: state,
+                        postal_code: postalCode,
+                        phone: phone,
+                        // method: selectedPaymentMethod.code,
+                        tax: hitung_ppn,
+                        // admin_fee: selectedPaymentMethod.total_fee.flat,
+                        sub_total: sub_total,
+                        status: 'UNPAID',
+                    },
+                    {
+                        onFinish: (response) => {
+                            setLoading(false);
+                            // window.open(response);
+                            // console.log(response);
+                            // alert('ok');
+                        },
+                    },
+                );
+
+            }else{
+                setLoading(false);
+            }
+        });
     };
     return (
         <main className='mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 lg:px-8'>
@@ -107,9 +130,17 @@ export default function Checkout(props, { initialItems }) {
                                     <label htmlFor='first-name' className='block text-sm font-medium text-gray-700'>
                                         First name
                                     </label>
-                                    <div className='mt-1'>
-                                        <input id='first-name' type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} autoComplete='first-name' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                    </div>
+                                    {
+                                        loading ?
+                                        <div className='mt-1'>
+                                            <input id='first-name' type='text' readOnly value={firstName} onChange={(e) => setFirstName(e.target.value)} autoComplete='first-name' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                        :
+                                        <div className='mt-1'>
+                                            <input id='first-name' type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} autoComplete='first-name' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+
+                                    }
                                     {errors.firstName && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.firstName}</p>}
                                 </div>
 
@@ -117,9 +148,17 @@ export default function Checkout(props, { initialItems }) {
                                     <label htmlFor='last-name' className='block text-sm font-medium text-gray-700'>
                                         Last name
                                     </label>
-                                    <div className='mt-1'>
-                                        <input id='last-name' type='text' value={lastName} onChange={(e) => setlastName(e.target.value)} autoComplete='last-name' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                    </div>
+                                    {
+                                        loading ?
+                                        <div className='mt-1'>
+                                            <input id='last-name' type='text' readOnly value={lastName} onChange={(e) => setlastName(e.target.value)} autoComplete='last-name' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                        :
+                                        <div className='mt-1'>
+                                            <input id='last-name' type='text' value={lastName} onChange={(e) => setlastName(e.target.value)} autoComplete='last-name' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+
+                                    }
                                     {errors.lastName && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.lastName}</p>}
                                 </div>
 
@@ -127,9 +166,16 @@ export default function Checkout(props, { initialItems }) {
                                     <label htmlFor='email' className='block text-sm font-medium text-gray-700'>
                                         Email
                                     </label>
-                                    <div className='mt-1'>
-                                        <input id='email' type='email' value={email} onChange={(e) => setEmail(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                    </div>
+                                    {
+                                        loading ?
+                                        <div className='mt-1'>
+                                            <input id='email' type='email' readOnly value={email} onChange={(e) => setEmail(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                        :
+                                        <div className='mt-1'>
+                                            <input id='email' type='email' value={email} onChange={(e) => setEmail(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                    }
                                     {errors.email && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.email}</p>}
                                 </div>
 
@@ -137,9 +183,16 @@ export default function Checkout(props, { initialItems }) {
                                     <label htmlFor='company' className='block text-sm font-medium text-gray-700'>
                                         Company
                                     </label>
-                                    <div className='mt-1'>
-                                        <input id='company' type='text' value={company} onChange={(e) => setCompany(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                    </div>
+                                    {
+                                        loading ?
+                                        <div className='mt-1'>
+                                            <input id='company' type='text' readOnly value={company} onChange={(e) => setCompany(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                        :
+                                        <div className='mt-1'>
+                                            <input id='company' type='text' value={company} onChange={(e) => setCompany(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                    }
                                     {errors.company && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.company}</p>}
                                 </div>
 
@@ -147,9 +200,16 @@ export default function Checkout(props, { initialItems }) {
                                     <label htmlFor='address' className='block text-sm font-medium text-gray-700'>
                                         Address
                                     </label>
-                                    <div className='mt-1'>
-                                        <input id='address' value={address} onChange={(e) => setAddress(e.target.value)} type='text' autoComplete='street-address' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                    </div>
+                                    {
+                                        loading ?
+                                        <div className='mt-1'>
+                                            <input id='address' value={address} readOnly onChange={(e) => setAddress(e.target.value)} type='text' autoComplete='street-address' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                        :
+                                        <div className='mt-1'>
+                                            <input id='address' value={address} onChange={(e) => setAddress(e.target.value)} type='text' autoComplete='street-address' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                    }
                                     {errors.address && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.address}</p>}
                                 </div>
 
@@ -157,9 +217,16 @@ export default function Checkout(props, { initialItems }) {
                                     <label htmlFor='city' className='block text-sm font-medium text-gray-700'>
                                         City
                                     </label>
-                                    <div className='mt-1'>
-                                        <input id='city' type='text' value={city} onChange={(e) => setCity(e.target.value)} autoComplete='address-level2' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                    </div>
+                                    {
+                                        loading ?
+                                        <div className='mt-1'>
+                                            <input id='city' type='text' value={city} onChange={(e) => setCity(e.target.value)} autoComplete='address-level2' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                        :
+                                        <div className='mt-1'>
+                                            <input id='city' type='text' value={city} onChange={(e) => setCity(e.target.value)} autoComplete='address-level2' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                    }
                                     {errors.city && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.city}</p>}
                                 </div>
 
@@ -167,11 +234,12 @@ export default function Checkout(props, { initialItems }) {
                                     <label htmlFor='country' className='block text-sm font-medium text-gray-700'>
                                         Country
                                     </label>
+
                                     <div className='mt-1'>
                                         <select id='country' value={country} onChange={(e) => setCountry(e.target.value)} autoComplete='country-name' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
-                                            <option>Select Country</option>
-                                            <option>English</option>
-                                            <option>Indonesia</option>
+                                            <option value={''}>Select Country</option>
+                                            <option value={'English'}>English</option>
+                                            <option value={'Indonesia'}>Indonesia</option>
                                         </select>
                                     </div>
                                     {errors.country && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.country}</p>}
@@ -181,9 +249,16 @@ export default function Checkout(props, { initialItems }) {
                                     <label htmlFor='region' className='block text-sm font-medium text-gray-700'>
                                         State / Province
                                     </label>
-                                    <div className='mt-1'>
-                                        <input id='region' type='text' value={state} onChange={(e) => setState(e.target.value)} autoComplete='address-level1' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                    </div>
+                                    {
+                                        loading ?
+                                        <div className='mt-1'>
+                                            <input id='region' type='text' readOnly value={state} onChange={(e) => setState(e.target.value)} autoComplete='address-level1' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                        :
+                                        <div className='mt-1'>
+                                            <input id='region' type='text' value={state} onChange={(e) => setState(e.target.value)} autoComplete='address-level1' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                    }
                                     {errors.state && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.state}</p>}
                                 </div>
 
@@ -191,9 +266,16 @@ export default function Checkout(props, { initialItems }) {
                                     <label htmlFor='postal-code' className='block text-sm font-medium text-gray-700'>
                                         Postal code
                                     </label>
-                                    <div className='mt-1'>
-                                        <input id='postal-code' type='text' value={postalCode} onChange={(e) => setPostalCode(e.target.value)} autoComplete='postal-code' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                    </div>
+                                    {
+                                        loading ?
+                                        <div className='mt-1'>
+                                            <input id='postal-code' readOnly type='text' value={postalCode} onChange={(e) => setPostalCode(e.target.value)} autoComplete='postal-code' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                        :
+                                        <div className='mt-1'>
+                                            <input id='postal-code' type='text' value={postalCode} onChange={(e) => setPostalCode(e.target.value)} autoComplete='postal-code' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                    }
                                     {errors.postal_code && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.postal_code}</p>}
                                 </div>
 
@@ -201,9 +283,16 @@ export default function Checkout(props, { initialItems }) {
                                     <label htmlFor='phone' className='block text-sm font-medium text-gray-700'>
                                         Phone
                                     </label>
-                                    <div className='mt-1'>
-                                        <input id='phone' type='number' value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete='tel' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                    </div>
+                                    {
+                                        loading ?
+                                        <div className='mt-1'>
+                                            <input id='phone' type='number' readOnly value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete='tel' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                        :
+                                        <div className='mt-1'>
+                                            <input id='phone' type='number' value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete='tel' className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                        </div>
+                                    }
                                     {errors.phone && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.phone}</p>}
                                 </div>
                             </div>

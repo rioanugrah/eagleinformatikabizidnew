@@ -16,6 +16,7 @@ use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\WebsitesController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\PpnController;
 
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
@@ -112,6 +113,17 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
                 Route::get('{id}', 'edit')->middleware(['verified'])->name('products.edit');
                 Route::post('{id}/update', 'update')->middleware(['verified'])->name('products.update');
                 Route::delete('{id}/delete', 'destroy')->middleware(['verified'])->name('products.destroy');
+            });
+        });
+
+        Route::controller(PpnController::class)->group(function () {
+            Route::prefix('ppns')->group(function(){
+                Route::get('/', 'index')->middleware(['verified'])->name('ppns.index');
+                Route::get('create', 'create')->middleware(['verified'])->name('ppns.create');
+                Route::post('store', 'store')->middleware(['verified'])->name('ppns.store');
+                Route::get('{id}', 'edit')->middleware(['verified'])->name('ppns.edit');
+                Route::post('{id}/update', 'update')->middleware(['verified'])->name('ppns.update');
+                Route::delete('{id}/delete', 'destroy')->middleware(['verified'])->name('ppns.destroy');
             });
         });
 

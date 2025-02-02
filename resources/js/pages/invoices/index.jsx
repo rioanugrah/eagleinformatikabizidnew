@@ -1,10 +1,12 @@
 import AppLayout from '@/Layouts/appLayout';
 import { PaperClipIcon } from '@heroicons/react/20/solid';
 import { Link } from '@inertiajs/react';
+import { useEffect, useState } from 'react';
 
 export default function Index(props) {
     const billing = props.invoices.billing;
     const billing_buyer = JSON.parse(props.invoices.billing.billing_buyer);
+    const [loading, setLoading] = useState(false);
 
     const format_currency = (number) => {
         return new Intl.NumberFormat('id-ID', {
@@ -12,6 +14,59 @@ export default function Index(props) {
             currency: 'IDR',
         }).format(number);
     };
+
+    useEffect(() => {
+        if (import.meta.env.VITE_MIDTRANS_IS_PRODUCTION == true) {
+        } else {
+            const snapSrcUrl = import.meta.env.VITE_MIDTRANS_URL_SANDBOX;
+
+            const myMidtransClientKey = import.meta.env.VITE_MIDTRANS_CLIENT_KEY_SANDBOX; //change this according to your client-key
+
+            const script = document.createElement('script');
+            script.src = snapSrcUrl;
+            script.setAttribute('data-client-key', myMidtransClientKey);
+            script.async = true;
+
+            // console.log(snapSrcUrl);
+
+            document.body.appendChild(script);
+
+            return () => {
+                document.body.removeChild(script);
+            };
+
+        }
+    },[]);
+
+    const onPressPay = async () => {
+        setLoading(true);
+        window.snap.pay(billing.billing_references, {
+            onSuccess: (result) => {
+                // console.log('success');
+                alert('Payment Success');
+                router.get(route('dashboard'));
+                setLoading(false);
+            },
+            onPending: (result) => {
+                // console.log('pending transaction', result);
+                alert('Payment Pending');
+                router.get(route('dashboard'));
+                setLoading(false);
+            },
+            onError: (result) => {
+                // console.log('error transaction', result);
+                alert('Payment Error');
+                router.get(route('dashboard'));
+                setLoading(false);
+            },
+            onClose: () => {
+                console.log('customer close the popup window without the finishing the payment');
+                alert('customer close the popup window without the finishing the payment');
+                router.get(route('dashboard'));
+                setLoading(false);
+            },
+        });
+    }
 
     return (
         <>
@@ -94,7 +149,8 @@ export default function Index(props) {
             <Link href={route('order.index')} className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Back</Link>
             {
                 billing.status == 'UNPAID' &&
-                <a href={props.invoices.billing.billing_link_payment} className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>Pay Now</a>
+                <button onClick={onPressPay} className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>Pay Now</button>
+                // <a href={props.invoices.billing.billing_link_payment} className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>Pay Now</a>
             }
         </>
     );

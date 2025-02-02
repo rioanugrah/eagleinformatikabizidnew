@@ -14,6 +14,7 @@ use App\Models\Products;
 use App\Models\Invoices;
 use App\Models\InvoicesDetail;
 use App\Models\Billings;
+use App\Models\Ppn;
 use \Carbon\Carbon;
 use Validator;
 use DB;
@@ -26,7 +27,8 @@ class OrderController extends Controller
         Products $product,
         Invoices $invoices,
         InvoicesDetail $invoices_detail,
-        Billings $billings
+        Billings $billings,
+        Ppn $ppn
     ){
         $this->middleware('permission:Order List', ['only' => ['index']]);
         $this->middleware('permission:Order Create', ['only' => ['create']]);
@@ -39,6 +41,7 @@ class OrderController extends Controller
         $this->invoices = $invoices;
         $this->invoices_detail = $invoices_detail;
         $this->billings = $billings;
+        $this->ppn = $ppn;
 
         $this->max_amount = 10000000;
     }
@@ -81,6 +84,7 @@ class OrderController extends Controller
             $invoices = $this->invoices->where('status','OPEN')
                                         ->where('user_id',auth()->user()->id)
                                         ->first();
+                                        // dd($invoices);
             if (empty($invoices)) {
 
                 $input['id'] = Str::uuid()->toString();
@@ -89,9 +93,17 @@ class OrderController extends Controller
                 $input['status'] = 'OPEN';
                 $input['sub_amount'] = 0;
 
+                $product = $this->product->find($id);
+
+                // dd($product);
+
+                if ($product->product_stock <= 0) {
+                    return back()->with(['error' => $product->product_name.' is Sold Out']);
+                    // dd('ok');
+                }
+
                 $this->invoices->create($input);
 
-                $product = $this->product->find($id);
                 $this->invoices_detail->create([
                     'id' => Str::uuid()->toString(),
                     'invoice_id' => $input['id'],
@@ -104,6 +116,12 @@ class OrderController extends Controller
                 $product->update();
             }else{
                 $product = $this->product->find($id);
+
+                if ($product->product_stock <= 0) {
+                    // dd('ok');
+                    return back()->with(['error' => $product->product_name.' is Sold Out']);
+                }
+
                 $this->invoices_detail->create([
                     'id' => Str::uuid()->toString(),
                     'invoice_id' => $invoices->id,
@@ -133,8 +151,10 @@ class OrderController extends Controller
             return back()->with(['error' => 'Data Tidak Ditemukan']);
         }
 
-        $tripay = $this->tripay;
-        $data['channels'] = json_decode($tripay->getPayment())->data;
+        $data['ppn'] = $this->ppn->select('ppn_name','ppn_nominal')->where('status','Aktif')->first();
+
+        // $tripay = $this->tripay;
+        // $data['channels'] = json_decode($tripay->getPayment())->data;
         // dd($data);
         return inertia('order/checkout',$data);
     }

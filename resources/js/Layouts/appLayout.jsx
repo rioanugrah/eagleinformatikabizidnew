@@ -87,10 +87,22 @@ export default function AppLayout({ title, children }) {
                         <div aria-hidden='true' className='h-6 w-px bg-gray-200 lg:hidden' />
                         <div className='flex flex-1 gap-x-4 self-stretch lg:gap-x-6'>
                             <div className='flex items-center gap-x-4 lg:gap-x-6'>
-                                <button type='button' className='-m-2.5 p-2.5 text-gray-400 hover:text-gray-500'>
+                                <button type='button' className='relative rounded-full border-2 border-transparent px-1 py-4 text-gray-800 transition duration-150 ease-in-out hover:text-gray-400 focus:text-gray-500 focus:outline-none' aria-label='Cart'>
+                                    <Icon icon={'IconShoppingCart'} />
+                                    <span className='absolute inset-0 -mr-6 object-right-top'>
+                                        <div className='inline-flex items-center rounded-full border-2 border-white bg-red-500 px-1.5 py-0.5 text-xs font-semibold leading-4 text-white'>0</div>
+                                    </span>
+                                </button>
+                                <button type='button' className='relative rounded-full border-2 border-transparent px-1 py-4 text-gray-800 transition duration-150 ease-in-out hover:text-gray-400 focus:text-gray-500 focus:outline-none' aria-label='Cart'>
+                                    <Icon icon={'IconBell'} />
+                                    <span className='absolute inset-0 -mr-6 object-right-top'>
+                                        <div className='inline-flex items-center rounded-full border-2 border-white bg-red-500 px-1.5 py-0.5 text-xs font-semibold leading-4 text-white'>0</div>
+                                    </span>
+                                </button>
+                                {/* <button type='button' className='-m-2.5 p-2.5 text-gray-400 hover:text-gray-500'>
                                     <span className='sr-only'>View notifications</span>
                                     <Icon icon={'IconBell'} />
-                                </button>
+                                </button> */}
                                 <div aria-hidden='true' className='hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200' />
                                 <Menu as='div' className='relative'>
                                     <Menu.Button className='-m-1.5 flex items-center p-1.5'>

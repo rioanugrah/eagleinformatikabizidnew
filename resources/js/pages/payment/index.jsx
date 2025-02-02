@@ -45,19 +45,19 @@ export default function Index(props) {
         setLoading(true);
         window.snap.pay(props.billing.billing_references, {
             onSuccess: (result) => {
-                console.log('success');
+                // console.log('success');
                 alert('Payment Success');
                 router.get(route('dashboard'));
                 setLoading(false);
             },
             onPending: (result) => {
-                console.log('pending transaction', result);
+                // console.log('pending transaction', result);
                 alert('Payment Pending');
                 router.get(route('dashboard'));
                 setLoading(false);
             },
             onError: (result) => {
-                console.log('error transaction', result);
+                // console.log('error transaction', result);
                 alert('Payment Error');
                 router.get(route('dashboard'));
                 setLoading(false);
