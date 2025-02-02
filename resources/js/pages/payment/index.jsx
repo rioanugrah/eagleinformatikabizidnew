@@ -19,7 +19,7 @@ export default function Index(props) {
     const billingBuyer = JSON.parse(props.billing.billing_buyer);
 
     useEffect(() => {
-        if (import.meta.env.VITE_MIDTRANS_IS_PRODUCTION == true) {
+        if (import.meta.env.VITE_MIDTRANS_IS_PRODUCTION == 'true') {
             const snapSrcUrl = import.meta.env.VITE_MIDTRANS_URL_PRODUCTION;
 
             const myMidtransClientKey = import.meta.env.VITE_MIDTRANS_CLIENT_KEY_PRODUCTION; //change this according to your client-key

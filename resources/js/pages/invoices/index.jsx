@@ -16,7 +16,7 @@ export default function Index(props) {
     };
 
     useEffect(() => {
-        if (import.meta.env.VITE_MIDTRANS_IS_PRODUCTION == true) {
+        if (import.meta.env.VITE_MIDTRANS_IS_PRODUCTION == 'true') {
             const snapSrcUrl = import.meta.env.VITE_MIDTRANS_URL_PRODUCTION;
 
             const myMidtransClientKey = import.meta.env.VITE_MIDTRANS_CLIENT_KEY_PRODUCTION; //change this according to your client-key
@@ -33,6 +33,7 @@ export default function Index(props) {
             return () => {
                 document.body.removeChild(script);
             };
+
         } else {
             const snapSrcUrl = import.meta.env.VITE_MIDTRANS_URL_SANDBOX;
 
