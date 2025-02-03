@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Billings;
+use App\Models\Invoices;
+use App\Models\InvoicesDetail;
 
 use \Carbon\Carbon;
 use \Carbon\CarbonPeriod;
@@ -19,9 +21,30 @@ class DashboardController extends Controller
     // }
 
     function __construct(
-        Billings $billings
+        Billings $billings,
+        Invoices $invoices,
+        InvoicesDetail $invoicesDetail
     ){
         $this->billings = $billings;
+        $this->invoices = $invoices;
+        $this->invoices_detail = $invoicesDetail;
+    }
+
+    public function cart()
+    {
+        $invoices = $this->invoices->where('user_id',auth()->user()->id)
+                                ->where('status','OPEN')
+                                ->first();
+        $invoicesDetail = $this->invoices_detail->where('invoice_id',$invoices->id)->count();
+        // $invoices = $this->invoices_detail->with('invoice')->whereHas('invoice', function($query){
+        //                                     $query->where('user_id',auth()->user()->id)
+        //                                         ->where('status','OPEN');
+        //                                 })->get();
+        // dd($invoices);
+        return response()->json([
+            'url' => route('order.checkout',['id' => $invoices->id]),
+            'total_cart' => $invoicesDetail
+        ]);
     }
 
     public function index()

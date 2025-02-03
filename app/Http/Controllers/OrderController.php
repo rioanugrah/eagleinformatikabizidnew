@@ -314,6 +314,8 @@ class OrderController extends Controller
             return back()->with(['errors' => 'Payment Tidak Ditemukan']);
         }
 
+        $data['ppn'] = $this->ppn->select('ppn_name','ppn_nominal')->where('status','Aktif')->first();
+
         return inertia('payment/index',$data);
     }
 }

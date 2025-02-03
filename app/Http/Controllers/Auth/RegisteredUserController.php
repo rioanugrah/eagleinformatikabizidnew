@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): Response
     {
-        // return Inertia::render('auth/register');
+        return Inertia::render('auth/register');
     }
 
     /**
@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $user->assignRole(1);
+        $user->assignRole(2);
 
         event(new Registered($user));
 

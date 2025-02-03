@@ -13,7 +13,7 @@ export default function Index(props) {
         }).format(number);
     };
 
-    const ppn = '11%';
+    const ppn = `(${props.ppn.ppn_name})`;
 
     // const total = parseFloat(props.billing.sub_total) + parseFloat(props.billing.tax);
     const billingBuyer = JSON.parse(props.billing.billing_buyer);

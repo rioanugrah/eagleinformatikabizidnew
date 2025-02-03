@@ -33,6 +33,7 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
 
     Route::middleware('auth')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['verified'])->name('dashboard');
+        Route::get('cart', [DashboardController::class, 'cart'])->middleware(['verified'])->name('cart');
 
         Route::controller(OrderController::class)->group(function () {
             Route::prefix('order')->group(function(){
