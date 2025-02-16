@@ -1,44 +1,88 @@
 import AppLayout from '@/Layouts/administrator/app-layout';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/card';
 
-import { Link, router, usePage } from '@inertiajs/react';
+import { Link, router, useForm, usePage } from '@inertiajs/react';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
 
 export default function Edit(props) {
     const { errors, auth } = usePage().props;
-    const [product_category, setProductCategory] = useState(props.product.categories_id);
-    const [product_name, setProductName] = useState(props.product.product_name);
-    const [product_description, setProductDescription] = useState(props.product.product_description);
-    const [product_price, setProductPrice] = useState(props.product.product_price);
-    const [product_profit_price, setProductProfitPrice] = useState(props.product.product_profit_price);
-    const [product_stock, setProductStock] = useState(props.product.product_stock);
-    const [product_periode, setProductPeriode] = useState(props.product.product_periode);
-    const [product_status, setProductStatus] = useState(props.product.status);
     const [loading, setLoading] = useState(false);
+
+    const [progress, setProgress] = useState(0);
+
+    const { data, setData, post } = useForm({
+        // title: '',
+        // avatar: null,
+        category_id: props.product.category_id,
+        title: props.product.title,
+        picture: null,
+        description: props.product.description,
+        price: props.product.price,
+        quantity: props.product.quantity,
+        tag: props.product.tag,
+        is_product_digital: props.product.is_product_digital,
+        files: '',
+        status: props.product.status,
+    });
+
+    const [category_digital, setCategoryDigital] = useState('');
 
     const handlerSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
 
-        router.post(
-            route('products.update', [props.product.id]),
-            {
-                categories_id: product_category,
-                product_name: product_name,
-                product_description: product_description,
-                product_price: product_price,
-                product_profit_price: product_profit_price,
-                product_stock: product_stock,
-                product_periode: product_periode,
-                status: product_status,
-            },
-            {
-                onFinish: () => {
-                    setLoading(false);
-                    // alert('ok');
-                },
-            },
-        );
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Submit!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //   Swal.fire({
+                //     title: "Deleted!",
+                //     text: "Your file has been deleted.",
+                //     icon: "success"
+                //   });
+                const upload_images = e.target.images.files[0];
+                const files = data.is_product_digital == 'Y' ? e.target.files.files[0] : '';
+                // console.log(files);
+
+                const formData = new FormData();
+                formData.append('category_id', data.category_id);
+                formData.append('title', data.title);
+                formData.append('description', data.description);
+                formData.append('price', data.price);
+                formData.append('quantity', data.quantity);
+                formData.append('tag', data.tag);
+                formData.append('is_product_digital', data.is_product_digital);
+                formData.append('picture', upload_images);
+                formData.append('files', files);
+                formData.append('status', data.status);
+
+                router.post(route('products.update', props.product.id), formData, {
+                    onFinish: () => {
+                        setLoading(false);
+                        // alert('ok');
+                    },
+                });
+                // axios.post(route('products.store'), formData,{
+                //     onUploadProgress: (progressEvent) => {
+                //         const percentComplete = Math.round(
+                //             (progressEvent.loaded * 100) / progressEvent.total
+                //         );
+                //         setProgress(percentComplete);
+                //     }
+                // });
+
+                // console.log(progress);
+            } else {
+                setLoading(false);
+            }
+        });
     };
 
     return (
@@ -49,67 +93,91 @@ export default function Edit(props) {
                 </CardHeader>
                 <form onSubmit={handlerSubmit}>
                     <CardContent>
-                        <div className='mb-3'>
-                            <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Product Name</label>
-                            <input type='text' placeholder='Name' value={product_name} onChange={(e) => setProductName(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                            {errors.product_name && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.product_name}</p>}
+                        <div className='mb-6 grid gap-6 md:grid-cols-2'>
+                            <div className='mb-3'>
+                                <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Product Name</label>
+                                <input type='text' placeholder='Name' value={data.title} onChange={(e) => setData('title', e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                {errors.title && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.title}</p>}
+                            </div>
                         </div>
                         <div className='mb-3'>
                             <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Product Description</label>
-                            <textarea value={product_description} onChange={(e) => setProductDescription(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                            {errors.product_description && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.product_description}</p>}
+                            <textarea value={data.description} onChange={(e) => setData('description', e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' rows={10} />
+                            {errors.description && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.description}</p>}
                         </div>
-                        <div className="grid gap-6 mb-6 md:grid-cols-2">
+                        <div className='mb-6 grid gap-6 md:grid-cols-2'>
                             <div>
                                 <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Category Product</label>
-                                <select value={product_category} onChange={(e) => setProductCategory(e.target.value)} class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
+                                <select value={data.category_id} onChange={(e) => setData('category_id', e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
                                     <option selected>-- Select Category --</option>
-                                    {
-                                        props.categories.map((category,index) => (
-                                            <option value={category.id}>{category.name}</option>
-                                        ))
-                                    }
+                                    {props.categories.map((category, index) => (
+                                        <option value={category.id}>{category.name}</option>
+                                    ))}
                                 </select>
-                                {errors.categories_id && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.categories_id}</p>}
+                                {errors.category_id && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.category_id}</p>}
                             </div>
                             <div>
-                                <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Product Periode</label>
-                                <select value={product_periode} onChange={(e) => setProductPeriode(e.target.value)} class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
-                                    <option selected>-- Select Periode --</option>
-                                    <option value="Lifetime">Lifetime</option>
-                                    <option value="1">1 Tahun</option>
-                                    <option value="2">2 Tahun</option>
-                                    <option value="3">3 Tahun</option>
+                                <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Is Product Digital?</label>
+                                {/* <select value={category_digital} onChange={(e) => handlerProductDigital(e.target.value)} class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'> */}
+                                <select value={data.is_product_digital} onChange={(e) => setData('is_product_digital', e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
+                                    <option selected>-- Select Product Digital --</option>
+                                    <option value='Y'>Yes</option>
+                                    <option value='N'>No</option>
                                 </select>
-                                {errors.product_periode && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.product_periode}</p>}
+                                {errors.is_product_digital && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.is_product_digital}</p>}
                             </div>
                         </div>
-                        <div className='mb-6 grid gap-6 md:grid-cols-3'>
+                        <div className='mb-6 grid gap-6 md:grid-cols-4'>
                             <div>
                                 <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Product Price</label>
-                                <input type='number' placeholder='Price' value={product_price} onChange={(e) => setProductPrice(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                {errors.product_price && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.product_price}</p>}
-                            </div>
-                            <div>
-                                <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Product Profit Price</label>
-                                <input type='number' placeholder='Profit Price' value={product_profit_price} onChange={(e) => setProductProfitPrice(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                {errors.product_profit_price && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.product_profit_price}</p>}
+                                <input type='number' placeholder='Price' value={data.price} onChange={(e) => setData('price', e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                {errors.price && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.price}</p>}
                             </div>
                             <div>
                                 <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Product Stock</label>
-                                <input type='number' placeholder='Stock' value={product_stock} onChange={(e) => setProductStock(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
-                                {errors.product_stock && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.product_stock}</p>}
+                                <input type='number' placeholder='Stock' value={data.quantity} onChange={(e) => setData('quantity', e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                {errors.quantity && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.quantity}</p>}
+                            </div>
+                            <div className='mb-3'>
+                                <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Upload Image Product Digital</label>
+                                <input type='file' name='images' value={data.picture} onChange={(e) => setData('picture', e.target.value)} className='block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400' />
+                                {errors.picture && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.picture}</p>}
+                            </div>
+                            {data.is_product_digital === 'Y' && (
+                                <div className='mb-3'>
+                                    <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Upload File Product Digital</label>
+                                    <input value={data.files} name='files' onChange={(e) => setData('files', e.target.value)} className='block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400' id='file_input' type='file' />
+                                </div>
+                            )}
+                        </div>
+                        <div className='mb-6 grid gap-6 md:grid-cols-2'>
+                            <div className='mb-3'>
+                                <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Tag Product</label>
+                                <input type='text' placeholder='Tag' value={data.tag} onChange={(e) => setData('tag', e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                                <p id='helper-text-explanation' class='mt-2 text-sm text-gray-500 dark:text-gray-400'>
+                                    Use (,) for multiple tag and not space.
+                                </p>
+                                {errors.tag && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.tag}</p>}
+                            </div>
+                            <div className='mb-3'>
+                                <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Status</label>
+                                <select value={data.status} onChange={(e) => setData('status', e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
+                                    <option selected>-- Select Status --</option>
+                                    <option value='Aktif'>Aktif</option>
+                                    <option value='Nonaktif'>Non Aktif</option>
+                                </select>
+                                {errors.status && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.status}</p>}
                             </div>
                         </div>
-                        <div className='mb-3'>
-                            <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Status</label>
-                            <select value={product_status} onChange={(e) => setProductStatus(e.target.value)} class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
-                                <option selected>-- Select Status --</option>
-                                <option value='Aktif'>Aktif</option>
-                                <option value='Nonaktif'>Non Aktif</option>
-                            </select>
-                            {errors.status && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.status}</p>}
-                        </div>
+                        {/* {progress && (<p>Progress {progress.percentage}</p>)} */}
+                        {/* {progress && (
+                                // <progress value={progress.percentage} max="100">
+                                // {progress.percentage}%
+                                // </progress>
+                                <div class='h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700'>
+                                    <div class='h-2.5 rounded-full bg-blue-600' style='width: 45%'></div>
+                                </div>
+                            )} */}
                     </CardContent>
                     <CardFooter>
                         <Link href={route('products.index')} className='mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700'>

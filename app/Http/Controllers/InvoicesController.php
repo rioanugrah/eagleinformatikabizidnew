@@ -28,6 +28,6 @@ class InvoicesController extends Controller
             return back()->with('errors','Invoice Tidak Ditemukan');
         }
 
-        return inertia('invoices/index',$data);
+        return inertia('invoices/invoice',$data);
     }
 }

@@ -10,11 +10,14 @@ class Categories extends Model
 {
     use SoftDeletes, HasFactory;
     public $table = 'categories';
+    protected $primaryKey = 'id';
+    public $incrementing = false;
     protected $dates = ['deleted_at'];
 
     public $fillable = [
         'id',
         'name',
+        'description',
         'status',
     ];
 }

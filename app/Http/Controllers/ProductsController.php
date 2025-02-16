@@ -11,6 +11,7 @@ use App\Models\Categories;
 use App\Models\Products;
 use \Carbon\Carbon;
 use Validator;
+use File;
 
 class ProductsController extends Controller
 {
@@ -18,10 +19,10 @@ class ProductsController extends Controller
         Categories $categories,
         Products $products
     ){
-        $this->middleware('permission:Products List', ['only' => ['index']]);
-        $this->middleware('permission:Products Create', ['only' => ['create','store']]);
-        $this->middleware('permission:Products Edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:Products Delete', ['only' => ['destroy']]);
+        // $this->middleware('permission:Products List', ['only' => ['index']]);
+        // $this->middleware('permission:Products Create', ['only' => ['create','store']]);
+        // $this->middleware('permission:Products Edit', ['only' => ['edit','update']]);
+        // $this->middleware('permission:Products Delete', ['only' => ['destroy']]);
         $this->categories = $categories;
         $this->products = $products;
     }
@@ -48,7 +49,7 @@ class ProductsController extends Controller
                             )
                             ->paginate($limit)
                             ->withQueryString()
-    );
+        );
 
         return inertia('products/index',[
             'products' => fn () => $products,
@@ -64,27 +65,73 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->server('CONTENT_LENGTH'));
+
+        // dd($request->all());
+
         $request->validate([
-            'product_name' => 'required',
-            'product_description' => 'required',
-            'product_price' => 'required',
-            'product_profit_price' => 'required',
-            'product_stock' => 'required',
-            'product_stock' => 'required',
+            'category_id' => 'required',
+            'title' => 'required',
+            // 'picture' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
+            'tag' => 'required',
+            'is_product_digital' => 'required',
             'status' => 'required'
         ],[
-            'product_name.required' => 'Name is required',
-            'product_description.required' => 'Description is required',
-            'product_price.required' => 'Price is required',
-            'product_profit_price.required' => 'Profit Price is required',
-            'product_stock.required' => 'Stock is required',
+            'category_id.required' => 'Category is required',
+            'title.required' => 'Product Title is required',
+            // 'picture.required' => 'Upload Images is required',
+            'description.required' => 'Description is required',
+            'price.required' => 'Price is required',
+            'quantity.required' => 'Stock is required',
+            'tag.required' => 'Tag is required',
+            'is_product_digital.required' => 'Is Product Digital is required',
             'status' => 'Status is required'
         ]);
 
         $input = $request->all();
 
+        // dd($input);
+
         $input['id'] = Str::uuid()->toString();
-        $input['product_code'] = 'PRD-'.Carbon::today()->format('Y-m-d').'-'.rand(1111,9999);
+        $input['slug'] = Str::slug($request->title);
+
+        if ($request->is_product_digital == 'Y') {
+            $product_code = 'DG';
+        }else{
+            $product_code = 'PRD';
+        }
+
+        $input['product_code'] = $product_code.'-'.Carbon::today()->format('Y-m-d').'-'.rand(1111,9999);
+
+        // dd($input['product_code']);
+        if ($request->file('picture')) {
+            $path = public_path('backend/images/products');
+
+            if(!File::isDirectory($path)){
+                File::makeDirectory($path, 0777, true, true);
+            }
+
+            // dd($request->picture->getClientOriginalExtension());
+            $fileName = time().'.'.$request->file('picture')->getClientOriginalExtension();
+            $request->file('picture')->move($path, $fileName);
+            $input['picture'] = $fileName;
+
+        }
+
+        if ($request->file('files')) {
+            $pathFiles = public_path('backend/berkas/products');
+
+            if(!File::isDirectory($pathFiles)){
+                File::makeDirectory($pathFiles, 0777, true, true);
+            }
+
+            $fileNameFiles = time().'.'.$request->file('files')->getClientOriginalExtension();
+            $request->file('files')->move($pathFiles, $fileNameFiles);
+            $input['files'] = $fileNameFiles;
+        }
 
         $this->products->create($input);
 
@@ -104,26 +151,66 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'product_name' => 'required',
-            'product_description' => 'required',
-            'product_price' => 'required',
-            'product_profit_price' => 'required',
-            'product_stock' => 'required',
+            'category_id' => 'required',
+            'title' => 'required',
+            // 'picture' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
+            'tag' => 'required',
+            'is_product_digital' => 'required',
             'status' => 'required'
         ],[
-            'product_name.required' => 'Name is required',
-            'product_description.required' => 'Description is required',
-            'product_price.required' => 'Price is required',
-            'product_profit_price.required' => 'Profit Price is required',
-            'product_stock.required' => 'Stock is required',
+            'category_id.required' => 'Category is required',
+            'title.required' => 'Product Title is required',
+            // 'picture.required' => 'Upload Images is required',
+            'description.required' => 'Description is required',
+            'price.required' => 'Price is required',
+            'quantity.required' => 'Stock is required',
+            'tag.required' => 'Tag is required',
+            'is_product_digital.required' => 'Is Product Digital is required',
             'status' => 'Status is required'
         ]);
 
         $input = $request->all();
 
-        $this->products->find($id)->update($input);
+        $product = $this->products->find($id);
 
-        return redirect()->route('products.index')->with(['success' => 'Products '.$input['product_name'].' Berhasil Diupdate']);
+        if ($request->picture != 'undefined') {
+            if ($request->file('picture')) {
+                $fileImages = public_path('backend/images/products/'.$product->picture);
+                if(File::exists($fileImages)) {
+                    File::delete($fileImages);
+                }
+
+                $fileName = time().'.'.$request->file('picture')->getClientOriginalExtension();
+                $request->file('picture')->move(public_path('backend/images/products'), $fileName);
+                $input['picture'] = $fileName;
+
+            }
+        }else{
+            $input['picture'] = $product->picture;
+        }
+
+        if ($request->files != 'undefined') {
+            if ($request->file('files')) {
+                $fileImagesFiles = public_path('backend/berkas/products/'.$product->files);
+                if(File::exists($fileImagesFiles)) {
+                    File::delete($fileImagesFiles);
+                }
+
+                $fileNameFiles = time().'.'.$request->file('files')->getClientOriginalExtension();
+                $request->file('files')->move(public_path('backend/berkas/products'), $fileNameFiles);
+                $input['files'] = $fileNameFiles;
+            }
+        }else{
+            $input['files'] = $product->files;
+        }
+
+        $product->update($input);
+        // $this->products->find($id)->update($input);
+
+        return redirect()->route('products.index')->with(['success' => 'Products '.$input['title'].' Berhasil Diupdate']);
     }
 
     public function destroy($id)

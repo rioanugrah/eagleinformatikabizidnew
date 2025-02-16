@@ -1,18 +1,18 @@
 import { Icon } from '@/components/icon';
 import { Head, Link, usePage } from '@inertiajs/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Separator } from '@/components/separator';
 
 import { Dialog, DialogBackdrop, DialogPanel, Menu, MenuButton, MenuItem, MenuItems, TransitionChild } from '@headlessui/react';
 import { Bars3Icon, BellIcon, CalendarIcon, ChartPieIcon, Cog6ToothIcon, DocumentDuplicateIcon, FolderIcon, HomeIcon, UsersIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import MenuAdministrator from './menuadministrator';
+import { ToastContainer, toast } from 'react-toastify';
 
 import logo from '../../../../public/logo/logo_eagle_media_informatika.png';
 
 export default function AppLayout({ title, children }) {
     const [open, setOpen] = useState(false);
-    const { auth } = usePage().props;
     const navigation = [
         { name: 'Dashboard', href: '#', icon: 'IconChartPie3', current: true },
         // { name: 'Team', href: '#', icon: 'IconChartPie3', current: false },
@@ -25,6 +25,17 @@ export default function AppLayout({ title, children }) {
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ');
     }
+
+    const { auth, flash } = usePage().props;
+
+    useEffect(() => {
+        if (flash.message.success) {
+            toast.success(flash.message.success);
+        }
+        if (flash.message.error) {
+            toast.error(flash.message.error);
+        }
+    }, [flash]);
 
     return (
         <>

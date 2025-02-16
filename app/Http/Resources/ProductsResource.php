@@ -13,12 +13,16 @@ class ProductsResource extends JsonResource
         return [
             'id' => $this->id,
             'product_code' => $this->product_code,
-            'product_name' => $this->product_name,
             'category_id' => $this->category->name,
-            'product_price' => 'Rp. '.number_format($this->product_price,0,',','.'),
-            'product_profit_price' => 'Rp. '.number_format($this->product_profit_price,0,',','.'),
-            'product_stock' => $this->product_stock,
-            'product_periode' => $this->product_periode == 'Lifetime' ? 'Lifetime' : $this->product_periode.' Tahun',
+            'title' => $this->title,
+            'picture' => asset('backend/images/products/'.$this->picture),
+            // 'picture' => $this->picture,
+            'description' => $this->description,
+            // 'price' => $this->price,
+            'price' => 'Rp. '.number_format($this->price,0,',','.'),
+            'quantity' => $this->quantity,
+            'is_product_digital' => $this->is_product_digital,
+            'files' => $this->files,
             'status' => $this->status,
         ];
     }

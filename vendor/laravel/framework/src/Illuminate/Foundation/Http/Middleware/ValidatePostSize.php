@@ -24,6 +24,8 @@ class ValidatePostSize
             throw new PostTooLargeException;
         }
 
+        // dd($max);
+
         return $next($request);
     }
 

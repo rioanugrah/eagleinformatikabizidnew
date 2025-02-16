@@ -21,44 +21,27 @@ export default function MenuAdministrator() {
                         Order
                     </Link>
                 </li>
-                <Separator className='!my-4' />
-                <li>
-                    <span className='text-sm'>Categories</span>
-                </li>
-                <li>
-                    <Link href={route('categories.index')} className={classNames(route().current('categories*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
-                        <Icon icon={'IconChartPie3'} />
-                        Category
-                    </Link>
-                </li>
-                <li>
-                    <span className='text-sm'>Products</span>
-                </li>
                 <li>
                     <Link href={route('products.index')} className={classNames(route().current('products*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
                         <Icon icon={'IconChartPie3'} />
                         Products
                     </Link>
                 </li>
-                {/* <li>
-                    <Link href={route('websites.index')} className={classNames(route().current('websites*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
-                        <Icon icon={'IconChartPie3'} />
-                        Websites
-                    </Link>
-                </li> */}
-                <Separator className='!my-4' />
                 <li>
-                    <span className='text-sm'>Payment</span>
-                </li>
-                <li>
-                    <Link href={route('billing.index')} className={classNames(route().current('billing.index*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
+                    <Link href={route('transaction')} className={classNames(route().current('transaction*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
                         <Icon icon={'IconChartPie3'} />
-                        Billing
+                        Transactions
                     </Link>
                 </li>
                 <Separator className='!my-4' />
                 <li>
                     <span className='text-sm'>Management</span>
+                </li>
+                <li>
+                    <Link href={route('categories.index')} className={classNames(route().current('categories*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
+                        <Icon icon={'IconChartPie3'} />
+                        Category
+                    </Link>
                 </li>
                 <li>
                     <Link href={route('ppns.index')} className={classNames(route().current('ppns.index*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>

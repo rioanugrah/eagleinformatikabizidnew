@@ -16,10 +16,10 @@ class CategoriesController extends Controller
     function __construct(
         Categories $categories
     ){
-        $this->middleware('permission:Category List', ['only' => ['index']]);
-        $this->middleware('permission:Category Create', ['only' => ['create','store']]);
-        $this->middleware('permission:Category Edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:Category Delete', ['only' => ['destroy']]);
+        // $this->middleware('permission:Category List', ['only' => ['index']]);
+        // $this->middleware('permission:Category Create', ['only' => ['create','store']]);
+        // $this->middleware('permission:Category Edit', ['only' => ['edit','update']]);
+        // $this->middleware('permission:Category Delete', ['only' => ['destroy']]);
         $this->categories = $categories;
     }
 
@@ -62,13 +62,16 @@ class CategoriesController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'description' => 'required',
             'status' => 'required'
         ],[
-            'name.required' => 'Name is required',
+            'name.required' => 'Category Name is required',
+            'description.required' => 'Description is required',
             'status' => 'Status is required'
         ]);
 
         $input = $request->all();
+        $input['id'] = Str::uuid()->toString();
 
         $this->categories->create($input);
 
@@ -88,9 +91,11 @@ class CategoriesController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'description' => 'required',
             'status' => 'required'
         ],[
-            'name.required' => 'Name is required',
+            'name.required' => 'Category Name is required',
+            'description.required' => 'Description is required',
             'status' => 'Status is required'
         ]);
 

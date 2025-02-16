@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\User;
-use App\Models\Billings;
+use App\Models\Transactions;
 // use App\Models\Order;
 // use App\Models\OrderList;
 // use App\Models\Transactions;
@@ -30,7 +30,7 @@ use DB;
 class PaymentMidtransController extends Controller
 {
     public function __construct(
-        Billings $billings
+        Transactions $transactions
     ){
         // $this->midtrans_is_production = env('MIDTRANS_IS_PRODUCTION');
         if (env('MIDTRANS_IS_PRODUCTION') == true) {
@@ -122,7 +122,7 @@ class PaymentMidtransController extends Controller
         $orderId,
         $user_id,
         $items,
-        $tax,
+        // $tax,
         $adminfee,
         $subtotal
     )
@@ -133,7 +133,7 @@ class PaymentMidtransController extends Controller
         \Midtrans\Config::$is3ds = true;
 
         // $urutan = Order::max('kode_order');
-        DB::beginTransaction();
+        // DB::beginTransaction();
 
         try {
             // $input['id'] = Str::uuid()->toString();
@@ -161,10 +161,11 @@ class PaymentMidtransController extends Controller
                 'gross_amount' => $subtotal,
             ];
 
-            $params['credit_card'] = [
-                'secure' => true
-            ];
-            $params['item_details'] = $items;
+            // $params['credit_card'] = [
+            //     'secure' => true
+            // ];
+
+            // $params['item_details'] = $items;
 
             $params['customer_details'] = [
                 'first_name' => $firsname,
@@ -173,8 +174,11 @@ class PaymentMidtransController extends Controller
                 'phone' => $phone,
             ];
 
-            DB::commit();
+            // dd($params);
+
+            // DB::commit();
             // $snapToken = \Midtrans\Snap::getSnapToken($params);
+            // dd($snapToken);
             return \Midtrans\Snap::getSnapToken($params);
 
             // return \Midtrans\Snap::getSnapToken($params);
@@ -311,8 +315,8 @@ class PaymentMidtransController extends Controller
             // }
 
         } catch (\Throwable $th) {
-            DB::rollback();
-            return back();
+            // DB::rollback();
+            // return back();
         }
 
         // return $data['snapToken'];
@@ -337,21 +341,21 @@ class PaymentMidtransController extends Controller
         // return response()->json(['message' => 'Webhook processed successfully']);
 
         if ($hashed == $request->signature_key) {
-            $billing = $this->billings->where('billing_code',$request->order_id)->first();
-            $billing->update([
+            $transactions = $this->transactions->where('billing_code',$request->order_id)->first();
+            $transactions->update([
                 'status' => 'PAID'
             ]);
-            $billing->invoice->update([
-                'status' => 'PAID'
-            ]);
+            // $billing->invoice->update([
+            //     'status' => 'PAID'
+            // ]);
         }else{
-            $billing = $this->billings->where('billing_code',$request->order_id)->first();
-            $billing->update([
+            $transactions = $this->transactions->where('billing_code',$request->order_id)->first();
+            $transactions->update([
                 'status' => 'NOTPAID'
             ]);
-            $billing->invoice->update([
-                'status' => 'NOTPAID'
-            ]);
+            // $billing->invoice->update([
+            //     'status' => 'NOTPAID'
+            // ]);
         }
 
         // return response()->json(['success' => 'Callback received successfully']);

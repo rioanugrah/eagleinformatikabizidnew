@@ -1,13 +1,18 @@
 import AppLayout from '@/Layouts/appLayout';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/card';
 
-import { Link, router, usePage } from '@inertiajs/react';
+import { Link, router, useForm, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
 export default function Edit(props) {
     const { errors, auth } = usePage().props;
-    const [category_name, setCategoryName] = useState(props.category.name);
-    const [category_status, setCategoryStatus] = useState(props.category.status);
+    // const [category_name, setCategoryName] = useState(props.category.name);
+    // const [category_status, setCategoryStatus] = useState(props.category.status);
+    const { data, setData, post, progress } = useForm({
+        name: props.category.name,
+        description: props.category.description,
+        status: props.category.status,
+    });
     const [loading, setLoading] = useState(false);
 
     const handlerSubmit = (e) => {
@@ -15,11 +20,7 @@ export default function Edit(props) {
         setLoading(true);
 
         router.post(
-            route('categories.update',[props.category.id]),
-            {
-                name: category_name,
-                status: category_status,
-            },
+            route('categories.update',[props.category.id]),data,
             {
                 onFinish: () => {
                     setLoading(false);
@@ -39,12 +40,18 @@ export default function Edit(props) {
                     <CardContent>
                         <div className='mb-3'>
                             <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Name</label>
-                            <input type='text' placeholder='Name' value={category_name} onChange={(e) => setCategoryName(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                            <input type='text' placeholder='Name' value={data.name} onChange={(e) => setData('name',e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                             {errors.name && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.name}</p>}
                         </div>
                         <div className='mb-3'>
+                            <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Description</label>
+                            <textarea value={data.description} onChange={(e) => setData('description', e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' placeholder='Description' rows={5}/>
+                            {/* <input type='text' placeholder='Description' value={data.description} onChange={(e) => setData('description',e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' /> */}
+                            {errors.description && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.description}</p>}
+                        </div>
+                        <div className='mb-3'>
                             <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Status</label>
-                            <select value={category_status} onChange={(e) => setCategoryStatus(e.target.value)} class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
+                            <select value={data.status} onChange={(e) => setData('status',e.target.value)} class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'>
                                 <option selected>-- Select Status --</option>
                                 <option value='Aktif'>Aktif</option>
                                 <option value='Nonaktif'>Non Aktif</option>

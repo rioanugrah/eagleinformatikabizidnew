@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use \Carbon\Carbon;
@@ -24,10 +25,11 @@ class DatabaseSeeder extends Seeder
         //     \App\Models\User::factory()->hasPosts(rand(0, 16))->create();
         // });
         $user = User::factory()->create([
+            'id_generate' => Str::uuid()->toString(),
             'name' => 'Administrator',
             'username' => 'administrator',
             'email' => 'admin@admin.com',
-            'password' => Hash::make('admin123'),
+            'password' => \Hash::make('admin123'),
             'email_verified_at' => Carbon::now()
         ]);
 

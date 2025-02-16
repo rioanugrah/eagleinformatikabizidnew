@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Payment\PaymentMidtransController;
+
 use App\Http\Controllers\Auth\DestroyAccountController;
 use App\Http\Controllers\Auth\SecurityController;
 use App\Http\Controllers\Auth\UserController;
@@ -17,6 +19,9 @@ use App\Http\Controllers\WebsitesController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PpnController;
+use App\Http\Controllers\CartController;
+
+use App\Http\Controllers\TransactionController;
 
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
@@ -33,20 +38,42 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
 
     Route::middleware('auth')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['verified'])->name('dashboard');
-        Route::get('cart', [DashboardController::class, 'cart'])->middleware(['verified'])->name('cart');
+        Route::get('test', [PaymentMidtransController::class, 'test'])->middleware(['verified']);
+
+        Route::prefix('cart')->group(function(){
+            Route::get('/', [DashboardController::class, 'cart'])->middleware(['verified'])->name('cart');
+            Route::get('{id}', [DashboardController::class, 'cart_detail'])->middleware(['verified'])->name('cart.detail');
+            Route::post('{id}/buy', [CartController::class, 'cart_buy'])->middleware(['verified'])->name('cart.buy');
+        });
+
 
         Route::controller(OrderController::class)->group(function () {
             Route::prefix('order')->group(function(){
                 Route::get('/', 'index')->middleware(['verified'])->name('order.index');
-                Route::get('{id}/checkout', 'detail')->middleware(['verified'])->name('order.checkout');
-                Route::get('{id}/payment', 'payment')->middleware(['verified'])->name('order.payment');
-                Route::post('{id}/buy', 'store')->middleware(['verified'])->name('order.store');
-                Route::post('{id}/buy/checkout', 'checkout')->middleware(['verified'])->name('order.buy.checkout');
-                Route::post('{id}/{invoice_id}/remove', 'invoice_detail_remove')->middleware(['verified'])->name('order.invoice_detail_remove');
+                // Route::get('{id}/checkout', 'detail')->middleware(['verified'])->name('order.checkout');
+                // Route::get('{id}/payment', 'payment')->middleware(['verified'])->name('order.payment');
+                // Route::post('{id}/buy', 'store')->middleware(['verified'])->name('order.store');
+                // Route::post('{id}/buy/checkout', 'checkout')->middleware(['verified'])->name('order.buy.checkout');
+                // Route::post('{id}/{invoice_id}/remove', 'invoice_detail_remove')->middleware(['verified'])->name('order.invoice_detail_remove');
+            });
+
+            Route::prefix('finish')->group(function(){
+                Route::get('/', 'finish')->middleware(['verified'])->name('order.finish');
             });
 
             // Route::prefix('pa')->group(function(){
             // });
+        });
+
+        Route::controller(CartController::class)->group(function () {
+            Route::post('cart/{id}/simpan', 'cart_add')->middleware(['verified'])->name('cart.add');
+        });
+
+        Route::controller(TransactionController::class)->group(function () {
+            Route::prefix('transactions')->group(function(){
+                Route::get('/', 'index')->middleware(['verified'])->name('transaction');
+                Route::get('{id}', 'detail')->middleware(['verified'])->name('transaction.detail');
+            });
         });
 
         Route::controller(InvoicesController::class)->group(function () {
@@ -146,9 +173,9 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
     });
 });
 
-Route::domain('payment.'.parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
+Route::domain('payment1.'.parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
     Route::get('/', function(){
-        return 'OKE';
+        return 'OKE1';
     });
     // Route::post('midtrans/webhook', [App\Http\Controllers\Payment\PaymentMidtransController::class, 'payment_callback'])->name('midtrans.callback');
 });

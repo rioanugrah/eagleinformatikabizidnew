@@ -136,26 +136,23 @@ export default function Index(props) {
                     <TableHeader>
                         <TableRow>
                             <TableHead className='w-[50px] text-center'>#</TableHead>
+                            <TableHead onClick={() => handleSort('picture')}>
+                                <SortIndicator label='Picture' column='picture' field={params?.field} direction={params?.direction} />
+                            </TableHead>
                             <TableHead onClick={() => handleSort('product_code')}>
                                 <SortIndicator label='Product Code' column='product_code' field={params?.field} direction={params?.direction} />
                             </TableHead>
-                            <TableHead onClick={() => handleSort('product_name')}>
-                                <SortIndicator label='Product Name' column='product_name' field={params?.field} direction={params?.direction} />
+                            <TableHead onClick={() => handleSort('title')}>
+                                <SortIndicator label='Title' column='title' field={params?.field} direction={params?.direction} />
                             </TableHead>
-                            <TableHead onClick={() => handleSort('product_category')}>
-                                <SortIndicator label='Product Name' column='product_name' field={params?.field} direction={params?.direction} />
+                            <TableHead onClick={() => handleSort('category_id')}>
+                                <SortIndicator label='Category' column='category_id' field={params?.field} direction={params?.direction} />
                             </TableHead>
-                            <TableHead onClick={() => handleSort('product_price')}>
-                                <SortIndicator label='Product Price' column='product_price' field={params?.field} direction={params?.direction} />
+                            <TableHead onClick={() => handleSort('price')}>
+                                <SortIndicator label='Price' column='price' field={params?.field} direction={params?.direction} />
                             </TableHead>
-                            <TableHead onClick={() => handleSort('product_profit_price')}>
-                                <SortIndicator label='Product Profit Price' column='product_profit_price' field={params?.field} direction={params?.direction} />
-                            </TableHead>
-                            <TableHead onClick={() => handleSort('product_stock')}>
-                                <SortIndicator label='Product Stock' column='product_stock' field={params?.field} direction={params?.direction} />
-                            </TableHead>
-                            <TableHead onClick={() => handleSort('product_periode')}>
-                                <SortIndicator label='Product Periode' column='product_periode' field={params?.field} direction={params?.direction} />
+                            <TableHead onClick={() => handleSort('quantity')}>
+                                <SortIndicator label='Quantity' column='quantity' field={params?.field} direction={params?.direction} />
                             </TableHead>
                             <TableHead onClick={() => handleSort('status')}>
                                 <SortIndicator label='status' column='status' field={params?.field} direction={params?.direction} />
@@ -169,28 +166,29 @@ export default function Index(props) {
                                 {products.map((product, i) => (
                                     <TableRow key={i}>
                                         <TableCell className='w-0 py-7 text-center'>{meta.from + i}</TableCell>
+                                        <TableCell>
+                                            <img src={product.picture} className='h-auto max-w-lg rounded-lg' width={220} />
+                                        </TableCell>
                                         <TableCell>{product.product_code}</TableCell>
-                                        <TableCell>{product.product_name}</TableCell>
+                                        <TableCell>{product.title}</TableCell>
                                         <TableCell>{product.category_id}</TableCell>
-                                        <TableCell>{product.product_price}</TableCell>
-                                        <TableCell>{product.product_profit_price}</TableCell>
-                                        <TableCell>{product.product_stock}</TableCell>
-                                        <TableCell>{product.product_periode}</TableCell>
+                                        <TableCell>{product.price}</TableCell>
+                                        <TableCell>{product.quantity}</TableCell>
                                         <TableCell>{product.status == 'Aktif' ? <span class='me-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300'>{product.status}</span> : <span class='me-2 rounded bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300'>{product.status}</span>}</TableCell>
                                         <TableCell>
                                             {/* <Link as='button' onClick={()=>handlerAddCart} className='mb-2 me-2 inline-flex rounded-lg bg-gradient-to-r from-green-400 via-green-500 to-green-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-green-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-green-300 dark:shadow-lg dark:shadow-green-800/80 dark:focus:ring-green-800'>
                                                 <Icon icon={'IconShoppingCartPlus'} /> Add Cart
                                             </Link> */}
-                                            <Link as='button' method='post' href={route('order.store', [product.id])} className='mb-2 me-2 inline-flex rounded-lg bg-gradient-to-r from-green-400 via-green-500 to-green-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-green-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-green-300 dark:shadow-lg dark:shadow-green-800/80 dark:focus:ring-green-800'>
-                                                <Icon icon={'IconShoppingCartPlus'} /> Add Cart
+                                            <Link as='button' method='post' href={route('cart.add', [product.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-green-400 via-green-500 to-green-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-green-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-green-300 dark:shadow-lg dark:shadow-green-800/80 dark:focus:ring-green-800'>
+                                                <Icon icon={'IconShoppingCartPlus'} className={'w-6 h-6 me-2'} /> Add Cart
                                             </Link>
                                             {auth.user.access == true && (
                                                 <>
                                                     <Link href={route('products.edit', [product.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-5 py-2.5 text-center text-sm font-medium text-gray-900 shadow-lg shadow-lime-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-lime-300 dark:shadow-lg dark:shadow-lime-800/80 dark:focus:ring-lime-800'>
-                                                        <Icon icon={'IconLogin2'} /> Edit
+                                                        <Icon icon={'IconLogin2'} className={'w-6 h-6 me-2'} /> Edit
                                                     </Link>
-                                                    <Link as='button' method='delete' href={route('products.destroy', [product.id])} className='mb-2 mb-2 me-2 me-2 inline-flex rounded-lg bg-gradient-to-r from-red-400 via-red-500 to-red-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-red-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-red-300 dark:shadow-lg dark:shadow-red-800/80 dark:focus:ring-red-800'>
-                                                        <Icon icon={'IconTrash'} /> Delete
+                                                    <Link as='button' method='delete' href={route('products.destroy', [product.id])} className='mb-2 mb-2 me-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-red-400 via-red-500 to-red-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-red-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-red-300 dark:shadow-lg dark:shadow-red-800/80 dark:focus:ring-red-800'>
+                                                        <Icon icon={'IconTrash'} className={'w-6 h-6 me-2'} /> Delete
                                                     </Link>
                                                 </>
                                             )}

@@ -22,13 +22,13 @@ export default function DashboardAdmin(props, { auth }) {
 
     const projects = [
         { name: 'Balance', initials: 'BA', href: '#', members: format_currency(0), bgColor: 'bg-blue-600' },
-        { name: 'Total Sales', initials: 'TS', href: '#', members: format_currency(props.total_sales), bgColor: 'bg-green-600' },
+        { name: 'Total Sales', initials: 'TS', href: '#', members: format_currency(0), bgColor: 'bg-green-600' },
         // { name: 'Component Design', initials: 'CD', href: '#', members: 12, bgColor: 'bg-purple-600' },
         // { name: 'Templates', initials: 'T', href: '#', members: 16, bgColor: 'bg-yellow-500' },
         // { name: 'React Components', initials: 'RC', href: '#', members: 8, bgColor: 'bg-green-500' },
     ];
 
-    const [total_penjualan, setTotalPenjualan] = useState(props.total_penjualan);
+    // const [total_penjualan, setTotalPenjualan] = useState(props.total_penjualan);
 
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ');
@@ -166,18 +166,7 @@ export default function DashboardAdmin(props, { auth }) {
             <Card className='mt-8'>
                 <CardHeader className='font-bold'>Total Penjualan</CardHeader>
                 <CardContent>
-                    {/* <Button onClick={onPressPay}>{loading ? 'Loading...' : 'Pay Now'}</Button> */}
-                    <BarChart
-                        series={[{ data: total_penjualan.map((item, i) => item.data) }]}
-                        height={350}
-                        xAxis={[
-                            {
-                                data: total_penjualan.map((item, i) => item.date),
-                                scaleType: 'band',
-                            },
-                        ]}
-                        margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
-                    />
+
                 </CardContent>
             </Card>
         </>

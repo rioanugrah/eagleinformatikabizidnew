@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Billings;
-use App\Models\Invoices;
-use App\Models\InvoicesDetail;
+// use App\Models\Billings;
+// use App\Models\Invoices;
+// use App\Models\InvoicesDetail;
+
+use App\Models\Carts;
+use App\Models\Ppn;
 
 use \Carbon\Carbon;
 use \Carbon\CarbonPeriod;
@@ -21,29 +24,69 @@ class DashboardController extends Controller
     // }
 
     function __construct(
-        Billings $billings,
-        Invoices $invoices,
-        InvoicesDetail $invoicesDetail
+        Carts $cart,
+        Ppn $ppn
     ){
-        $this->billings = $billings;
-        $this->invoices = $invoices;
-        $this->invoices_detail = $invoicesDetail;
+        $this->cart = $cart;
+        $this->ppn = $ppn;
     }
 
     public function cart()
     {
-        $invoices = $this->invoices->where('user_id',auth()->user()->id)
-                                ->where('status','OPEN')
-                                ->first();
-        $invoicesDetail = $this->invoices_detail->where('invoice_id',$invoices->id)->count();
+        $cart = $this->cart->where('user_id',auth()->user()->id_generate)
+                            ->where('status','OPEN')
+                            ->first();
+        if (!empty($cart)) {
+            return response()->json([
+                'url' => route('cart.detail',['id' => $cart->id]),
+                'total_cart' => $cart->cartItems->count()
+            ]);
+        }else{
+            return response()->json([
+                'url' => '',
+                'total_cart' => 0
+            ]);
+        }
+        // $invoices = $this->invoices->where('user_id',auth()->user()->id)
+        //                         ->where('status','OPEN')
+        //                         ->first();
+        // // dd($invoices);
+        // if (!empty($invoices)) {
+        //     $invoicesDetail = $this->invoices_detail->where('invoice_id',$invoices->id)->count();
+        //     return response()->json([
+        //         'url' => route('order.checkout',['id' => $invoices->id]),
+        //         'total_cart' => $invoicesDetail
+        //     ]);
+        // }else{
+        //     $invoicesDetail = 0;
+        //     return response()->json([
+        //         'url' => null,
+        //         'total_cart' => $invoicesDetail
+        //     ]);
+        // }
+
         // $invoices = $this->invoices_detail->with('invoice')->whereHas('invoice', function($query){
         //                                     $query->where('user_id',auth()->user()->id)
         //                                         ->where('status','OPEN');
         //                                 })->get();
         // dd($invoices);
-        return response()->json([
-            'url' => route('order.checkout',['id' => $invoices->id]),
-            'total_cart' => $invoicesDetail
+    }
+
+    public function cart_detail($id)
+    {
+        $cart = $this->cart->with('cartItems','cartItems.product')->where('id',$id)
+                            ->where('user_id',auth()->user()->id_generate)
+                            ->where('status','OPEN')
+                            ->first();
+        if (empty($cart)) {
+            return back()->with('error','Cart Tidak Ditemukan');
+        }
+
+        $ppn = $this->ppn->select('ppn_name','ppn_nominal')->where('status','Aktif')->first();
+
+        return inertia('cart/index',[
+            'cart' => $cart,
+            'ppn' => $ppn
         ]);
     }
 
@@ -51,39 +94,7 @@ class DashboardController extends Controller
     {
         // dd(auth()->user()->hasRole('Administrator'));
         if (auth()->user()->hasRole('Administrator') == true) {
-            // return redirect()->route('dashboard.admin');
-            $date = Carbon::now();
-
-            $year_start = $date->startOfYear()->format('Y-m');
-            $year_end = $date->endOfYear()->format('Y-m');
-
-            $years = CarbonPeriod::create($year_start, $year_end)->month();
-            $total_sales = [];
-            foreach ($years as $key => $value) {
-                $total_billings = $this->billings->where('created_at','like','%'.$value->format('Y-m').'%')
-                                                        ->where('status','PAID')
-                                                        ->sum('sub_total');
-                $data['total_penjualan'][] = [
-                    'date' => $value->isoFormat('MMMM YYYY'),
-                    'data' => $total_billings
-                ];
-
-                $total_sales[] = $total_billings;
-
-            }
-
-            $data['total_sales'] = array_sum($total_sales);
-
-            // dd(array_sum($data['total_sales']));
-
-            // $data['total_penjualan'] = [
-            //     [
-            //         'date' => 'Januari',
-            //         'data' => 60
-            //     ]
-            // ];
-            // dd($data);
-            return inertia('dashboard/dashboard_admin',$data);
+            return inertia('dashboard/dashboard_admin');
         }else{
             // return redirect()->route('dashboard.user');
             return inertia('dashboard/index');

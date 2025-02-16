@@ -16,20 +16,23 @@ class Products extends Model
 
     public $fillable = [
         'id',
-        'categories_id',
+        'category_id',
         'product_code',
-        'product_description',
-        'product_name',
-        'product_price',
-        'product_profit_price',
-        'product_periode',
-        'product_stock',
+        'slug',
+        'title',
+        'picture',
+        'description',
+        'price',
+        'quantity',
+        'tag',
+        'is_product_digital',
+        'files',
         'status',
     ];
 
     public function category()
     {
-        return $this->belongsTo(\App\Models\Categories::class, 'categories_id', 'id');
+        return $this->belongsTo(\App\Models\Categories::class, 'category_id', 'id');
     }
 
 }
