@@ -23,6 +23,10 @@ class OrderItems extends Model
         'quantity',
     ];
 
+    public function product()
+    {
+        return $this->belongsTo(\App\Models\Products::class, 'product_id', 'id');
+    }
     // public function verifikasi_tiket()
     // {
     //     return $this->belongsTo(\App\Models\VerifikasiTiket::class, 'id', 'transaction_id');

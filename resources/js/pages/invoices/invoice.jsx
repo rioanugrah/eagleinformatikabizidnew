@@ -1,6 +1,8 @@
 import AppLayout from "@/Layouts/appLayout";
 
 export default function Invoice(props) {
+    const invoice = props.order;
+
     return (
         <>
             <div class='mx-auto my-6 max-w-3xl rounded bg-white p-6 shadow-sm' id='invoice'>
@@ -29,12 +31,12 @@ export default function Invoice(props) {
                     <div class='text-right'>
                         <p class=''>
                             Invoice number:
-                            <span class='text-gray-500'>INV-2023786123</span>
+                            <span class='text-gray-500'>{invoice.payment.billing_code}</span>
                         </p>
                         <p>
-                            Invoice date: <span class='text-gray-500'>03/07/2023</span>
+                            Invoice date: <span class='text-gray-500'>{invoice.payment.created_at}</span>
                             <br />
-                            Due date:<span class='text-gray-500'>31/07/2023</span>
+                            {/* Due date:<span class='text-gray-500'>31/07/2023</span> */}
                         </p>
                     </div>
                 </div>
@@ -58,17 +60,20 @@ export default function Invoice(props) {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class='border-b border-gray-200'>
-                                <td class='max-w-0 py-5 pl-4 pr-3 text-sm sm:pl-0'>
-                                    <div class='font-medium text-gray-900'>E-commerce Platform</div>
-                                    <div class='mt-1 truncate text-gray-500'>Laravel based e-commerce platform.</div>
-                                </td>
-                                <td class='hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell'>500.0</td>
-                                <td class='hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell'>$100.00</td>
-                                <td class='py-5 pl-3 pr-4 text-right text-sm text-gray-500 sm:pr-0'>$5,000.00</td>
-                            </tr>
+                            {
+                                props.order.order_details.map((items, i) => (
+                                    <tr class='border-b border-gray-200' key={i}>
+                                        <td class='max-w-0 py-5 pl-4 pr-3 text-sm sm:pl-0'>
+                                            <div class='font-medium text-gray-900'>{items.item}</div>
+                                        </td>
+                                        <td class='hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell'>{items.quantity}</td>
+                                        <td class='hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell'>{items.price}</td>
+                                        <td class='py-5 pl-3 pr-4 text-right text-sm text-gray-500 sm:pr-0'>{items.total}</td>
+                                    </tr>
+                                ))
+                            }
 
-                            <tr class='border-b border-gray-200'>
+                            {/* <tr class='border-b border-gray-200'>
                                 <td class='max-w-0 py-5 pl-4 pr-3 text-sm sm:pl-0'>
                                     <div class='font-medium text-gray-900'>Frontend Design</div>
                                     <div class='mt-1 truncate text-gray-500'>Frontend design using Vue.js and Tailwind CSS.</div>
@@ -85,7 +90,7 @@ export default function Invoice(props) {
                                 <td class='hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell'>50.0</td>
                                 <td class='hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell'>$100.00</td>
                                 <td class='py-5 pl-3 pr-4 text-right text-sm text-gray-500 sm:pr-0'>$500.00</td>
-                            </tr>
+                            </tr> */}
                         </tbody>
                         <tfoot>
                             <tr>
@@ -95,7 +100,7 @@ export default function Invoice(props) {
                                 <th scope='row' class='pl-6 pr-3 pt-6 text-left text-sm font-normal text-gray-500 sm:hidden'>
                                     Subtotal
                                 </th>
-                                <td class='pl-3 pr-6 pt-6 text-right text-sm text-gray-500 sm:pr-0'>$10,500.00</td>
+                                <td class='pl-3 pr-6 pt-6 text-right text-sm text-gray-500 sm:pr-0'>{invoice.total}</td>
                             </tr>
                             <tr>
                                 <th scope='row' colspan='3' class='hidden pl-4 pr-3 pt-4 text-right text-sm font-normal text-gray-500 sm:table-cell sm:pl-0'>
@@ -104,9 +109,9 @@ export default function Invoice(props) {
                                 <th scope='row' class='pl-6 pr-3 pt-4 text-left text-sm font-normal text-gray-500 sm:hidden'>
                                     Tax
                                 </th>
-                                <td class='pl-3 pr-6 pt-4 text-right text-sm text-gray-500 sm:pr-0'>$1,050.00</td>
+                                <td class='pl-3 pr-6 pt-4 text-right text-sm text-gray-500 sm:pr-0'>{invoice.tax}</td>
                             </tr>
-                            <tr>
+                            {/* <tr>
                                 <th scope='row' colspan='3' class='hidden pl-4 pr-3 pt-4 text-right text-sm font-normal text-gray-500 sm:table-cell sm:pl-0'>
                                     Discount
                                 </th>
@@ -114,7 +119,7 @@ export default function Invoice(props) {
                                     Discount
                                 </th>
                                 <td class='pl-3 pr-6 pt-4 text-right text-sm text-gray-500 sm:pr-0'>- 10%</td>
-                            </tr>
+                            </tr> */}
                             <tr>
                                 <th scope='row' colspan='3' class='hidden pl-4 pr-3 pt-4 text-right text-sm font-semibold text-gray-900 sm:table-cell sm:pl-0'>
                                     Total
@@ -122,7 +127,7 @@ export default function Invoice(props) {
                                 <th scope='row' class='pl-6 pr-3 pt-4 text-left text-sm font-semibold text-gray-900 sm:hidden'>
                                     Total
                                 </th>
-                                <td class='pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-900 sm:pr-0'>$11,550.00</td>
+                                <td class='pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-900 sm:pr-0'>{invoice.sub_total}</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -131,3 +136,5 @@ export default function Invoice(props) {
         </>
     );
 }
+
+Invoice.layout = (page) => <AppLayout title={'Invoices'} children={page} />;

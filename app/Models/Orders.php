@@ -30,6 +30,11 @@ class Orders extends Model
         return $this->belongsTo(\App\Models\Payments::class, 'id', 'order_id');
     }
 
+    public function order_details()
+    {
+        return $this->hasMany(\App\Models\OrderItems::class, 'order_id', 'id');
+    }
+
     // public function verifikasi_tiket()
     // {
     //     return $this->belongsTo(\App\Models\VerifikasiTiket::class, 'id', 'transaction_id');
