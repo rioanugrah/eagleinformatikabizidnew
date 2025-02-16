@@ -43,7 +43,7 @@ class PaymentMidtransController extends Controller
             $this->url_payment = env('MIDTRANS_URL_SANDBOX');
         }
 
-        // $this->billings = $billings;
+        $this->transactions = $transactions;
     }
 
     public function test()
