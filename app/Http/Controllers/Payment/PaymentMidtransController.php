@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\User;
-use App\Models\Transactions;
+use App\Models\Payments;
 // use App\Models\Order;
 // use App\Models\OrderList;
 // use App\Models\Transactions;
@@ -30,7 +30,7 @@ use DB;
 class PaymentMidtransController extends Controller
 {
     public function __construct(
-        Transactions $transactions
+        Payments $transactions
     ){
         // $this->midtrans_is_production = env('MIDTRANS_IS_PRODUCTION');
         if (env('MIDTRANS_IS_PRODUCTION') == true) {
