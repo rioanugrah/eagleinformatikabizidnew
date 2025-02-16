@@ -341,18 +341,18 @@ class PaymentMidtransController extends Controller
         // return response()->json(['message' => 'Webhook processed successfully']);
 
         if ($hashed == $request->signature_key) {
-            $transactions = $this->transactions->where('billing_code',$request->order_id)->first();
-            $transactions->update([
-                'status' => 'PAID'
-            ]);
+            // $transactions = $this->transactions->where('billing_code',$request->order_id)->first();
+            // $transactions->update([
+            //     'status' => 'PAID'
+            // ]);
             // $billing->invoice->update([
             //     'status' => 'PAID'
             // ]);
         }else{
-            $transactions = $this->transactions->where('billing_code',$request->order_id)->first();
-            $transactions->update([
-                'status' => 'NOTPAID'
-            ]);
+            // $transactions = $this->transactions->where('billing_code',$request->order_id)->first();
+            // $transactions->update([
+            //     'status' => 'NOTPAID'
+            // ]);
             // $billing->invoice->update([
             //     'status' => 'NOTPAID'
             // ]);
