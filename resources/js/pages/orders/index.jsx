@@ -34,6 +34,13 @@ export default function Index(props)
         setParams({ ...params, field: newField, direction: newDirection });
     };
 
+    const format_currency = (number) => {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+        }).format(number);
+    };
+
     return (
         <Card>
             <CardHeader>
@@ -69,6 +76,9 @@ export default function Index(props)
                             <TableHead onClick={() => handleSort('total')}>
                                 <SortIndicator label='Total' column='total' field={params?.field} direction={params?.direction} />
                             </TableHead>
+                            <TableHead onClick={() => handleSort('created_at')}>
+                                <SortIndicator label='Transaction Date Create' column='created_at' field={params?.field} direction={params?.direction} />
+                            </TableHead>
                             <TableHead onClick={() => handleSort('status')}>
                                 <SortIndicator label='Status' column='status' field={params?.field} direction={params?.direction} />
                             </TableHead>
@@ -82,8 +92,9 @@ export default function Index(props)
                                     <TableRow key={i}>
                                         <TableCell className='w-0 py-7 text-center'>{meta.from + i}</TableCell>
                                         <TableCell>{order.order_code}</TableCell>
-                                        <TableCell>{order.total}</TableCell>
-                                        <TableCell>{order.status == 'PAID' ? <span class='me-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300'>{order.status}</span> : order.status == 'UNPAID' ? <span class='bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300'>{order.status}</span> : <span class='bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300'>{order.status}</span>}</TableCell>
+                                        <TableCell className='text-right'>{format_currency(order.total)}</TableCell>
+                                        <TableCell className='text-center'>{order.created_at}</TableCell>
+                                        <TableCell className='text-center'>{order.status == 'PAID' ? <span class='me-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300'>{order.status}</span> : order.status == 'UNPAID' ? <span class='bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300'>{order.status}</span> : <span class='bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300'>{order.status}</span>}</TableCell>
                                         <TableCell>
                                             <Link href={route('order.detail', [order.id])} className='inline-flex text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center me-2 mb-2'>
                                                 <Icon icon={'IconPackages'} className={'w-6 h-6 me-2'} /> Order Detail

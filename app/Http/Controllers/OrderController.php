@@ -51,7 +51,23 @@ class OrderController extends Controller
 
     public function detail($id)
     {
-        $order = $this->orders->with('payment')->find($id);
+        // $order = $this->orders->with('payment')->find($id);
+        $order = new OrderResources(
+            $this->orders->with('payment')->find($id)
+            // $this->orders->query()
+            //                 ->when(
+            //                     value: $request->search,
+            //                     callback: fn ($query, $value) => $query->where('order_code', 'like', '%' . $value . '%')
+            //                         ->where('user_id', auth()->user()->id_generate)
+            //                 )
+            //                 ->when(
+            //                     value: $request->field && $request->direction,
+            //                     callback: fn ($query) => $query->orderBy($request->field, $request->direction),
+            //                     default: fn ($query) => $query->latest()
+            //                 )
+            //                 ->paginate($limit)
+            //                 ->withQueryString()
+        );
         if (empty($order)) {
             return back()->with('error','Order Not Found');
         }

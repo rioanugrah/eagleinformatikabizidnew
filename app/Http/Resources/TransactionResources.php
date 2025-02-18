@@ -17,6 +17,7 @@ class TransactionResources extends JsonResource
             'billing_references' => $this->billing_references,
             'billing_buyer' => $this->billing_buyer,
             'total' => 'Rp. '.number_format($this->total,0,',','.'),
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'status' => $this->status,
         ];
     }

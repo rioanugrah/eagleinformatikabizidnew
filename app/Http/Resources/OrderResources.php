@@ -15,8 +15,10 @@ class OrderResources extends JsonResource
             'order_code' => $this->order_code,
             'tax' => $this->tax,
             'admin_fee' => $this->admin_fee,
-            'total' => 'Rp. '.number_format($this->total,0,',','.'),
+            'total' => $this->total,
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'status' => $this->payment->status,
+            'payment' => $this->payment,
             // 'status' => $this->status,
         ];
     }

@@ -6,6 +6,17 @@ import Swal from 'sweetalert2';
 
 export default function Index(props, { initialItems }) {
     const { errors, auth } = usePage().props;
+    // const [first_name, setFirstName] = useState('');
+    // const [last_name, setlastName] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [company, setCompany] = useState('');
+    // const [address, setAddress] = useState('');
+    // const [city, setCity] = useState('');
+    // const [country, setCountry] = useState('');
+    // const [state, setState] = useState('');
+    // const [postal_code, setPostalCode] = useState('');
+    // const [phone, setPhone] = useState('');
+
     const [loading, setLoading] = useState(false);
 
     const format_currency = (number) => {
@@ -41,6 +52,8 @@ export default function Index(props, { initialItems }) {
     // const sub_total = total;
     const sub_total = total + hitung_ppn;
 
+    // console.log(sub_total);
+
     const { data, setData, post } = useForm({
         first_name: '',
         last_name: '',
@@ -52,14 +65,17 @@ export default function Index(props, { initialItems }) {
         // state: '',
         postal_code: '',
         phone: '',
-        ppn: hitung_ppn,
-        items: items,
-        subTotal: sub_total,
+        // ppn: hitung_ppn,
+        // items: items,
+        // subTotal: sub_total,
     });
+
+    // console.log(data);
 
     const handlerSubmit = (e) => {
         e.preventDefault();
-        setLoading(true);
+        // alert(data.subTotal);
+        // setLoading(true);
 
         Swal.fire({
             title: "Are you sure?",
@@ -78,7 +94,21 @@ export default function Index(props, { initialItems }) {
             //   });
 
                 router.post(
-                    route('cart.buy',props.cart.id),data,
+                    route('cart.buy',props.cart.id),
+                    {
+                        first_name: data.first_name,
+                        last_name: data.last_name,
+                        email: data.email,
+                        company: data.company,
+                        address: data.address,
+                        city: data.city,
+                        country: data.country,
+                        postal_code: data.postal_code,
+                        phone: data.phone,
+                        ppn: hitung_ppn,
+                        items: items,
+                        subTotal: sub_total,
+                    },
                     {
                         onFinish: (response) => {
                             setLoading(false);

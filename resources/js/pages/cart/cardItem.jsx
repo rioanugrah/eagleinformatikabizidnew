@@ -22,7 +22,7 @@ export default function CardItem({ id, product_id, product, item, quantity, pric
 
     // console.log(item.split('|')[0]);
 
-    console.log(product.price);
+    // console.log(product.quantity);
 
     const handlerSubmit = (e) => {
         e.preventDefault();

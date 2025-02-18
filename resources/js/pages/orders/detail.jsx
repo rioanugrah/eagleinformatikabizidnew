@@ -57,6 +57,10 @@ export default function Detail(props) {
                         <dd className='mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0'>{format_currency(order.total)}</dd>
                     </div>
                     <div className='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+                        <dt className='text-sm/6 font-medium text-gray-900'>Created At</dt>
+                        <dd className='mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0'>{order.created_at}</dd>
+                    </div>
+                    <div className='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
                         <dt className='text-sm/6 font-medium text-gray-900'>Status</dt>
                         <dd className='mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0'>{order.payment.status == 'PAID' ? <span class='me-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300'>{order.payment.status}</span> : order.payment.status == 'UNPAID' ? <span class='bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300'>{order.payment.status}</span> : <span class='bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300'>{order.payment.status}</span>}</dd>
                     </div>
