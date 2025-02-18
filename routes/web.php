@@ -50,6 +50,7 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
         Route::controller(OrderController::class)->group(function () {
             Route::prefix('order')->group(function(){
                 Route::get('/', 'index')->middleware(['verified'])->name('order.index');
+                Route::get('{id}', 'detail')->middleware(['verified'])->name('order.detail');
                 // Route::get('{id}/checkout', 'detail')->middleware(['verified'])->name('order.checkout');
                 // Route::get('{id}/payment', 'payment')->middleware(['verified'])->name('order.payment');
                 // Route::post('{id}/buy', 'store')->middleware(['verified'])->name('order.store');

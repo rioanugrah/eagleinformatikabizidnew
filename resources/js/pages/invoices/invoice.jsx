@@ -1,10 +1,16 @@
 import AppLayout from "@/Layouts/appLayout";
+import { Head } from "@inertiajs/react";
 
 export default function Invoice(props) {
     const invoice = props.order;
+    const billing_buyer = JSON.parse(props.order.payment.billing_buyer);
+    // const billing_buyer = JSON.stringify(props.order.billing_buyer);
 
     return (
         <>
+        <Head
+            title={'Invoice - '+invoice.order_code}
+        />
             <div class='mx-auto my-6 max-w-3xl rounded bg-white p-6 shadow-sm' id='invoice'>
                 <div class='grid grid-cols-2 items-center'>
                     <div>
@@ -22,11 +28,11 @@ export default function Invoice(props) {
                     <div>
                         <p class='font-bold text-gray-800'>Bill to :</p>
                         <p class='text-gray-500'>
-                            Laravel LLC.
+                            {billing_buyer.first_name+' '+billing_buyer.last_name}
                             <br />
-                            102, San-Fransico, CA, USA
+                            {billing_buyer.address}
                         </p>
-                        <p class='text-gray-500'>info@laravel.com</p>
+                        <p class='text-gray-500'>{billing_buyer.email}</p>
                     </div>
                     <div class='text-right'>
                         <p class=''>

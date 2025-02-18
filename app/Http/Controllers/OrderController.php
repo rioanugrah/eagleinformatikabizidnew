@@ -48,4 +48,15 @@ class OrderController extends Controller
             'state' => $request->only('limit', 'page', 'search', 'field', 'direction'),
         ]);
     }
+
+    public function detail($id)
+    {
+        $order = $this->orders->with('payment')->find($id);
+        if (empty($order)) {
+            return back()->with('error','Order Not Found');
+        }
+        return inertia('orders/detail',[
+            'order' => $order
+        ]);
+    }
 }
