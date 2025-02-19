@@ -68,4 +68,9 @@ class InvoicesController extends Controller
 
         return inertia('invoices/invoice',$data);
     }
+
+    public function InvoicePdf($id)
+    {
+        return inertia('invoices/pdf');
+    }
 }

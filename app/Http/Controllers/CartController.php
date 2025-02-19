@@ -190,6 +190,16 @@ class CartController extends Controller
                     'quantity' => $item['quantity']
                 ]);
 
+                $product = $this->products->find($item['product']['id']);
+
+                if ($product->quantity <= 0) {
+                    return back()->with('error','Stock '.$item['product']['title'].' Sold Out');
+                }
+
+                $product->update([
+                    'quantity' => $product->quantity-$item['quantity']
+                ]);
+
                 // $orderItems[] = [
                 //     'id' => Str::uuid()->toString(),
                 //     'order_id' => $input['id'],
@@ -249,7 +259,7 @@ class CartController extends Controller
             $this->payments->create($billing);
 
             DB::commit();
-            // return
+            return redirect()->route('transaction.detail',['id' => $billing['id']]);
 
         } catch (\Throwable $th) {
             // dd($th);

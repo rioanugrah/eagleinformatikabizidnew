@@ -79,6 +79,7 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
 
         Route::controller(InvoicesController::class)->group(function () {
             Route::get('invoices/{id}', 'InvoiceDetail')->middleware(['verified'])->name('invoices.detail');
+            Route::get('invoices/{id}/pdf', 'InvoicePdf')->middleware(['verified'])->name('invoices.pdf');
         });
 
         Route::controller(BillingController::class)->group(function () {

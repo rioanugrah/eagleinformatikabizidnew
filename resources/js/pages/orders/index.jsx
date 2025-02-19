@@ -92,7 +92,7 @@ export default function Index(props)
                                     <TableRow key={i}>
                                         <TableCell className='w-0 py-7 text-center'>{meta.from + i}</TableCell>
                                         <TableCell>{order.order_code}</TableCell>
-                                        <TableCell className='text-right'>{format_currency(order.total)}</TableCell>
+                                        <TableCell className='text-right'>{order.total}</TableCell>
                                         <TableCell className='text-center'>{order.created_at}</TableCell>
                                         <TableCell className='text-center'>{order.status == 'PAID' ? <span class='me-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300'>{order.status}</span> : order.status == 'UNPAID' ? <span class='bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300'>{order.status}</span> : <span class='bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300'>{order.status}</span>}</TableCell>
                                         <TableCell>

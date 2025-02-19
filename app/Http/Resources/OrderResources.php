@@ -13,9 +13,9 @@ class OrderResources extends JsonResource
         return [
             'id' => $this->id,
             'order_code' => $this->order_code,
-            'tax' => $this->tax,
+            'tax' => 'Rp. '.number_format($this->tax,0,',','.'),
             'admin_fee' => $this->admin_fee,
-            'total' => $this->total,
+            'total' => 'Rp. '.number_format($this->total,0,',','.'),
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'status' => $this->payment->status,
             'payment' => $this->payment,
