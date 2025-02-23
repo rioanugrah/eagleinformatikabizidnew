@@ -41,7 +41,7 @@ class ProductsController extends Controller
                 $this->products->query()
                                 ->when(
                                     value: $request->search,
-                                    callback: fn ($query, $value) => $query->where('product_name', 'like', '%' . $value . '%')
+                                    callback: fn ($query, $value) => $query->where('title', 'like', '%' . $value . '%')
                                 )
                                 ->when(
                                     value: $request->field && $request->direction,
@@ -62,7 +62,7 @@ class ProductsController extends Controller
                                 ->orderBy('created_at','desc')
                                 ->when(
                                     value: $request->search,
-                                    callback: fn ($query, $value) => $query->where('product_name', 'like', '%' . $value . '%')
+                                    callback: fn ($query, $value) => $query->where('title', 'like', '%' . $value . '%')
                                 )
                                 ->when(
                                     value: $request->field && $request->direction,
