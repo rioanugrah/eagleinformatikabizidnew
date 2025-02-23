@@ -69,7 +69,7 @@ export default function Index(props){
                                 <SortIndicator label='Total' column='total' field={params?.field} direction={params?.direction} />
                             </TableHead>
                             <TableHead onClick={() => handleSort('created_at')}>
-                                <SortIndicator label='Transaction Date Create' column='created_at' field={params?.field} direction={params?.direction} />
+                                <SortIndicator label='Date Create' column='created_at' field={params?.field} direction={params?.direction} />
                             </TableHead>
                             <TableHead onClick={() => handleSort('status')}>
                                 <SortIndicator label='Status' column='status' field={params?.field} direction={params?.direction} />

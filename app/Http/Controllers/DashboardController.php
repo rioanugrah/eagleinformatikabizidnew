@@ -94,9 +94,11 @@ class DashboardController extends Controller
     {
         // dd(auth()->user()->hasRole('Administrator'));
         if (auth()->user()->hasRole('Administrator') == true) {
+            // dd('ok');
             return inertia('dashboard/dashboard_admin');
         }else{
             // return redirect()->route('dashboard.user');
+            // dd('Users');
             return inertia('dashboard/index');
         }
     }

@@ -36,25 +36,50 @@ class ProductsController extends Controller
 
         $limit = $request->input('limit', 10);
 
-        $products = ProductsResource::collection(
-            $this->products->query()
-                            ->when(
-                                value: $request->search,
-                                callback: fn ($query, $value) => $query->where('product_name', 'like', '%' . $value . '%')
-                            )
-                            ->when(
-                                value: $request->field && $request->direction,
-                                callback: fn ($query) => $query->orderBy($request->field, $request->direction),
-                                default: fn ($query) => $query->latest()
-                            )
-                            ->paginate($limit)
-                            ->withQueryString()
-        );
+        if (auth()->user()->hasRole('Administrator') == true) {
+            $products = ProductsResource::collection(
+                $this->products->query()
+                                ->when(
+                                    value: $request->search,
+                                    callback: fn ($query, $value) => $query->where('product_name', 'like', '%' . $value . '%')
+                                )
+                                ->when(
+                                    value: $request->field && $request->direction,
+                                    callback: fn ($query) => $query->orderBy($request->field, $request->direction),
+                                    default: fn ($query) => $query->latest()
+                                )
+                                ->paginate($limit)
+                                ->withQueryString()
+            );
 
-        return inertia('products/index',[
-            'products' => fn () => $products,
-            'state' => $request->only('limit', 'page', 'search', 'field', 'direction'),
-        ]);
+            return inertia('products/index',[
+                'products' => fn () => $products,
+                'state' => $request->only('limit', 'page', 'search', 'field', 'direction'),
+            ]);
+        }else{
+            $products = ProductsResource::collection(
+                $this->products->query()
+                                ->orderBy('created_at','desc')
+                                ->when(
+                                    value: $request->search,
+                                    callback: fn ($query, $value) => $query->where('product_name', 'like', '%' . $value . '%')
+                                )
+                                ->when(
+                                    value: $request->field && $request->direction,
+                                    callback: fn ($query) => $query->orderBy($request->field, $request->direction),
+                                    default: fn ($query) => $query->latest()
+                                )
+                                ->paginate($limit)
+                                ->withQueryString()
+            );
+
+            return inertia('products/users/index',[
+                'products' => fn () => $products,
+                'state' => $request->only('limit', 'page', 'search', 'field', 'direction'),
+            ]);
+
+        }
+
     }
 
     public function create()
@@ -136,6 +161,33 @@ class ProductsController extends Controller
         $this->products->create($input);
 
         return redirect()->route('products.index')->with(['success' => 'Products Berhasil Dibuat']);
+    }
+
+    public function detail($id)
+    {
+        // $data['product'] = $this->products->find($id);
+        if (auth()->user()->hasRole('Administrator') == true) {
+            $data['product'] = new ProductsResource(
+                $this->products->find($id)
+            );
+
+            if(empty($data['product'])){
+                return back()->with('error','Produk Tidak Ditemukan');
+            }
+
+            return inertia('products/detail',$data);
+        }else{
+            $data['product'] = new ProductsResource(
+                $this->products->find($id)
+            );
+
+            if(empty($data['product'])){
+                return back()->with('error','Produk Tidak Ditemukan');
+            }
+
+            return inertia('products/users/detail',$data);
+        }
+
     }
 
     public function edit($id)

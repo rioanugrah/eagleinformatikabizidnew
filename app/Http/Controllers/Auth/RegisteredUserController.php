@@ -38,6 +38,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
+            'id_generate' => Str::uuid()->toString(),
             'name' => $request->name,
             'username' => strtolower(Str::of($request->name)->explode(' ')->get(0)) . mt_rand(11111, 99999),
             'email' => $request->email,

@@ -3,7 +3,7 @@ import AuthLayout from '@/Layouts/auth-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card';
 import Container from '@/components/container';
 import { Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/appLayout';
+import AppLayout from '@/Layouts/users/appLayout';
 
 export default function Index({ auth }) {
     const projects = [

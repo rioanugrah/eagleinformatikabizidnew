@@ -12,6 +12,7 @@ class ProductsResource extends JsonResource
         // return parent::toArray($request);
         return [
             'id' => $this->id,
+            'slug' => $this->slug,
             'product_code' => $this->product_code,
             'category_id' => $this->category->name,
             'title' => $this->title,
@@ -24,6 +25,7 @@ class ProductsResource extends JsonResource
             'is_product_digital' => $this->is_product_digital,
             'files' => $this->files,
             'status' => $this->status,
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
         ];
     }
 }

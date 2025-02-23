@@ -25,6 +25,11 @@ class Payments extends Model
         'status',
     ];
 
+    public function order()
+    {
+        return $this->belongsTo(\App\Models\Orders::class, 'order_id', 'id');
+    }
+
     // public function verifikasi_tiket()
     // {
     //     return $this->belongsTo(\App\Models\VerifikasiTiket::class, 'id', 'transaction_id');

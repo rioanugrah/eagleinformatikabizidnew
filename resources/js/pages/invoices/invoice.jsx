@@ -1,11 +1,13 @@
 import AppLayout from "@/Layouts/appLayout";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
+
+import logo from '../../../../public/logo/LogoEagleMediaInformatika.webp';
 
 export default function Invoice(props) {
     const invoice = props.order;
     const billing_buyer = JSON.parse(props.order.payment.billing_buyer);
     // const billing_buyer = JSON.stringify(props.order.billing_buyer);
-
+    // console.table(invoice.order_details);
     return (
         <>
         <Head
@@ -14,13 +16,13 @@ export default function Invoice(props) {
             <div class='mx-auto my-6 max-w-3xl rounded bg-white p-6 shadow-sm' id='invoice'>
                 <div class='grid grid-cols-2 items-center'>
                     <div>
-                        <img src='https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg' alt='company-logo' height='100' width='100' />
+                        <img src={logo} alt="" height='100' width='100' />
+                        {/* <img src='https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg' alt='company-logo' height='100' width='100' /> */}
                     </div>
                     <div class='text-right'>
                         <p>PT Eagle Media Informatika</p>
                         <p class='text-sm text-gray-500'>marketing@eagleinformatika.biz.id</p>
                         <p class='mt-1 text-sm text-gray-500'>+62 881-0801-78055</p>
-                        <p class='mt-1 text-sm text-gray-500'>VAT: -</p>
                     </div>
                 </div>
 
@@ -40,9 +42,8 @@ export default function Invoice(props) {
                             <span class='text-gray-500'>{invoice.payment.billing_code}</span>
                         </p>
                         <p>
-                            Invoice date: <span class='text-gray-500'>{invoice.payment.created_at}</span>
+                            Invoice date: <span class='text-gray-500'>{invoice.created_at}</span>
                             <br />
-                            {/* Due date:<span class='text-gray-500'>31/07/2023</span> */}
                         </p>
                     </div>
                 </div>
@@ -78,25 +79,6 @@ export default function Invoice(props) {
                                     </tr>
                                 ))
                             }
-
-                            {/* <tr class='border-b border-gray-200'>
-                                <td class='max-w-0 py-5 pl-4 pr-3 text-sm sm:pl-0'>
-                                    <div class='font-medium text-gray-900'>Frontend Design</div>
-                                    <div class='mt-1 truncate text-gray-500'>Frontend design using Vue.js and Tailwind CSS.</div>
-                                </td>
-                                <td class='hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell'>500.0</td>
-                                <td class='hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell'>$100.00</td>
-                                <td class='py-5 pl-3 pr-4 text-right text-sm text-gray-500 sm:pr-0'>$5,000.00</td>
-                            </tr>
-                            <tr class='border-b border-gray-200'>
-                                <td class='max-w-0 py-5 pl-4 pr-3 text-sm sm:pl-0'>
-                                    <div class='font-medium text-gray-900'>Shop SEO</div>
-                                    <div class='mt-1 truncate text-gray-500'>Website SEO and Social Media marketing.</div>
-                                </td>
-                                <td class='hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell'>50.0</td>
-                                <td class='hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell'>$100.00</td>
-                                <td class='py-5 pl-3 pr-4 text-right text-sm text-gray-500 sm:pr-0'>$500.00</td>
-                            </tr> */}
                         </tbody>
                         <tfoot>
                             <tr>
@@ -138,7 +120,10 @@ export default function Invoice(props) {
                         </tfoot>
                     </table>
                 </div>
+            <Link href={route('order.index')} className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Back</Link>
+            <Link href={route('invoices.pdf',[invoice.id])} className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Print</Link>
             </div>
+
         </>
     );
 }

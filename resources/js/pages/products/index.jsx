@@ -136,6 +136,10 @@ export default function Index(props) {
                     <TableHeader>
                         <TableRow>
                             <TableHead className='w-[50px] text-center'>#</TableHead>
+                            <TableHead onClick={() => handleSort('action')}>
+                                Action
+                                {/* <SortIndicator label='Actions' column='action' field={params?.field} direction={params?.direction} /> */}
+                            </TableHead>
                             <TableHead onClick={() => handleSort('picture')}>
                                 <SortIndicator label='Picture' column='picture' field={params?.field} direction={params?.direction} />
                             </TableHead>
@@ -157,7 +161,6 @@ export default function Index(props) {
                             <TableHead onClick={() => handleSort('status')}>
                                 <SortIndicator label='status' column='status' field={params?.field} direction={params?.direction} />
                             </TableHead>
-                            <TableHead />
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -167,20 +170,14 @@ export default function Index(props) {
                                     <TableRow key={i}>
                                         <TableCell className='w-0 py-7 text-center'>{meta.from + i}</TableCell>
                                         <TableCell>
-                                            <img src={product.picture} className='h-auto max-w-lg rounded-lg' width={220} />
-                                        </TableCell>
-                                        <TableCell>{product.product_code}</TableCell>
-                                        <TableCell>{product.title}</TableCell>
-                                        <TableCell>{product.category_id}</TableCell>
-                                        <TableCell>{product.price}</TableCell>
-                                        <TableCell>{product.quantity}</TableCell>
-                                        <TableCell>{product.status == 'Aktif' ? <span class='me-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300'>{product.status}</span> : <span class='me-2 rounded bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300'>{product.status}</span>}</TableCell>
-                                        <TableCell>
                                             {/* <Link as='button' onClick={()=>handlerAddCart} className='mb-2 me-2 inline-flex rounded-lg bg-gradient-to-r from-green-400 via-green-500 to-green-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-green-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-green-300 dark:shadow-lg dark:shadow-green-800/80 dark:focus:ring-green-800'>
                                                 <Icon icon={'IconShoppingCartPlus'} /> Add Cart
                                             </Link> */}
                                             <Link as='button' method='post' href={route('cart.add', [product.id])} className='mb-2 me-2 inline-flex items-center rounded-lg bg-gradient-to-r from-green-400 via-green-500 to-green-600 px-5 py-2.5 text-center text-sm font-medium text-white shadow-lg shadow-green-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-green-300 dark:shadow-lg dark:shadow-green-800/80 dark:focus:ring-green-800'>
                                                 <Icon icon={'IconShoppingCartPlus'} className={'w-6 h-6 me-2'} /> Add Cart
+                                            </Link>
+                                            <Link href={route('products.detail', [product.id])} className='mb-2 me-2 inline-flex items-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center'>
+                                                <Icon icon={'IconEye'} className={'w-6 h-6 me-2'} /> View
                                             </Link>
                                             {auth.user.access == true && (
                                                 <>
@@ -193,6 +190,15 @@ export default function Index(props) {
                                                 </>
                                             )}
                                         </TableCell>
+                                        <TableCell>
+                                            <img src={product.picture} className='h-auto max-w-lg rounded-lg' width={220} />
+                                        </TableCell>
+                                        <TableCell>{product.product_code}</TableCell>
+                                        <TableCell>{product.title}</TableCell>
+                                        <TableCell>{product.category_id}</TableCell>
+                                        <TableCell>{product.price}</TableCell>
+                                        <TableCell>{product.quantity}</TableCell>
+                                        <TableCell>{product.status == 'Aktif' ? <span class='me-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300'>{product.status}</span> : <span class='me-2 rounded bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300'>{product.status}</span>}</TableCell>
                                     </TableRow>
                                 ))}
                             </>
