@@ -1,0 +1,1 @@
+import{_ as a}from"./IconCheck-77384f03.js";import{r}from"./app-12c34c07.js";import{$ as o}from"./index-036c2168.js";const p=r.forwardRef((e,t)=>r.createElement(o.span,a({},e,{ref:t,style:{position:"absolute",border:0,width:1,height:1,padding:0,margin:-1,overflow:"hidden",clip:"rect(0, 0, 0, 0)",whiteSpace:"nowrap",wordWrap:"normal",...e.style}})));export{p as $};
