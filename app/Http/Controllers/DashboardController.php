@@ -84,10 +84,18 @@ class DashboardController extends Controller
 
         $ppn = $this->ppn->select('ppn_name','ppn_nominal')->where('status','Aktif')->first();
 
-        return inertia('cart/index',[
-            'cart' => $cart,
-            'ppn' => $ppn
-        ]);
+        if (auth()->user()->hasRole('Administrator') == true) {
+            return inertia('cart/index',[
+                'cart' => $cart,
+                'ppn' => $ppn
+            ]);
+        }else{
+            return inertia('cart/users/index',[
+                'cart' => $cart,
+                'ppn' => $ppn
+            ]);
+        }
+
     }
 
     public function index()
