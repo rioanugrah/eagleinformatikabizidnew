@@ -282,12 +282,11 @@ export default function Index() {
                 </div>
             </div>
 
-            <div className='isolate overflow-hidden'>
+            {/* <div className='isolate overflow-hidden'>
                 <div className='flow-root bg-gray-900 pb-16 pt-24 sm:pt-32 lg:pb-0'>
                     <div className='mx-auto max-w-7xl px-6 lg:px-8'>
                         <div className='relative z-10'>
                             <h2 className='mx-auto max-w-4xl text-center text-5xl font-bold tracking-tight text-white'>Jasa Website Company Profile</h2>
-                            {/* <p className='mx-auto mt-4 max-w-2xl text-center text-lg leading-8 text-white/60'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit numquam eligendi quos odit doloribus molestiae voluptatum quos odit doloribus.</p> */}
                             <div className='mt-16 flex justify-center'>
                                 <fieldset aria-label='Payment frequency'>
                                     <RadioGroup value={frequency} onChange={setFrequency} className='grid grid-cols-2 gap-x-1 rounded-full bg-white/5 p-1 text-center text-xs font-semibold leading-5 text-white'>
@@ -347,7 +346,6 @@ export default function Index() {
                 </div>
                 <div className='relative bg-gray-50 lg:pt-14'>
                     <div className='mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8'>
-                        {/* Feature comparison (up to lg) */}
                         <section aria-labelledby='mobile-comparison-heading' className='lg:hidden'>
                             <h2 id='mobile-comparison-heading' className='sr-only'>
                                 Feature comparison
@@ -366,7 +364,6 @@ export default function Index() {
                                                 <div key={section.name}>
                                                     <h4 className='text-sm font-semibold leading-6 text-gray-900'>{section.name}</h4>
                                                     <div className='relative mt-6'>
-                                                        {/* Fake card background */}
                                                         <div aria-hidden='true' className='absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-sm sm:block' />
 
                                                         <div className={classNames(tier.featured ? 'ring-2 ring-indigo-600' : 'ring-1 ring-gray-900/10', 'relative rounded-lg bg-white shadow-sm sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0')}>
@@ -390,7 +387,6 @@ export default function Index() {
                                                             </dl>
                                                         </div>
 
-                                                        {/* Fake card border */}
                                                         <div aria-hidden='true' className={classNames(tier.featured ? 'ring-2 ring-indigo-600' : 'ring-1 ring-gray-900/10', 'pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg sm:block')} />
                                                     </div>
                                                 </div>
@@ -401,7 +397,6 @@ export default function Index() {
                             </div>
                         </section>
 
-                        {/* Feature comparison (lg+) */}
                         <section aria-labelledby='comparison-heading' className='hidden lg:block'>
                             <h2 id='comparison-heading' className='sr-only'>
                                 Feature comparison
@@ -423,7 +418,6 @@ export default function Index() {
                                     <div key={section.name}>
                                         <h3 className='text-sm font-semibold leading-6 text-gray-900'>{section.name}</h3>
                                         <div className='relative -mx-8 mt-10'>
-                                            {/* Fake card backgrounds */}
                                             <div aria-hidden='true' className='absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block'>
                                                 <div className='h-full w-full rounded-lg bg-white shadow-sm' />
                                                 <div className='h-full w-full rounded-lg bg-white shadow-sm' />
@@ -470,7 +464,6 @@ export default function Index() {
                                                 </tbody>
                                             </table>
 
-                                            {/* Fake card borders */}
                                             <div aria-hidden='true' className='pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block'>
                                                 {tiers.map((tier) => (
                                                     <div key={tier.id} className={classNames(tier.featured ? 'ring-2 ring-indigo-600' : 'ring-1 ring-gray-900/10', 'rounded-lg')} />
@@ -483,7 +476,7 @@ export default function Index() {
                         </section>
                     </div>
                 </div>
-            </div>
+            </div> */}
             {/* <div className='bg-white py-24 sm:py-32'>
                 <div className='mx-auto max-w-7xl px-6 lg:px-8'>
                     <div className='mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5'>

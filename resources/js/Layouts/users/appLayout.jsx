@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import { Dialog, DialogBackdrop, DialogPanel, Menu, MenuButton, MenuItem, MenuItems, Transition, TransitionChild } from '@headlessui/react';
 import { Bars3Icon, BellIcon, CalendarIcon, ChartPieIcon, Cog6ToothIcon, DocumentDuplicateIcon, FolderIcon, HomeIcon, UsersIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import logo from '../../../../public/logo/logo_eagle_media_informatika.png';
+import logo from '../../../../public/logo/LogoSubEagleMediaInformatika.webp';
 import MenuUser from './menuUser';
 
 export default function Index({ title, children }) {
@@ -48,8 +48,8 @@ export default function Index({ title, children }) {
                             </div>
                         </TransitionChild>
                         <div className='flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4'>
-                            <div className='flex h-16 shrink-0 items-center'>
-                                <img alt='Eagle Media Informatika' src={logo} className='h-12 w-auto' />
+                            <div className='flex h-18 shrink-0 items-center'>
+                                <img alt='Eagle Media Informatika' src={logo} width='180' />
                             </div>
                             <nav className='flex flex-1 flex-col'>
                                 <ul role='list' className='flex flex-1 flex-col gap-y-7'>
@@ -66,8 +66,8 @@ export default function Index({ title, children }) {
 
             <div className='hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col'>
                 <div className='flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4'>
-                    <div className='flex h-16 shrink-0 items-center'>
-                        <img alt='Eagle Media Informatika' src={logo} className='h-12 w-auto' />
+                    <div className='flex h-18 shrink-0 items-center'>
+                        <img alt='Eagle Media Informatika' src={logo} width='180' />
                     </div>
                     <nav className='flex flex-1 flex-col'>
                         <ul role='list' className='flex flex-1 flex-col gap-y-7'>

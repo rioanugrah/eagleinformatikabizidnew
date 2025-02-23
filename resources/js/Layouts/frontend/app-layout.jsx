@@ -122,9 +122,9 @@ export default function AppLayout({ title, children }) {
                         <Link href={route('login')} className='hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900'>
                             Log in
                         </Link>
-                        <a href='#' className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-                            Sign up
-                        </a>
+                        <Link href={route('register')} className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                            Register
+                        </Link>
                     </div>
                     <div className='flex lg:hidden'>
                         <button type='button' onClick={() => setMobileMenuOpen(true)} className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700'>
@@ -141,9 +141,9 @@ export default function AppLayout({ title, children }) {
                                 <span className='sr-only'>Your Company</span>
                                 <img alt='' src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600' className='h-8 w-auto' />
                             </a>
-                            <a href='#' className='ml-auto rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-                                Sign up
-                            </a>
+                            <Link href={route('register')} className='ml-auto rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                                Register
+                            </Link>
                             <button type='button' onClick={() => setMobileMenuOpen(false)} className='-m-2.5 rounded-md p-2.5 text-gray-700'>
                                 <span className='sr-only'>Close menu</span>
                                 <XMarkIcon aria-hidden='true' className='h-6 w-6' />
@@ -243,7 +243,7 @@ export default function AppLayout({ title, children }) {
                         </div>
                     </div>
                     <div className='mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24'>
-                        <p className='text-xs leading-5 text-gray-500'>&copy; 2024 PT Eagle Media Informatika, Inc. All rights reserved.</p>
+                        <p className='text-xs leading-5 text-gray-500'>&copy; 2025 PT Eagle Media Informatika All Rights Reserved.</p>
                     </div>
                 </div>
             </footer>
