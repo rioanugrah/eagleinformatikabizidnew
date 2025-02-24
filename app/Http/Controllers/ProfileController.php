@@ -13,10 +13,17 @@ class ProfileController extends Controller
 {
     public function index(Request $request): Response
     {
-        return Inertia::render('profile/index', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
-        ]);
+        if (auth()->user()->hasRole('Administrator') == true) {
+            return Inertia::render('profile/index', [
+                'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+                'status' => session('status'),
+            ]);
+        }else{
+            return Inertia::render('profile/users/index', [
+                'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+                'status' => session('status'),
+            ]);
+        }
     }
 
     public function update(ProfileUpdateRequest $request): RedirectResponse

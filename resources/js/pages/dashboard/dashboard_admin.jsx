@@ -5,11 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import Container from '@/components/container';
 import { Link } from '@inertiajs/react';
 
-import { BarChart } from '@mui/x-charts/BarChart';
+import { BarChart, LineChart } from '@mui/x-charts';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/button';
 import axios from 'axios';
-import { LineChart } from '@mui/x-charts';
+// import { LineChart } from '@mui/x-charts';
 
 export default function DashboardAdmin(props, { auth }) {
     const [loading, setLoading] = useState(false);
@@ -167,16 +167,13 @@ export default function DashboardAdmin(props, { auth }) {
             <Card className='mt-8'>
                 <CardHeader className='font-bold'>Total Penjualan</CardHeader>
                 <CardContent>
-                    <LineChart
-                        xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+                    <BarChart
                         series={[
-                            {
-                                data: [2, 5.5, 2, 8.5, 1.5, 5],
-                                area: true,
-                            },
+                            { data: props.total_penjualan.map((data, i) => data.data ) },
                         ]}
-                        // width={500}
-                        height={300}
+                        height={290}
+                        xAxis={[{ data: props.total_penjualan.map((date, i) => date.date ), scaleType: 'band' }]}
+                        margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
                     />
                 </CardContent>
             </Card>

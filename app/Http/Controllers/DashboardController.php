@@ -8,6 +8,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carts;
 use App\Models\Ppn;
+use App\Models\Orders;
 
 use \Carbon\Carbon;
 use \Carbon\CarbonPeriod;
@@ -25,9 +26,11 @@ class DashboardController extends Controller
 
     function __construct(
         Carts $cart,
+        Orders $orders,
         Ppn $ppn
     ){
         $this->cart = $cart;
+        $this->orders = $orders;
         $this->ppn = $ppn;
     }
 
@@ -102,12 +105,60 @@ class DashboardController extends Controller
     {
         // dd(auth()->user()->hasRole('Administrator'));
         if (auth()->user()->hasRole('Administrator') == true) {
-            // dd('ok');
-            return inertia('dashboard/dashboard_admin');
+            $date = Carbon::now();
+
+            $year_start = $date->startOfYear()->format('Y-m');
+            $year_end = $date->endOfYear()->format('Y-m');
+
+            $years = CarbonPeriod::create($year_start, $year_end)->month();
+            $total_sales = [];
+
+            foreach ($years as $key => $value) {
+                $order = $this->orders->whereHas('payment', function($query) {
+                                            $query->where('status','PAID');
+                                        })
+                                        ->where('created_at','like','%'.$value->format('Y-m').'%')
+                                        ->sum('total');
+                $data['total_penjualan'][] = [
+                    'date' => $value->isoFormat('MMMM YYYY'),
+                    'data' => $order
+                ];
+
+                $total_sales[] = $order;
+
+            }
+
+            $data['total_sales'] = array_sum($total_sales);
+
+            return inertia('dashboard/dashboard_admin',$data);
         }else{
-            // return redirect()->route('dashboard.user');
-            // dd('Users');
-            return inertia('dashboard/index');
+            $date = Carbon::now();
+
+            $year_start = $date->startOfYear()->format('Y-m');
+            $year_end = $date->endOfYear()->format('Y-m');
+
+            $years = CarbonPeriod::create($year_start, $year_end)->month();
+            $total_sales = [];
+
+            foreach ($years as $key => $value) {
+                $order = $this->orders->whereHas('payment', function($query) {
+                                            $query->where('status','PAID');
+                                        })
+                                        ->where('user_id',auth()->user()->id_generate)
+                                        ->where('created_at','like','%'.$value->format('Y-m').'%')
+                                        ->sum('total');
+                $data['total_penjualan'][] = [
+                    'date' => $value->isoFormat('MMMM YYYY'),
+                    'data' => $order
+                ];
+
+                $total_sales[] = $order;
+
+            }
+
+            $data['total_sales'] = array_sum($total_sales);
+
+            return inertia('dashboard/index',$data);
         }
     }
 

@@ -118,11 +118,38 @@ class CartController extends Controller
 
             return back()->with(['success' => $product->title.' is Add, Please check a cart!']);
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
 
             DB::rollback();
-            // return back()->with('error','Something Went Wrong!');
+            return back()->with('error','Something Went Wrong!');
         }
+    }
+
+    public function cart_remove_item(Request $request, $id, $cart_item_id)
+    {
+        $cart = $this->carts->where('status','OPEN')->find($id);
+        // dd($invoices_detail);
+        if (empty($cart)) {
+            return back()->with(['error' => 'Cart Tidak Ditemukan']);
+        }
+
+        $cart_item = $this->cart_items->where('cart_id',$id)->where('id',$cart_item_id)->first();
+
+        if (empty($cart_item)) {
+            return back()->with(['error' => 'Cart Item Tidak Ditemukan']);
+        }
+
+        $cart_item->delete();
+
+        return back()->with(['success' => 'Cart Item '.$cart_item->product->title.' Berhasil Dihapus']);
+
+        // $product = $this->product->find(explode('|',$invoices_detail->item)[0]);
+        // $product->product_stock =  $product->product_stock+$request->product_stock;
+        // $product->update();
+
+        // $invoices_detail->delete();
+        // // return back()->with(['success' => 'Item Berhasil Dihapus']);
+        // return redirect()->route('order.checkout',[$id])->with(['success' => 'Item Berhasil Dihapus']);
     }
 
     public function cart_buy(Request $request, $id)
@@ -244,6 +271,10 @@ class CartController extends Controller
                 'address' => $request->address,
                 'email' => $request->email,
                 'phone' => $request->phone,
+                'company' => $request->company,
+                'city' => $request->city,
+                'country' => $request->country,
+                'postal_code' => $request->postal_code,
             ]);
             $billing['total'] = $request->subTotal;
             $billing['status'] = 'UNPAID';

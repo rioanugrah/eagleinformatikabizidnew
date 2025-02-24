@@ -5,7 +5,9 @@ import Container from '@/components/container';
 import { Link } from '@inertiajs/react';
 import AppLayout from '@/Layouts/users/appLayout';
 
-export default function Index({ auth }) {
+import { BarChart, LineChart } from '@mui/x-charts';
+
+export default function Index(props,{ auth }) {
     const projects = [
         { name: 'Balance', initials: 'BA', href: '#', members: 'Rp. 0', bgColor: 'bg-blue-600' },
         { name: 'Total Sales', initials: 'TS', href: '#', members: 'Rp. 0', bgColor: 'bg-green-600' },
@@ -52,6 +54,20 @@ export default function Index({ auth }) {
                     </li>
                 ))}
             </ul>
+
+            <Card className='mt-8'>
+                <CardHeader className='font-bold'>Total Penjualan</CardHeader>
+                <CardContent>
+                    <BarChart
+                        series={[
+                            { data: props.total_penjualan.map((data, i) => data.data ) },
+                        ]}
+                        height={290}
+                        xAxis={[{ data: props.total_penjualan.map((date, i) => date.date ), scaleType: 'band' }]}
+                        margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+                    />
+                </CardContent>
+            </Card>
         </>
     );
 }

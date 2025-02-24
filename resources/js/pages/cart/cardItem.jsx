@@ -52,7 +52,7 @@ export default function CardItem({ id, product_id, product, item, quantity, pric
                         </h4>
                     </div>
                     <div className='ml-4 flow-root flex-shrink-0'>
-                        <Link as='button' onClick={handlerSubmit} className='-m-2.5 flex items-center justify-center bg-white p-2.5 text-gray-400 hover:text-gray-500'>
+                        <Link as='button' method='post' href={route('cart.remove_item', [cart.id,id])} className='-m-2.5 flex items-center justify-center bg-white p-2.5 text-gray-400 hover:text-gray-500'>
                             <span className='sr-only'>Remove</span>
                             <TrashIcon aria-hidden='true' className='h-5 w-5' />
                         </Link>

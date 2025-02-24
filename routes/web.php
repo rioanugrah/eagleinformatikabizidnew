@@ -45,6 +45,7 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
             Route::get('/', [DashboardController::class, 'cart'])->middleware(['verified'])->name('cart');
             Route::get('{id}', [DashboardController::class, 'cart_detail'])->middleware(['verified'])->name('cart.detail');
             Route::post('{id}/buy', [CartController::class, 'cart_buy'])->middleware(['verified'])->name('cart.buy');
+            Route::post('{id}/item/{cart_item_id}/delete', [CartController::class, 'cart_remove_item'])->middleware(['verified'])->name('cart.remove_item');
         });
 
         Route::controller(OrderController::class)->group(function () {

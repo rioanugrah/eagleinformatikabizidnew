@@ -10,7 +10,11 @@ class SecurityController extends Controller
 {
     public function index()
     {
-        return inertia('security/index');
+        if (auth()->user()->hasRole('Administrator') == true) {
+            return inertia('security/index');
+        }else{
+            return inertia('security/users/index');
+        }
     }
 
     public function update(ProfileUpdateRequest $request): RedirectResponse

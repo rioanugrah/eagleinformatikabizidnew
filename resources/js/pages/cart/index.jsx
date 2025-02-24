@@ -1,4 +1,4 @@
-import AppLayout from '@/Layouts/users/appLayout';
+import AppLayout from '@/Layouts/appLayout';
 import { router, useForm, usePage } from '@inertiajs/react';
 import { useEffect, useState } from 'react';
 import CardItem from './cardItem';

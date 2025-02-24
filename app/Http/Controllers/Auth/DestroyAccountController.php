@@ -10,7 +10,11 @@ class DestroyAccountController extends Controller
 {
     public function index()
     {
-        return inertia('danger/index');
+        if (auth()->user()->hasRole('Administrator') == true) {
+            return inertia('danger/index');
+        }else{
+            return inertia('danger/users/index');
+        }
     }
 
     public function destroy(Request $request)
